@@ -1,0 +1,12 @@
+<odoo>
+    <template id="homepage_admin" name="ATK Homepage">
+        <t t-call="website.layout">
+            <section class="atk-hero">
+                <h1>America’s Trusted Key</h1>
+                <p>Authorized. Secure. Appointment Only.</p>
+            </section>
+
+            <!-- Figma-based sections will go here -->
+        </t>
+    </template>
+</odoo>
