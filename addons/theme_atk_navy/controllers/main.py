@@ -25,3 +25,5 @@ class ATKLaunchController(http.Controller):
             return request.render("theme_atk_navy.atk_homepage")
 
         return request.render("theme_atk_navy.atk_countdown")
+    
+    # restart trigger
