@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="atk_countdown" name="ATK Countdown">
+        <t t-call="website.layout">
+            <div id="wrap" class="container text-center py-5">
+
+                <h1>America’s Trusted Key</h1>
+                <p class="lead">Launching Soon</p>
+
+                <div id="atk-countdown"
+                     data-launch="2026-01-19T00:01:00"
+                     class="display-6 mt-4">
+                </div>
+
+            </div>
+        </t>
+    </template>
+</odoo>

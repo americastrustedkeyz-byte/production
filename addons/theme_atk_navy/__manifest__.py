@@ -10,12 +10,15 @@
 
     'data': [
         'views/layout.xml',
+        'views/homepage.xml',
+        'views/countdown.xml',
         'views/hero.xml',
     ],
 
     'assets': {
         'web.assets_frontend': [
             'theme_atk_navy/static/src/scss/atk_theme.scss',
+            'theme_atk_navy/static/src/js/countdown.js',
         ],
     },
 
