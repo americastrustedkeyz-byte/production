@@ -5,6 +5,7 @@
     "summary": "America's Trusted Key - Navy Standard Theme",
     "depends": ["website"],
     "data": [
+        "views/theme.xml",
         "views/assets.xml",
     ],
     "assets": {

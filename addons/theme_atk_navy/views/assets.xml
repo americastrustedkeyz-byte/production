@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <template id="atk_navy_assets" inherit_id="website.assets_frontend">
-        <xpath expr="." position="inside">
-            <!-- ATK Navy Theme Assets -->
-        </xpath>
+        <xpath expr="." position="inside"/>
     </template>
 </odoo>
