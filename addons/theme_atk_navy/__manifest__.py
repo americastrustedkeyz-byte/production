@@ -8,12 +8,15 @@
 
     'depends': ['website'],
 
+    # ORM / config XML ONLY (leave empty for now)
     'data': [
+        # keep empty unless you add ir.model, menus, settings, etc.
+    ],
+
+    # ALL QWeb templates go here
+    'qweb': [
         'views/layout.xml',
         'views/hero.xml',
-    ],
-    
-    'qweb': [
         'views/homepage.xml',
         'views/countdown.xml',
     ],
