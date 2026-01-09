@@ -6,7 +6,6 @@
     "depends": ["website"],
     "data": [
         "views/theme.xml",
-        "views/assets.xml",
     ],
     "assets": {
         "website.assets_frontend": [
