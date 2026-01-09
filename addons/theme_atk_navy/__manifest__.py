@@ -6,11 +6,9 @@
     'author': 'ATK',
     'license': 'LGPL-3',
 
-    # 🔴 THIS LINE FIXES THE CRASH
     'depends': ['website'],
 
     'data': [
-        'views/theme.xml',
         'views/layout.xml',
         'views/hero.xml',
     ],
@@ -23,5 +21,5 @@
 
     'theme': True,
     'installable': True,
-    'application': True,
+    'application': False,
 }
