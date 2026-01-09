@@ -3,7 +3,6 @@ from odoo.http import request
 from datetime import datetime
 import pytz
 
-
 class ATKLaunchController(http.Controller):
 
     def _launch_is_open(self):
@@ -16,14 +15,24 @@ class ATKLaunchController(http.Controller):
         return request.env.user.has_group("base.group_user")
 
     @http.route('/', type='http', auth='public', website=True, sitemap=False)
+    
     def atk_home_router(self, **kw):
+        website = request.website
 
+        # Launch date logic
         if self._launch_is_open():
-            return request.render("theme_atk_navy.atk_homepage")
+            return request.render(
+                "theme_atk_navy.atk_homepage",
+                {'website': website}
+            )
 
         if self._is_admin():
-            return request.render("theme_atk_navy.atk_homepage")
+            return request.render(
+                "theme_atk_navy.atk_homepage",
+                {'website': website}
+            )
 
-        return request.render("theme_atk_navy.atk_countdown")
-    
-    # restart trigger
+        return request.render(
+            "theme_atk_navy.atk_countdown",
+            {'website': website}
+        )
