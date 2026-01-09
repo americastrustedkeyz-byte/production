@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
 
-        <template id="atk_homepage"
-                  name="ATK Homepage"
-                  website="True"
-                  page="True">
+    <template id="atk_homepage"
+              name="ATK Homepage"
+              website="True">
 
-            <t t-call="website.layout">
-                <div id="wrap" class="container py-5">
+        <t t-call="website.layout">
+            <div id="wrap" class="container py-5">
 
-                    <section class="text-center">
-                        <h1>Welcome to America’s Trusted Key</h1>
-                        <p class="lead">
-                            Secure Automotive Key Services – Navy Standard
-                        </p>
-                    </section>
+                <section class="text-center">
+                    <h1>Welcome to America’s Trusted Key</h1>
+                    <p class="lead">
+                        Secure Automotive Key Services – Navy Standard
+                    </p>
+                </section>
 
-                </div>
-            </t>
-        </template>
+            </div>
+        </t>
+    </template>
 
-    </data>
 </odoo>
