@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="atk_countdown" name="ATK Countdown">
+
+    <template id="atk_countdown"
+              name="ATK Countdown"
+              website="True"
+              page="True">
+
         <t t-call="website.layout">
             <div id="wrap" class="container text-center py-5">
 

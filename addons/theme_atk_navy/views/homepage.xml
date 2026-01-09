@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="atk_homepage" name="ATK Homepage">
+    <template id="atk_homepage"
+          name="ATK Homepage"
+          website="True"
+          page="True">
         <t t-call="website.layout">
             <div id="wrap" class="container py-5">
                 <section class="text-center">
