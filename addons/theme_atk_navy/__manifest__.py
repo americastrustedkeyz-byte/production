@@ -1,25 +1,27 @@
 {
-    "name": "ATK Navy Theme",
-    "description": "America's Trusted Key - Navy Theme",
-    "category": "Theme/Corporate",
-    "version": "1.0",
-    "depends": ["website"],
-    "application": False,
-    "installable": True,
-    "theme": True,
-    "license": "LGPL-3",
+    'name': 'ATK Navy Theme',
+    'description': "America's Trusted Key – Navy Standard Theme",
+    'version': '18.0.1.0.0',
+    'category': 'Theme/Corporate',
+    'author': 'ATK',
+    'license': 'LGPL-3',
 
-    "assets": {
-        "web.assets_frontend": [
-            "theme_atk_navy/static/src/scss/atk_theme.scss",
-            "theme_atk_navy/static/src/js/countdown.js",
+    # 🔴 THIS LINE FIXES THE CRASH
+    'depends': ['website'],
+
+    'data': [
+        'views/theme.xml',
+        'views/layout.xml',
+        'views/hero.xml',
+    ],
+
+    'assets': {
+        'web.assets_frontend': [
+            'theme_atk_navy/static/src/scss/atk_theme.scss',
         ],
     },
 
-    "data": [
-        "views/theme.xml",
-        "views/layouts.xml",
-        "views/homepage.xml",
-        "views/snippets/hero.xml",
-    ],
+    'theme': True,
+    'installable': True,
+    'application': True,
 }
