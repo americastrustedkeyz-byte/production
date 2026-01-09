@@ -10,9 +10,12 @@
 
     'data': [
         'views/layout.xml',
+        'views/hero.xml',
+    ],
+    
+    'qweb': [
         'views/homepage.xml',
         'views/countdown.xml',
-        'views/hero.xml',
     ],
 
     'assets': {
