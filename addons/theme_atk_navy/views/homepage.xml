@@ -3,16 +3,12 @@
     <template id="atk_homepage" name="ATK Homepage">
         <t t-call="website.layout">
             <div id="wrap" class="container py-5">
-
                 <section class="text-center">
                     <h1>Welcome to America’s Trusted Key</h1>
                     <p class="lead">
                         Secure Automotive Key Services – Navy Standard
                     </p>
                 </section>
-
-                <!-- Placeholder: Figma sections go here -->
-
             </div>
         </t>
     </template>
