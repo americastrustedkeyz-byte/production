@@ -1,7 +1,0 @@
-<odoo>
-    <template id="layout" inherit_id="website.layout">
-        <xpath expr="//body" position="attributes">
-            <attribute name="class">atk-navy</attribute>
-        </xpath>
-    </template>
-</odoo>
