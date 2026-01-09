@@ -1,18 +1,25 @@
 {
     "name": "ATK Navy Theme",
-    "version": "1.0.0",
-    "category": "Theme/Website",
-    "summary": "America's Trusted Key - Navy Standard Theme",
+    "description": "America's Trusted Key - Navy Theme",
+    "category": "Theme/Corporate",
+    "version": "1.0",
     "depends": ["website"],
-    "data": [
-        "views/theme.xml",
-    ],
+    "application": False,
+    "installable": True,
+    "theme": True,
+    "license": "LGPL-3",
+
     "assets": {
-        "website.assets_frontend": [
+        "web.assets_frontend": [
             "theme_atk_navy/static/src/scss/atk_theme.scss",
+            "theme_atk_navy/static/src/js/countdown.js",
         ],
     },
-    "theme": True,
-    "installable": True,
-    "application": False,
+
+    "data": [
+        "views/theme.xml",
+        "views/layouts.xml",
+        "views/homepage.xml",
+        "views/snippets/hero.xml",
+    ],
 }

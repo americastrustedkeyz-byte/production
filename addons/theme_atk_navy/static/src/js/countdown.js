@@ -1,31 +1,19 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const el = document.getElementById("countdown");
+document.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById("atk-countdown");
     if (!el) return;
 
-    const launch = new Date(el.dataset.launch.replace(" ", "T"));
+    const target = new Date(el.dataset.date).getTime();
 
-    function tick() {
-        const now = new Date();
-        const diff = launch - now;
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = target - now;
 
         if (diff <= 0) {
-            location.reload();
+            el.innerHTML = "Launching Now";
             return;
         }
 
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const m = Math.floor((diff / (1000 * 60)) % 60);
-        const s = Math.floor((diff / 1000) % 60);
-
-        el.innerHTML = `
-            <strong>${d}</strong>d
-            <strong>${h}</strong>h
-            <strong>${m}</strong>m
-            <strong>${s}</strong>s
-        `;
-    }
-
-    tick();
-    setInterval(tick, 1000);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        el.innerHTML = `${days} days remaining`;
+    }, 1000);
 });

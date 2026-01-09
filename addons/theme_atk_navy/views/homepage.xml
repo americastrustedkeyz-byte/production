@@ -1,0 +1,29 @@
+<odoo>
+    <template id="atk_homepage" name="ATK Navy Homepage">
+        <t t-call="website.layout">
+            <div id="wrap">
+
+                <section class="s_atk_hero">
+                    <div class="container text-center py-5">
+                        <h1>America’s Trusted Key</h1>
+                        <p>Launching Soon</p>
+
+                        <div id="atk-countdown"
+                             data-date="2026-01-01T00:00:00">
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </t>
+    </template>
+
+    <!-- Set homepage -->
+    <record id="atk_home_page"
+            model="website.page">
+        <field name="name">Home</field>
+        <field name="url">/</field>
+        <field name="view_id" ref="atk_homepage"/>
+        <field name="is_published">True</field>
+    </record>
+</odoo>
