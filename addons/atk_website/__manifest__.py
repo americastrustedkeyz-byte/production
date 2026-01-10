@@ -12,8 +12,8 @@
     ],
 
     'data': [
-        'views/homepage.xml',
-        'views/countdown.xml',
+        'views/homepage_page.xml',
+        'views/countdown_page.xml',
         'views/launch_cron.xml',
     ],
 
