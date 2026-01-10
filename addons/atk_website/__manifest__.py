@@ -7,8 +7,7 @@
         'theme_atk_navy',
     ],
     'data': [
-        'views/homepage_page.xml',
-        'views/countdown_page.xml',
+        'views/pages.xml',
     ],
     'installable': True,
     'application': False,
