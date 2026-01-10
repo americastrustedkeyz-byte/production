@@ -15,7 +15,7 @@ class ATKWebsiteController(http.Controller):
     def _is_admin(self):
         return request.env.user.has_group("base.group_user")
 
-    @http.route("/", type="http", auth="public", website=True, sitemap=False)
+    @http.route('/atk', type='http', auth='public', website=True)
     def atk_home(self, **kw):
         if self._launch_is_open() or self._is_admin():
             return request.render("atk_website.atk_homepage")
