@@ -3,7 +3,7 @@
     <template id="atk_homepage" name="ATK Homepage">
         <t t-call="website.layout">
             <section class="atk-hero">
-                <h1>America's Trusted Key</h1>
+                <h1>America’s Trusted Key</h1>
                 <p>Secure. Trusted. Ready.</p>
             </section>
         </t>

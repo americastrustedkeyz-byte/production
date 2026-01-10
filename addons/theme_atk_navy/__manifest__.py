@@ -1,5 +1,6 @@
 {
     'name': 'ATK Navy Theme',
+    'description': "America's Trusted Key – Navy Standard Theme",
     'version': '18.0.1.0.0',
     'category': 'Theme/Corporate',
     'author': 'ATK',
@@ -7,8 +8,13 @@
 
     'depends': ['website'],
 
+    #DO NOT put QWeb here
+    'data': [],
+
+    #ALL templates MUST be here
     'qweb': [
         'views/hero.xml',
+        'views/countdown.xml',
     ],
 
     'assets': {
@@ -20,4 +26,5 @@
 
     'theme': True,
     'installable': True,
+    'application': False,
 }
