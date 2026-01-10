@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <data>
 
-    <!-- View definition -->
-    <record id="view_atk_homepage" model="ir.ui.view">
-        <field name="name">atk.homepage.view</field>
-        <field name="type">qweb</field>
-        <field name="arch" type="xml">
-            <![CDATA[
-            <t t-call="website.layout">
-                <div class="container mt-5">
-                    <h1>ATK Website</h1>
-                    <p>Welcome to America’s Trusted Key.</p>
-                </div>
-            </t>
-            ]]>
-        </field>
-    </record>
+        <!-- QWeb View -->
+        <record id="view_atk_homepage" model="ir.ui.view">
+            <field name="name">atk.homepage.view</field>
+            <field name="type">qweb</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <t t-call="website.layout">
+                    <div class="container mt-5">
+                        <h1>ATK Website</h1>
+                        <p>Welcome to America’s Trusted Key.</p>
+                    </div>
+                </t>
+                ]]>
+            </field>
+        </record>
 
-    <!-- Website Page -->
-    <record id="page_atk_homepage" model="website.page">
-        <field name="name">ATK Home</field>
-        <field name="url">/</field>
-        <field name="view_id" ref="view_atk_homepage"/>
-        <field name="is_published">True</field>
-    </record>
+        <!-- Website Page -->
+        <record id="page_atk_homepage" model="website.page">
+            <field name="name">ATK Home</field>
+            <field name="url">/</field>
+            <field name="view_id" ref="view_atk_homepage"/>
+            <field name="is_published">True</field>
+        </record>
 
+    </data>
 </odoo>
