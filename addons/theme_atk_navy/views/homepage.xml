@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-    <template id="atk_homepage"
-              name="ATK Homepage"
-              website="True"
-              website_id="False">
-
-        <t t-call="website.layout">
-            <div id="wrap" class="container py-5 text-center">
-                <h1>Welcome to America’s Trusted Key</h1>
-                <p class="lead">
-                    Secure Automotive Key Services – Navy Standard
-                </p>
-            </div>
-        </t>
-
-    </template>
-
+    <data>
+        <record id="atk_homepage" model="ir.ui.view">
+            <field name="name">ATK Homepage</field>
+            <field name="type">qweb</field>
+            <field name="key">theme_atk_navy.atk_homepage</field>
+            <field name="arch" type="xml">
+                <t>
+                    <div class="container py-5 text-center">
+                        <h1>ATK Navy Homepage (Loaded Safely)</h1>
+                    </div>
+                </t>
+            </field>
+        </record>
+    </data>
 </odoo>
