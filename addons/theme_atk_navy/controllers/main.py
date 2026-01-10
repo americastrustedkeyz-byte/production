@@ -3,6 +3,7 @@ from odoo.http import request
 from datetime import datetime
 import pytz
 
+
 class ATKLaunchController(http.Controller):
 
     def _launch_is_open(self):
@@ -14,25 +15,29 @@ class ATKLaunchController(http.Controller):
     def _is_admin(self):
         return request.env.user.has_group("base.group_user")
 
-    @http.route('/', type='http', auth='public', website=True, sitemap=False)
-    
-    def atk_home_router(self, **kw):
-        website = request.website
-
-        # Launch date logic
-        if self._launch_is_open():
-            return request.render(
-                "theme_atk_navy.atk_homepage",
-                {'website': website}
+    def _view_exists(self, xml_id):
+        return bool(
+            request.env["ir.ui.view"].sudo().search(
+                [("key", "=", xml_id)], limit=1
             )
+        )
 
-        if self._is_admin():
+    @http.route("/", type="http", auth="public", website=True, sitemap=False)
+    def atk_home_router(self, **kw):
+        website = request.website or request.env["website"].get_current_website()
+
+        # 🚨 SAFETY GUARD: during theme install
+        if not self._view_exists("theme_atk_navy.atk_homepage"):
+            # Fall back to default Odoo homepage
+            return request.redirect("/website")
+
+        if self._launch_is_open() or self._is_admin():
             return request.render(
                 "theme_atk_navy.atk_homepage",
-                {'website': website}
+                {"website": website},
             )
 
         return request.render(
             "theme_atk_navy.atk_countdown",
-            {'website': website}
+            {"website": website},
         )
