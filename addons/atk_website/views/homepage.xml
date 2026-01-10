@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="atk_homepage" model="ir.ui.view">
+            <field name="name">ATK Homepage</field>
+            <field name="type">qweb</field>
+            <field name="key">atk_website.atk_homepage</field>
+            <field name="arch" type="xml">
+                <t t-call="website.layout">
+                    <div class="container py-5 text-center">
+                        <h1>America’s Trusted Key</h1>
+                        <p class="lead">Navy Standard • Secure Automotive Keys</p>
+                    </div>
+                </t>
+            </field>
+        </record>
+
+    </data>
+</odoo>

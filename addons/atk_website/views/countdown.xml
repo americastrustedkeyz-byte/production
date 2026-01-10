@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="atk_countdown" model="ir.ui.view">
+            <field name="name">ATK Countdown</field>
+            <field name="type">qweb</field>
+            <field name="key">atk_website.atk_countdown</field>
+            <field name="arch" type="xml">
+                <t t-call="website.layout">
+                    <div class="container py-5 text-center">
+                        <h1>America’s Trusted Key</h1>
+                        <p class="lead">Launching Soon</p>
+                        <div class="display-6 mt-4">
+                            Launching Jan 19 @ 12:01 AM (USA)
+                        </div>
+                    </div>
+                </t>
+            </field>
+        </record>
+
+    </data>
+</odoo>
