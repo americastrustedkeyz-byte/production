@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
 
@@ -5,13 +6,16 @@
             <field name="name">ATK Launch Countdown</field>
             <field name="url">/</field>
             <field name="website_published">True</field>
+
             <field name="arch" type="xml">
+                <![CDATA[
                 <t t-call="website.layout">
                     <section class="container text-center py-5">
                         <h1>Launching Soon</h1>
                         <div id="atk-countdown"></div>
                     </section>
                 </t>
+                ]]>
             </field>
         </record>
 
