@@ -2,19 +2,17 @@
 <odoo>
     <data>
 
-        <!-- ATK Homepage -->
         <record id="page_atk_home" model="website.page">
             <field name="name">ATK Home</field>
             <field name="url">/</field>
-            <field name="view_id" ref="theme_atk_navy.hero"/>
+            <field name="view_id" ref="theme_atk_navy.atk_homepage"/>
             <field name="is_published">False</field>
         </record>
 
-        <!-- ATK Countdown -->
         <record id="page_atk_countdown" model="website.page">
             <field name="name">ATK Countdown</field>
             <field name="url">/countdown</field>
-            <field name="view_id" ref="theme_atk_navy.countdown"/>
+            <field name="view_id" ref="theme_atk_navy.atk_countdown"/>
             <field name="is_published">True</field>
         </record>
 

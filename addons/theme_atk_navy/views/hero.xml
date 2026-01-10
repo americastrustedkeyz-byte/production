@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- ATK Navy Hero Section -->
-    <template id="atk_hero_section" name="ATK Hero">
-        <section class="atk-hero py-5 text-center">
-            <div class="container">
-                <h1>America’s Trusted Key</h1>
-                <p>Launching Soon</p>
-            </div>
-        </section>
+    <template id="atk_homepage" name="ATK Homepage">
+        <t t-call="website.layout">
+            <section class="atk-hero">
+                <h1>America's Trusted Key</h1>
+                <p>Secure. Trusted. Ready.</p>
+            </section>
+        </t>
     </template>
 </odoo>

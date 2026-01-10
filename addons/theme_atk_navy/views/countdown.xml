@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="atk_countdown" name="ATK Countdown">
+        <t t-call="website.layout">
+            <section class="atk-countdown">
+                <h1>Launching Soon</h1>
+                <div id="countdown"></div>
+            </section>
+        </t>
+    </template>
+</odoo>
