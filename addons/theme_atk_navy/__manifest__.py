@@ -13,6 +13,7 @@
 
     #ALL templates MUST be here
     'qweb': [
+        'views/navbar.xml',
         'views/hero.xml',
         'views/countdown.xml',
     ],
@@ -21,6 +22,7 @@
         'web.assets_frontend': [
             'theme_atk_navy/static/src/scss/atk_theme.scss',
             'theme_atk_navy/static/src/js/countdown.js',
+            'theme_atk_navy/static/src/scss/navbar.scss',
         ],
     },
 

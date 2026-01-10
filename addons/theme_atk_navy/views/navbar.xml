@@ -1,0 +1,26 @@
+<odoo>
+  <template id="atk_navbar" inherit_id="website.layout">
+    <xpath expr="//header" position="replace">
+      <header class="atk-navbar">
+        <div class="atk-nav-container">
+          <div class="atk-logo">
+            <a href="/">TrustedKey.US</a>
+          </div>
+
+          <nav class="atk-menu">
+            <a href="/">Home</a>
+            <a href="/services">Services</a>
+            <a href="/about">About</a>
+            <a href="/contactus">Contact</a>
+          </nav>
+
+          <div class="atk-cta">
+            <a href="/contactus" class="atk-btn-primary">
+              Book Free Key Replacement
+            </a>
+          </div>
+        </div>
+      </header>
+    </xpath>
+  </template>
+</odoo>

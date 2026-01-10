@@ -1,0 +1,43 @@
+.atk-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(10, 15, 30, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.atk-nav-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.atk-logo a {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00b3ff;
+  text-decoration: none;
+}
+
+.atk-menu a {
+  margin: 0 18px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.atk-menu a:hover {
+  color: #00b3ff;
+}
+
+.atk-btn-primary {
+  background: linear-gradient(90deg, #00b3ff, #0066ff);
+  padding: 12px 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
