@@ -1,6 +1,6 @@
 {
     'name': 'ATK Website',
-    'summary': 'Homepage, countdown, and launch logic for ATK',
+    'summary': 'Homepage & launch countdown for ATK',
     'version': '18.0.1.0.0',
     'category': 'Website',
     'author': 'ATK',
@@ -14,6 +14,7 @@
     'data': [
         'views/homepage.xml',
         'views/countdown.xml',
+        'views/launch_cron.xml',
     ],
 
     'installable': True,
