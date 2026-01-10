@@ -2,21 +2,23 @@
 <odoo>
     <data>
 
+        <!-- Countdown View -->
         <record id="view_atk_countdown" model="ir.ui.view">
             <field name="name">atk.countdown.view</field>
             <field name="type">qweb</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <t t-call="website.layout">
-                    <div class="container text-center mt-5">
+                    <section class="container text-center py-5">
                         <h1>Launching Soon</h1>
                         <div id="atk-countdown"></div>
-                    </div>
+                    </section>
                 </t>
                 ]]>
             </field>
         </record>
 
+        <!-- Countdown Page -->
         <record id="page_atk_countdown" model="website.page">
             <field name="name">ATK Countdown</field>
             <field name="url">/countdown</field>
