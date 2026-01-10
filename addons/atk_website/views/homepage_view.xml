@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_atk_homepage" model="ir.ui.view">
+        <field name="name">ATK Homepage View</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-call="theme_atk_navy.atk_homepage"/>
+        </field>
+    </record>
+</odoo>

@@ -7,6 +7,7 @@
         'theme_atk_navy',
     ],
     'data': [
+        'views/homepage_view.xml',   # MUST load first
         'views/pages.xml',
     ],
     'installable': True,
