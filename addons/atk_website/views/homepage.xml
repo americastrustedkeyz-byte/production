@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <data>
 
-    <record id="atk_homepage" model="website.page">
-        <field name="name">ATK Homepage</field>
-        <field name="url">/</field>
-        <field name="website_published">False</field>
+        <record id="atk_homepage" model="website.page">
+            <field name="name">ATK Homepage</field>
+            <field name="url">/</field>
+            <field name="website_published">False</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <t t-call="website.layout">
+                    <t t-call="theme_atk_navy.hero"/>
+                </t>
+                ]]>
+            </field>
+        </record>
 
-        <field name="arch" type="xml">
-            <![CDATA[
-            <t t-call="website.layout">
-                <t t-call="theme_atk_navy.hero"/>
-            </t>
-            ]]>
-        </field>
-    </record>
-
+    </data>
 </odoo>
