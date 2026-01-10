@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
 
-        <record id="atk_countdown_page" model="website.page">
-            <field name="name">ATK Launch Countdown</field>
-            <field name="url">/</field>
-            <field name="website_published">True</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <t t-call="website.layout">
-                    <section class="container text-center py-5">
-                        <h1>Launching Soon</h1>
-                        <div id="atk-countdown"></div>
-                    </section>
-                </t>
-                ]]>
-            </field>
-        </record>
+    <record id="view_atk_countdown" model="ir.ui.view">
+        <field name="name">atk.countdown.view</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <t t-call="website.layout">
+                <div class="container text-center mt-5">
+                    <h1>Launching Soon</h1>
+                    <div id="atk-countdown"></div>
+                </div>
+            </t>
+            ]]>
+        </field>
+    </record>
 
-    </data>
+    <record id="page_atk_countdown" model="website.page">
+        <field name="name">ATK Countdown</field>
+        <field name="url">/countdown</field>
+        <field name="view_id" ref="view_atk_countdown"/>
+        <field name="is_published">True</field>
+    </record>
+
 </odoo>
