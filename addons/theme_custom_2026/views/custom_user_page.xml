@@ -30,21 +30,21 @@
         </t>
     </template>
 
-    <!-- 2. The Page Record with EXPLICIT KEY -->
+     <!-- 2. The Page Record with EXPLICIT KEY and CONSISTENT URL -->
     <record id="custom_user_page_record_unique_2026" model="website.page">
         <field name="name">Custom User Visibility</field>
-        <field name="url">/custom_user_page</field>
+        <field name="url">/custom-user-page</field> <!-- Changed to use hyphens -->
         <field name="type">qweb</field>
-        <field name="key">theme_custom_2026.custom_user_page_template</field> <!-- ADD THIS LINE -->
-        <field name="view_id" ref="custom_user_page_template"/>
+        <field name="key">theme_custom_2026.custom_user_page_template</field>
         <field name="is_published">True</field>
     </record>
 
-    <!-- 3. The Menu -->
+    <!-- 3. The Menu (Ensure this also uses the hyphenated URL if you included it) -->
     <record id="menu_custom_user_unique" model="website.menu">
         <field name="name">Custom Visibility</field>
-        <field name="url">/custom_user_page</field>
-        <field name="parent_id" ref="website.main_menu"/>
+        <field name="url">/custom-user-page</field> <!-- Changed to use hyphens -->
+        <field name="parent_id" ref="website.main_menu""")/>>
         <field name="sequence" type="int">70</field>
+        <field name="website_id" ref="website.default_website""")/>>
     </record>
 </odoo>
