@@ -1,8 +1,10 @@
 odoo.define('theme_atk_navy.countdown', [], function () {
     'use strict';
 
-    document.addEventListener('DOMContentLoaded', function () {
+    console.log('ATK COUNTDOWN SCRIPT EXECUTED');
 
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('ATK DOM READY');
         // Launch date: Jan 19, 2026 @ 12:01 AM (New York time)
         const launchDate = new Date('2026-01-19T00:01:00-05:00').getTime();
 
