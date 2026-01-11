@@ -9,10 +9,10 @@
         'views/homepage.xml',
         'views/pagetemplate.xml',
     ],
-        'assets': {
-            'web.assets_frontend': [
-            'theme_atk_navy/static/src/scss/atk_theme.scss',
-            'theme_atk_navy/static/src/js/countdown.js',
+    'assets': {
+        'web.assets_frontend': [
+            'theme_atk_navy/static/src/scss/atk_countdown.scss',
+            'theme_atk_navy/static/src/js/atk_countdown.js',
         ],
     },
     "theme": True,

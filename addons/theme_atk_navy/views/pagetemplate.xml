@@ -39,14 +39,14 @@
     <!-- Hero section-->
     <template id="atk_hero" name="Hero Section">
         <section class="atk-hero">
-            <div class="container text-center text-white">
-                <h1 class="display-1 fw-bold">
+            <div class="container atk-center">
+                <h1 class="atk-title">
                     ATK — America's Trusted Key
                 </h1>
-                <p class="lead">
+                <p class="atk-subtitle">
                     Security is not optional. It is engineered.
                 </p>
-                <a href="/contactus" class="btn btn-primary btn-lg mt-4">
+                <a href="/contactus" class="atk-btn">
                     Contact Us
                 </a>
             </div>
@@ -54,10 +54,34 @@
     </template>
 
     <!--Date countdown-->
-     <template id="atk_countdown" name="Date Countdown">
-        <section class="atk-countdown text-center">
-            <h2>Launching Soon</h2>
-            <div id="atk-countdown-timer"></div>
+     <template id="atk_countdown" name="Launch Countdown">
+        <section class="atk-countdown">
+            <div class="container atk-center">
+
+                <h2 class="atk-countdown-title">
+                    Launching Soon
+                </h2>
+
+                <div id="atk-countdown-timer" class="atk-timer">
+                    <div class="atk-time-box">
+                        <span class="atk-time" id="atk-days">00</span>
+                        <span class="atk-label">Days</span>
+                    </div>
+                    <div class="atk-time-box">
+                        <span class="atk-time" id="atk-hours">00</span>
+                        <span class="atk-label">Hours</span>
+                    </div>
+                    <div class="atk-time-box">
+                        <span class="atk-time" id="atk-minutes">00</span>
+                        <span class="atk-label">Minutes</span>
+                    </div>
+                    <div class="atk-time-box">
+                        <span class="atk-time" id="atk-seconds">00</span>
+                        <span class="atk-label">Seconds</span>
+                    </div>
+                </div>
+
+            </div>
         </section>
     </template>
 </odoo>
