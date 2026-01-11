@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="page_atk_home" model="website.page">
-        <field name="name">ATK Home</field>
-        <field name="url">/</field>
-        <field name="view_id" ref="atk_website.view_atk_home"/>
+        <field name="name">ATK Home (TEST MARKER)</field>
+        <field name="url">/atk-test</field>
+        <field name="view_id" ref="website.homepage"/>
         <field name="website_published">True</field>
     </record>
 </odoo>
+
 
 
 
