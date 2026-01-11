@@ -8,6 +8,7 @@
         'views/navbar.xml',
         'views/homepage.xml',
         'views/pagetemplate.xml',
+        'views/atk_booking_page.xml', # Path to your XML file
     ],
     'assets': {
         'web.assets_frontend': [
