@@ -13,6 +13,7 @@
         # Loading order matters: load the homepage structure first
         'views/homepage.xml',
         'views/snippets.xml',
+        'views/custom_user_page.xml', # Add the new page here
     ],
     'assets': {
         'web.assets_frontend': [
