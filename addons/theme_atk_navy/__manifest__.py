@@ -9,6 +9,7 @@
         'views/homepage.xml',
         'views/hero.xml',
         'views/countdown.xml',
+        'views/pageflow.xml',
     ],
         'assets': {
             'web.assets_frontend': [

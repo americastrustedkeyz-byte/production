@@ -25,14 +25,9 @@
                 <!-- SAFE PLACEHOLDERS -->
                 <!-- ========================= -->
 
-                <!-- Services -->
-                <div id="atk-services" class="oe_structure"/>
-
-                <!-- Security -->
-                <div id="atk-security" class="oe_structure"/>
-
-                <!-- Appointment -->
-                <div id="atk-appointment" class="oe_structure"/>
+                <t t-call="theme_atk_navy.template_services"/>
+                <t t-call="theme_atk_navy.template_about"/>
+                <t t-call="theme_atk_navy.template_contact_info"/>
 
             </div>
 

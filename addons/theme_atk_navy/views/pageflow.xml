@@ -1,0 +1,38 @@
+<odoo>
+    <!-- Sub-page 1: Services -->
+    <template id="template_services" name="Our Services">
+        <section class="s_text_block pb32 pt32">
+            <div class="container">
+                <h2>Our Services</h2>
+                <p>We provide world-class consulting and development.</p>
+            </div>
+        </section>
+    </template>
+
+    <!-- Sub-page 2: About Us -->
+    <template id="template_about" name="About Us">
+        <section class="s_image_text pb32 pt32 bg-200">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <img src="/web/image/website.s_banner_default_image" class="img-fluid"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>Who We Are</h2>
+                        <p>A team of dedicated Odoo experts since 2010.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Sub-page 3: Contact Info -->
+    <template id="template_contact_info" name="Contact Simple">
+        <section class="s_text_block pb32 pt32">
+            <div class="container">
+                <h3>Get In Touch</h3>
+                <p>Email: info@yourtheme.com</p>
+            </div>
+        </section>
+    </template>
+</odoo>
