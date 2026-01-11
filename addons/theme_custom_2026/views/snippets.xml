@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. Define the Snippet Template -->
+    <template id="s_custom_feature" name="2026 Feature Block">
+        <section class="s_features pt64 pb64">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 text-center">
+                        <i class="fa fa-bolt fa-3x text-primary mb-3"/>
+                        <h3>Fast Deploy</h3>
+                        <p>Deployed directly from GitHub to Odoo.sh.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- 2. Register in the Sidebar (Odoo 18 Structure) -->
+    <template id="register_snippets" inherit_id="website.snippets">
+        <xpath expr="//div[@id='snippet_structure']" position="inside">
+            <t t-snippet="theme_custom_2026.s_custom_feature" t-thumbnail="/theme_custom_2026/static/description/icon.png"/>
+        </xpath>
+    </template>
+</odoo>
