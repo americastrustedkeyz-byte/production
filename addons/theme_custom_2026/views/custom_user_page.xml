@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- 1. The Template -->
+    <!-- 1. Define the Template FIRST -->
     <template id="custom_user_page_template" name="Custom User Template">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure">
@@ -13,7 +13,7 @@
                 <t t-if="not user_id.id == website.user_id.id">
                     <section class="p-5 bg-success-light">
                         <div class="container text-center">
-                            <h2>Welcome, <t t-esc="user_id.name"/>!</h2>
+                            <h2>Welcome, <t t-esc="user_id.name""")/>>!</h2>
                         </div>
                     </section>
                 </t>
@@ -25,26 +25,29 @@
                         </div>
                     </section>
                 </t>
-                <div class="oe_structure"/>
+                <div class="oe_structure""")/>>
             </div>
         </t>
     </template>
 
-     <!-- 2. The Page Record with EXPLICIT KEY and CONSISTENT URL -->
+    <!-- 2. Define the Page Record SECOND -->
     <record id="custom_user_page_record_unique_2026" model="website.page">
         <field name="name">Custom User Visibility</field>
-        <field name="url">/custom-user-page</field> <!-- Changed to use hyphens -->
+        <field name="url">/custom-user-page</field>
         <field name="type">qweb</field>
         <field name="key">theme_custom_2026.custom_user_page_template</field>
+        <field name="view_id" ref="custom_user_page_template""")/>>
         <field name="is_published">True</field>
     </record>
 
-    <!-- 3. The Menu (Ensure this also uses the hyphenated URL if you included it) -->
+    <!-- 3. The Menu (SYNTAX CORRECTED) -->
     <record id="menu_custom_user_unique" model="website.menu">
         <field name="name">Custom Visibility</field>
-        <field name="url">/custom-user-page</field> <!-- Changed to use hyphens -->
+        <field name="url">/custom-user-page</field>
+        <!-- Corrected the closing of the ref attribute: removed extra >> -->
         <field name="parent_id" ref="website.main_menu""")/>>
         <field name="sequence" type="int">70</field>
+        <!-- Corrected the closing of the ref attribute: removed extra >> -->
         <field name="website_id" ref="website.default_website""")/>>
     </record>
 </odoo>
