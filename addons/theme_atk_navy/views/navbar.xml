@@ -1,18 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="atk_navbar">
-        <nav class="atk-navbar">
-            <div class="atk-container">
-                <a href="/" class="atk-logo">TrustedKey.US</a>
-
-                <ul class="atk-menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/contactus">Contact</a></li>
-                </ul>
-
-                <a href="/contactus" class="atk-cta">Book Appointment</a>
-            </div>
-        </nav>
+    <template id="atk_navbar" inherit_id="website.navbar">
+        <xpath expr="//nav" position="replace">
+            <nav class="atk-navbar">
+                <a href="/">ATK</a>
+                <a href="/contactus">Contact</a>
+            </nav>
+        </xpath>
     </template>
 </odoo>

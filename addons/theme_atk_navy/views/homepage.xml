@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="atk_homepage" inherit_id="website.homepage" name="ATK Homepage">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="oe_structure">
+
+                <!-- HERO -->
+                <t t-call="theme_atk_navy.atk_hero"/>
+
+                <!-- COUNTDOWN (public-facing) -->
+                <t t-call="theme_atk_navy.atk_countdown"/>
+
+                <!-- Editor-friendly area -->
+                <div class="oe_structure"/>
+
+            </div>
+        </xpath>
+    </template>
+</odoo>

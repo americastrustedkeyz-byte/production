@@ -1,16 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="atk_hero">
         <section class="atk-hero">
-            <div class="atk-hero-content">
-                <h1>ATK — America’s Trusted Key Company</h1>
-                <p>Security is not optional. It is engineered.</p>
-
-                <a href="/contactus" class="atk-primary-btn">
-                    Book Free Consultation
+            <div class="container text-center text-white">
+                <h1 class="display-1 fw-bold">
+                    ATK — America’s Trusted Key
+                </h1>
+                <p class="lead">
+                    Security is not optional. It is engineered.
+                </p>
+                <a href="/contactus" class="btn btn-primary btn-lg mt-4">
+                    Contact Us
                 </a>
             </div>
         </section>
     </template>
 </odoo>
-
