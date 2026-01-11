@@ -131,7 +131,7 @@
 .atk-trust-logos {
     /*border: 2px solid red;
     max-width: 500px;*/
-    width: 500px;
+    width: 60%;
     margin: 0 auto;
     min-height: 60px;
      background-image: url('/theme_atk_navy/static/src/img/trusted_by.png');
@@ -470,6 +470,11 @@
         flex-wrap: wrap;
     }
 
+    /*======services======*/
+    .atk-trust-logos {
+        width: 85%;
+    }
+
     /* ================= TESTIMONIALS – RESPONSIVE ================= */
     .atk-testimonials {
         padding: 80px 0;
@@ -602,7 +607,12 @@
 
 /* Small Mobile (≤ 480px) */
 @media (max-width: 480px) {
+    /*services*/
+    .atk-trust-logos {
+        width: 100%;
+    }
 
+    /*testimonial*/
     .atk-testimonials {
         padding: 56px 0;
     }
