@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="atk_homepage" inherit_id="website.homepage" name="ATK Homepage">
+
+    <!-- ATK MASTER HOMEPAGE -->
+    <template id="atk_homepage"
+              inherit_id="website.homepage"
+              name="ATK Homepage">
+
+        <!-- Replace entire homepage body -->
         <xpath expr="//div[@id='wrap']" position="replace">
+
             <div id="wrap" class="oe_structure">
 
-                <!-- HERO -->
+                <!-- ========================= -->
+                <!-- HERO SECTION -->
+                <!-- ========================= -->
                 <t t-call="theme_atk_navy.atk_hero"/>
 
-                <!-- COUNTDOWN (public-facing) -->
+                <!-- ========================= -->
+                <!-- COUNTDOWN SECTION -->
+                <!-- ========================= -->
                 <t t-call="theme_atk_navy.atk_countdown"/>
 
-                <!-- Editor-friendly area -->
-                <div class="oe_structure"/>
+                <!-- ========================= -->
+                <!-- SAFE PLACEHOLDERS -->
+                <!-- ========================= -->
+
+                <!-- Services -->
+                <div id="atk-services" class="oe_structure"/>
+
+                <!-- Security -->
+                <div id="atk-security" class="oe_structure"/>
+
+                <!-- Appointment -->
+                <div id="atk-appointment" class="oe_structure"/>
 
             </div>
+
         </xpath>
+
     </template>
+
 </odoo>
