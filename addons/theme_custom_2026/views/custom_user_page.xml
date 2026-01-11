@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- 1. Define the Template FIRST -->
+    <!-- 1. The Template -->
     <template id="custom_user_page_template" name="Custom User Template">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure">
                 <section class="s_title pt32 pb32 bg-200">
                     <div class="container text-center">
-                        <h1>Visibility Test Page</h1>
-                        <p>2026 Theme Deployment - Odoo.sh</p>
+                        <h1>Visibility Test Page 2026</h1>
                     </div>
                 </section>
 
                 <t t-if="not user_id.id == website.user_id.id">
-                    <section class="s_text_block pt64 pb64" style="background-color: #d4edda;">
+                    <section class="p-5 bg-success-light">
                         <div class="container text-center">
-                            <h2 class="text-success">Welcome Back, <t t-esc="user_id.name"/>!</h2>
+                            <h2>Welcome, <t t-esc="user_id.name"/>!</h2>
                         </div>
                     </section>
                 </t>
 
                 <t t-if="user_id.id == website.user_id.id">
-                    <section class="s_text_block pt64 pb64" style="background-color: #fff3cd;">
+                    <section class="p-5 bg-warning-light">
                         <div class="container text-center">
-                            <h2 class="text-warning">Public Access Only</h2>
+                            <h2>Public Access Only</h2>
                         </div>
                     </section>
                 </t>
@@ -31,20 +30,21 @@
         </t>
     </template>
 
-    <!-- 2. Define the Page Record SECOND (Now it can find the template above) -->
-    <record id="custom_user_page_record" model="website.page">
+    <!-- 2. The Page Record with EXPLICIT KEY -->
+    <record id="custom_user_page_record_unique_2026" model="website.page">
         <field name="name">Custom User Visibility</field>
         <field name="url">/custom_user_page</field>
         <field name="type">qweb</field>
+        <field name="key">theme_custom_2026.custom_user_page_template</field> <!-- ADD THIS LINE -->
         <field name="view_id" ref="custom_user_page_template"/>
         <field name="is_published">True</field>
     </record>
 
-    <!-- 3. Optional: Menu Item -->
-    <record id="menu_custom_user" model="website.menu">
+    <!-- 3. The Menu -->
+    <record id="menu_custom_user_unique" model="website.menu">
         <field name="name">Custom Visibility</field>
         <field name="url">/custom_user_page</field>
         <field name="parent_id" ref="website.main_menu"/>
-        <field name="sequence" type="int">50</field>
+        <field name="sequence" type="int">70</field>
     </record>
 </odoo>
