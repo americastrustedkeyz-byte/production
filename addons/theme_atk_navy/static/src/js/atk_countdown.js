@@ -1,12 +1,12 @@
 odoo.define('theme_atk_navy.countdown', [], function () {
     'use strict';
 
-    console.log('ATK COUNTDOWN SCRIPT EXECUTED');
+    //console.log('ATK COUNTDOWN SCRIPT EXECUTED');
 
     const LAUNCH_DATE = new Date('2026-01-19T00:01:00-05:00').getTime();
 
     function startCountdown() {
-        console.log('ATK COUNTDOWN STARTED');
+        //console.log('ATK COUNTDOWN STARTED');
 
         const timer = setInterval(() => {
             const now = Date.now();

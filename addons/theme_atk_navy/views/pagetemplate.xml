@@ -37,18 +37,126 @@
     </template>
 
     <!-- Hero section-->
+    <!-- ========================= -->
+    <!-- ADMIN / LOGGED-IN HOMEPAGE -->
+    <!-- ========================= -->
     <template id="atk_hero" name="Hero Section">
-        <section class="atk-hero">
-            <div class="container atk-center">
-                <h1 class="atk-title">
-                    ATK — America's Trusted Key
-                </h1>
-                <p class="atk-subtitle">
+
+        <!-- HERO -->
+        <section class="atk-hero-admin atk-hero-bg">
+            <div class="atk-hero-overlay"></div>
+
+            <div class="container position-relative">
+                <div class="row align-items-center">
+
+                    <!-- LEFT -->
+                    <div class="col-lg-6">
+                        <span class="atk-badge">TrustedKey.US</span>
+
+                        <h1 class="atk-title">
+                            ATK — America’s trusted key company for your key.
+                        </h1>
+
+                        <p class="atk-subtitle">
+                            Advanced identity, security, and access solutions.
+                        </p>
+
+                        <a href="/contactus" class="btn atk-btn-primary">
+                            Book Your Replacement
+                        </a>
+
+                        <div class="atk-metric">
+                            <strong>1,000+</strong>
+                            <span>Drivers</span>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="col-lg-6 text-center">
+                        <div class="atk-product-mock"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TRUSTED BY -->
+        <section class="atk-trust">
+            <div class="container text-center">
+                <p class="atk-trust-title">Trusted by industry leaders</p>
+
+                <div class="atk-trust-logos">
+                    <span>RANKEN</span>
+                    <span>HILCO</span>
+                    <span>METRO</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUE SECTION -->
+        <section class="atk-value">
+            <div class="container">
+                <h2 class="atk-section-title">
                     Security is not optional. It is engineered.
-                </p>
-                <a href="/contactus" class="atk-btn">
-                    Contact Us
-                </a>
+                </h2>
+
+                <div class="row align-items-center mt-4">
+                    <div class="col-lg-6">
+                        <div class="atk-image-placeholder"></div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <p>
+                            We specialize in high-security automotive keys that
+                            require advanced identity verification, specialized
+                            programming, and strict scheduling controls.
+                        </p>
+
+                        <a href="/contactus" class="atk-link">
+                            Book your replacement →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="atk-services">
+            <div class="container">
+                <h2 class="atk-section-title text-center">
+                    Services Overview
+                </h2>
+
+                <div class="row mt-5">
+
+                    <div class="col-lg-4">
+                        <div class="atk-service-card">
+                            <h4>Basic Service</h4>
+                            <p class="price">$85</p>
+                            <p>Standard replacement</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="atk-service-card featured">
+                            <h4>Smart Key</h4>
+                            <p class="price">$195+</p>
+                            <ul>
+                                <li>$245 – Advanced Transponder</li>
+                                <li>$295 – Security Programming</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="atk-service-card">
+                            <h4>Premium</h4>
+                            <p>Dealer-level support</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
     </template>
