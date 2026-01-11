@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <template id="atk_countdown">
-        <section class="atk-countdown text-center">
-            <h2>Launching Soon</h2>
-            <div id="atk-countdown-timer"></div>
-        </section>
-    </template>
-</odoo>

@@ -7,9 +7,7 @@
         'views/layout.xml',
         'views/navbar.xml',
         'views/homepage.xml',
-        'views/hero.xml',
-        'views/countdown.xml',
-        'views/pageflow.xml',
+        'views/pagetemplate.xml',
     ],
         'assets': {
             'web.assets_frontend': [
