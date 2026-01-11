@@ -3,16 +3,17 @@ odoo.define('theme_atk_navy.countdown', [], function () {
 
     console.log('ATK COUNTDOWN SCRIPT EXECUTED');
 
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('ATK DOM READY');
-        // Launch date: Jan 19, 2026 @ 12:01 AM (New York time)
-        const launchDate = new Date('2026-01-19T00:01:00-05:00').getTime();
+    const LAUNCH_DATE = new Date('2026-01-19T00:01:00-05:00').getTime();
 
-        function tick() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
+    function startCountdown() {
+        console.log('ATK COUNTDOWN STARTED');
+
+        const timer = setInterval(() => {
+            const now = Date.now();
+            const distance = LAUNCH_DATE - now;
 
             if (distance <= 0) {
+                clearInterval(timer);
                 return;
             }
 
@@ -21,20 +22,27 @@ odoo.define('theme_atk_navy.countdown', [], function () {
             const minutes = Math.floor((distance / (1000 * 60)) % 60);
             const seconds = Math.floor((distance / 1000) % 60);
 
-            function set(id, value) {
+            const map = {
+                'atk-days': days,
+                'atk-hours': hours,
+                'atk-minutes': minutes,
+                'atk-seconds': seconds,
+            };
+
+            Object.entries(map).forEach(([id, value]) => {
                 const el = document.getElementById(id);
                 if (el) {
                     el.textContent = String(value).padStart(2, '0');
                 }
-            }
+            });
+        }, 1000);
+    }
 
-            set('atk-days', days);
-            set('atk-hours', hours);
-            set('atk-minutes', minutes);
-            set('atk-seconds', seconds);
+    // 🔑 ODOO-SAFE WAIT LOOP
+    const waitForDom = setInterval(() => {
+        if (document.getElementById('atk-days')) {
+            clearInterval(waitForDom);
+            startCountdown();
         }
-
-        tick();
-        setInterval(tick, 1000);
-    });
+    }, 100);
 });
