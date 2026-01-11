@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="atk_navbar" inherit_id="website.navbar">
+        <xpath expr="//nav" position="replace">
+            <nav class="atk-navbar">
+                <a href="/">ATK</a>
+                <a href="/contactus">Contact</a>
+            </nav>
+        </xpath>
+    </template>
+</odoo>
