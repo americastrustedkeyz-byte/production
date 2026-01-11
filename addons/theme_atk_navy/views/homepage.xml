@@ -2,7 +2,7 @@
 <odoo>
 
     <!-- Override default Odoo homepage ONCE -->
-    <template id="atk_homepage" inherit_id="website.atk-bookingpage" name="ATK Homepage">
+    <template id="atk_homepage" inherit_id="website.homepage" name="ATK Homepage">
 
         <xpath expr="//div[@id='wrap']" position="replace">
             <div id="wrap" class="oe_structure">

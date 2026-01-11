@@ -183,7 +183,7 @@
                                     and the service exceeded expectations.
                                 </p>
                                 <div class="atk-user">
-                                    <img src="/web/image/website.s_banner_default_image"
+                                    <img src="/theme_atk_navy/static/src/img/custom1.png"
                                         alt="Customer"
                                         class="atk-avatar"/>
                                     <div>
@@ -203,7 +203,7 @@
                                     I felt confident throughout the entire process.
                                 </p>
                                 <div class="atk-user">
-                                    <img src="/web/image/website.s_banner_default_image"
+                                    <img src="/theme_atk_navy/static/src/img/custom2.png"
                                         alt="Customer"
                                         class="atk-avatar"/>
                                     <div>
@@ -223,7 +223,7 @@
                                     Highly recommended for secure key services.
                                 </p>
                                 <div class="atk-user">
-                                    <img src="/web/image/website.s_banner_default_image"
+                                    <img src="/theme_atk_navy/static/src/img/custom3.png"
                                         alt="Customer"
                                         class="atk-avatar"/>
                                     <div>
@@ -269,9 +269,4 @@
             </div>
         </section>
     </template>
-
-
-    <!-- ================= BOOKING & BILLING WRAPPER ================= 
-    <template id="atk_booking_billing" name="Booking & Billing Section">
-    </template-->
 </odoo>
