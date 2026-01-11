@@ -1,110 +1,154 @@
-/* ATK Navy Theme */
-body.atk-navy-theme {
-    background-color: #ffffff;
+/* =====================================================
+   ATK NAVY — HOMEPAGE (FIGMA-LOCKED)
+   Authoritative CSS — no conflicts
+===================================================== */
+
+/* ---------- GLOBAL SAFETY ---------- */
+#wrap,
+#wrapwrap,
+.atk-homepage {
+    background: #ffffff;
+    color: #050b12;
 }
 
+.atk-homepage * {
+    box-sizing: border-box;
+}
+
+/* ---------- HERO SECTION ---------- */
 .atk-hero-bg {
     position: relative;
     min-height: 90vh;
+
+    /* Background image anchor */
     background-image: url('/theme_atk_navy/static/src/img/hero_img.png');
     background-size: cover;
     background-position: center right;
     background-repeat: no-repeat;
+
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
-/* Dark overlay like Figma */
+/* Gradient overlay (FIGMA ACCURATE) */
 .atk-hero-overlay {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at right, rgba(30,58,95,0.85), rgba(5,11,18,0.95)),
-        linear-gradient(to bottom, rgba(5,11,18,0.6), rgba(5,11,18,0.9));
+        radial-gradient(circle at right, rgba(30,58,95,0.88), rgba(5,11,18,0.96)),
+        linear-gradient(to bottom, rgba(5,11,18,0.65), rgba(5,11,18,0.95));
     z-index: 1;
 }
 
-
+/* Hero content container */
 .atk-hero-admin {
-    background: radial-gradient(circle at right, #1b2d3f, #050b12);
     padding: 120px 0;
     color: #ffffff;
 }
 
-/* Ensure content is above overlay */
 .atk-hero-admin .container {
+    position: relative;
     z-index: 2;
 }
 
-
+/* Badge */
 .atk-badge {
-    background: rgba(255,255,255,0.1);
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    color: #e6f0ff;
     padding: 6px 14px;
-    border-radius: 20px;
+    border-radius: 999px;
     font-size: 12px;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
+/* Hero Title */
 .atk-title {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 5vw, 3.4rem);
     font-weight: 800;
-    margin: 20px 0;
+    line-height: 1.15;
+    margin: 22px 0 16px;
+    color: #ffffff;
 }
 
+/* Hero subtitle */
 .atk-subtitle {
-    opacity: 0.85;
-    max-width: 420px;
+    font-size: 1.05rem;
+    max-width: 460px;
+    color: rgba(255,255,255,0.85);
 }
 
+/* Primary CTA */
 .atk-btn-primary {
-    background: #0d6efd;
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: 30px;
     display: inline-block;
-    margin-top: 20px;
+    background: #0d6efd;
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 24px;
+    transition: transform .25s ease, box-shadow .25s ease;
 }
 
+.atk-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(13,110,253,0.4);
+}
+
+/* Metric */
 .atk-metric {
-    margin-top: 30px;
+    margin-top: 28px;
     font-size: 14px;
+    color: rgba(255,255,255,0.75);
 }
 
-/*.atk-product-mock {
-    width: 280px;
-    height: 380px;
-    background: linear-gradient(145deg, #1e3a5f, #0b1622);
-    border-radius: 20px;
-    margin: auto;
-}*/
-
-/* Product visual placeholder */
+/* Product mock (right side) */
 .atk-product-mock {
     width: 320px;
     height: 420px;
     background: linear-gradient(145deg, #1e3a5f, #0b1622);
     border-radius: 24px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
     margin: auto;
 }
 
+/* ---------- TRUST STRIP ---------- */
 .atk-trust {
-    padding: 40px 0;
-    background: #f8f9fa;
+    padding: 48px 0;
+    background: #f8f9fb;
+    text-align: center;
+}
+
+.atk-trust-title {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-bottom: 20px;
 }
 
 .atk-trust-logos span {
-    margin: 0 15px;
+    margin: 0 18px;
     font-weight: 600;
-    opacity: 0.6;
+    opacity: 0.55;
 }
 
+/* ---------- VALUE SECTION ---------- */
 .atk-value {
     padding: 100px 0;
 }
 
 .atk-section-title {
     font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 18px;
+}
+
+.atk-section-text {
+    max-width: 520px;
+    color: #5b6775;
 }
 
 .atk-image-placeholder {
@@ -114,23 +158,89 @@ body.atk-navy-theme {
     border-radius: 16px;
 }
 
+/* ---------- SERVICES SECTION ---------- */
 .atk-services {
-    padding: 100px 0;
+    padding: 110px 0;
     background: #0b1622;
-    color: #fff;
+    color: #ffffff;
+}
+
+.atk-services h2,
+.atk-services p {
+    color: #ffffff;
 }
 
 .atk-service-card {
     background: rgba(255,255,255,0.06);
-    padding: 30px;
-    border-radius: 16px;
-    transition: transform .3s;
+    padding: 32px;
+    border-radius: 18px;
+    transition: transform .3s ease, box-shadow .3s ease;
+    height: 100%;
 }
 
 .atk-service-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
 }
 
 .atk-service-card.featured {
     border: 1px solid #0d6efd;
+}
+
+/* ---------- COUNTDOWN SECTION ---------- */
+.atk-countdown {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at center, #10273f, #050b12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.atk-countdown h2 {
+    font-size: 2.4rem;
+    margin-bottom: 40px;
+}
+
+.atk-countdown-boxes {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.atk-countdown-box {
+    background: rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px 28px;
+    min-width: 110px;
+}
+
+.atk-countdown-box span {
+    font-size: 2.4rem;
+    font-weight: 700;
+    display: block;
+}
+
+.atk-countdown-box label {
+    font-size: 12px;
+    opacity: 0.7;
+    letter-spacing: 1px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 991px) {
+    .atk-hero-bg {
+        background-position: center;
+        min-height: auto;
+    }
+
+    .atk-product-mock {
+        margin-top: 40px;
+    }
+
+    .atk-countdown-boxes {
+        flex-wrap: wrap;
+    }
 }
