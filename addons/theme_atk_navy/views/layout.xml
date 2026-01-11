@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="layout" inherit_id="website.layout">
-        <xpath expr="//body" position="attributes">
-            <attribute name="class">atk-navy</attribute>
+    <template id="atk_layout" inherit_id="website.layout">
+        <xpath expr="//header" position="replace">
+            <t t-call="theme_atk_navy.atk_navbar"/>
         </xpath>
     </template>
 </odoo>
+

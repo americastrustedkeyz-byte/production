@@ -3,7 +3,8 @@
     <record id="page_atk_home" model="website.page">
         <field name="name">ATK Home</field>
         <field name="url">/</field>
-        <field name="view_id" ref="atk_website.view_atk_homepage"/>
-        <field name="is_published">False</field>
+        <field name="view_id" ref="atk_website.view_atk_home"/>
+        <field name="is_published">True</field>
     </record>
 </odoo>
+

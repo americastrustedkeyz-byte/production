@@ -1,38 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <template id="atk_hero">
-    <section class="atk-hero">
-      <div class="atk-hero-inner">
+    <template id="atk_hero">
+        <section class="atk-hero">
+            <div class="atk-hero-content">
+                <h1>ATK — America’s Trusted Key Company</h1>
+                <p>Security is not optional. It is engineered.</p>
 
-        <div class="atk-hero-text">
-          <span class="atk-badge">TrustedKey.US</span>
-
-          <h1>
-            ATK-America’s<br/>
-            trusted key company<br/>
-            for your key.
-          </h1>
-
-          <p>
-            American-made keys and products.
-          </p>
-
-          <div class="atk-hero-actions">
-            <a href="/contactus" class="atk-btn-primary">
-              Book Free Key Replacement
-            </a>
-          </div>
-
-          <div class="atk-stats">
-            <strong>1,000+</strong>
-            <span>Drivers Secured</span>
-          </div>
-        </div>
-
-        <div class="atk-hero-media">
-          <img src="/theme_atk_navy/static/src/img/hero_img.png"/>
-        </div>
-
-      </div>
-    </section>
-  </template>
+                <a href="/contactus" class="atk-primary-btn">
+                    Book Free Consultation
+                </a>
+            </div>
+        </section>
+    </template>
 </odoo>
+
