@@ -4,7 +4,9 @@
         <field name="name">ATK Home</field>
         <field name="url">/</field>
         <field name="view_id" ref="atk_website.view_atk_home"/>
-        <field name="is_published">True</field>
+        <field name="website_published">True</field>
     </record>
 </odoo>
+
+
 
