@@ -41,3 +41,66 @@
   text-decoration: none;
   font-weight: 600;
 }
+
+/* Navbar logo */
+.atk-logo img {
+    height: 58px;
+    width: auto;
+    padding: 2px;
+    border-radius: 50%;
+    background: transparent;
+    display: block;
+    object-fit: contain;
+}
+
+.atk-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5, 11, 18, 0.95);
+    backdrop-filter: blur(8px);
+}
+
+.atk-nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.atk-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.atk-nav-links a {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity .2s;
+}
+
+.atk-nav-links a:hover {
+    opacity: 1;
+}
+
+.atk-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.atk-nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 5px 0;
+    background: #ffffff;
+}
+

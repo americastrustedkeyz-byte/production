@@ -54,27 +54,32 @@
                         <span class="atk-badge">TrustedKey.US</span>
 
                         <h1 class="atk-title">
-                            ATK — America’s trusted key company for your key.
+                            ATK — America's trusted key company for your next key.
                         </h1>
 
                         <p class="atk-subtitle">
                             Advanced identity, security, and access solutions.
                         </p>
-                        <div class="atk_hero_btn">
-                            <button
-                                class="atk-hero-btn-primary is-outline"
-                                data-bs-toggle="modal"
-                                data-bs-target="#atkVehicleModal">
-                                Check Vehicle Availability
-                            </button>
-
                         
-                            <a href="/contactus" class="btn atk-btn-primary">
-                                Book Your Replacement
-                            </a>
-                        </div>
+                <div class="atk-hero-actions">
 
-                        <div class="atk-metric">
+                    <!-- OUTLINE / MODAL BUTTON -->
+                    <button
+                        type="button"
+                        class="atk-hero-btn atk-hero-btn-outline"
+                        data-bs-toggle="modal"
+                        data-bs-target="#atkVehicleModal">
+                        Check Vehicle Availability
+                    </button>
+
+                    <!-- PRIMARY CTA -->
+                    <a href="/atk-booking" class="atk-hero-btn atk-hero-btn-filled">
+                        Book Your Replacement
+                    </a>
+
+                </div>
+
+                <div class="atk-metric">
                             <strong>1,000+</strong>
                             <span>Drivers</span>
                         </div>
