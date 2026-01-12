@@ -60,10 +60,19 @@
                         <p class="atk-subtitle">
                             Advanced identity, security, and access solutions.
                         </p>
+                        <div class="atk_hero_btn">
+                            <button
+                                class="atk-hero-btn-primary is-outline"
+                                data-bs-toggle="modal"
+                                data-bs-target="#atkVehicleModal">
+                                Check Vehicle Availability
+                            </button>
 
-                        <a href="/contactus" class="btn atk-btn-primary">
-                            Book Your Replacement
-                        </a>
+                        
+                            <a href="/contactus" class="btn atk-btn-primary">
+                                Book Your Replacement
+                            </a>
+                        </div>
 
                         <div class="atk-metric">
                             <strong>1,000+</strong>
@@ -161,7 +170,8 @@
         </section>
 
         <!-- ================= TESTIMONIALS ================= -->
-            <div id="atk_testimonials" class="atk-testimonials">
+            <section>
+                <div id="atk_testimonials" class="atk-testimonials">
                 <div class="container text-center">
 
                     <span class="atk-section-eyebrow">
@@ -235,7 +245,78 @@
                         </div>
                     </div>
                 </div>
+                </div>
+            </section>
+
+        <!-- BOOKING TRACK SECTION-modal -->
+
+        <!--vehicle identification-modal 1-->
+        <section id="atk_vehicle_modal">
+            <div class="modal fade" id="atkVehicleModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content atk-modal-dark">
+
+                        <!-- HEADER -->
+                        <div class="atk-modal-header text-center">
+                            <h2>VEHICLE IDENTIFICATION</h2>
+                            <p>Select your vehicle details for accurate pricing.</p>
+
+                            <div class="atk-booking-chip">
+                                <span>⏱</span>
+                                Standard Booking (Weekend Access)
+                            </div>
+                        </div>
+
+                        <!-- BODY -->
+                        <div class="modal-body atk-modal-body">
+
+                            <!-- Key Type -->
+                            <div class="atk-form-group">
+                                <label>Key Type</label>
+                                <select class="atk-select">
+                                    <option>Smart Key</option>
+                                    <option>Transponder</option>
+                                    <option>I don’t know</option>
+                                </select>
+                            </div>
+
+                            <!-- Vehicle Make -->
+                            <div class="atk-form-group">
+                                <label>Vehicle Make</label>
+                                <select class="atk-select">
+                                    <option>Select Make</option>
+                                </select>
+                            </div>
+
+                            <!-- Vehicle Model -->
+                            <div class="atk-form-group">
+                                <label>Vehicle Model</label>
+                                <select class="atk-select">
+                                    <option>Select Model</option>
+                                </select>
+                            </div>
+
+                            <!-- Vehicle Year -->
+                            <div class="atk-form-group">
+                                <label>Vehicle Year</label>
+                                <select class="atk-select">
+                                    <option>Select Year</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- FOOTER -->
+                        <div class="atk-modal-footer">
+                            <button class="atk-btn-primary w-100">
+                                Continue →
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
             </div>
+        </section>
     </template>
 
     <!--Date countdown-->

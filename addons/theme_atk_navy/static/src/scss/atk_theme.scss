@@ -45,20 +45,7 @@
 .atk-nav-links a:hover {
     opacity: 1;
 }
-.atk-btn-primary {
-    background: #0d6efd;
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background .2s;
-}
 
-.atk-btn-primary:hover {
-    background: #0b5ed7;
-}
 .atk-nav-toggle {
     display: none;
     background: none;
@@ -150,22 +137,12 @@
     color: rgba(255,255,255,0.85);
 }
 
-/* Primary CTA */
-.atk-btn-primary {
-    display: inline-block;
-    background: #0d6efd;
-    color: #ffffff;
-    padding: 14px 32px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    margin-top: 24px;
-    transition: transform .25s ease, box-shadow .25s ease;
+.atk_hero_btn{
+    display: flex;
+    justify-content: space-between;
 }
-
-.atk-btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(13,110,253,0.4);
+.atk_hero_btn button{ 
+    margin-right: 25px;
 }
 
 /* Metric */
@@ -176,15 +153,6 @@
 }
 
 /* Product mock (right side) */
-.atk-product-mock {
-    /*width: 320px;
-    height: 420px;
-    background: linear-gradient(145deg, #1e3a5f, #0b1622);
-    border-radius: 24px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-    margin: auto;*/
-}
-
 /* ---------- TRUST STRIP ---------- */
 .atk-trust {
     padding: 48px 0;
@@ -503,27 +471,166 @@
     font-weight: 700;
 }
 
-/* BUTTONS */
-.atk-btn-outline {
-    display: inline-block;
-    padding: 10px 22px;
-    border-radius: 30px;
-    border: 1px solid #0d6efd;
-    color: #0d6efd;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.atk-btn-primary {
-    display: inline-block;
-    padding: 12px 28px;
-    border-radius: 30px;
-    background: #0d6efd;
+/*Modal Box*/
+/* SELECT BOOKING TRACK 1*/
+.atk-booking-track {
+    background: radial-gradient(circle at center, #0f1e2e, #050b12);
+    padding: 80px 20px;
     color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
 }
 
+.atk-booking-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.atk-booking-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.atk-booking-header p {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.atk-back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #9bb7ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.atk-booking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.atk-booking-card {
+    background: linear-gradient(145deg, #141b24, #0b1017);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.atk-booking-card.featured {
+    border: 1px solid #2f7cff;
+}
+
+.atk-booking-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.atk-badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.atk-badge.muted {
+    background: rgba(255,255,255,0.1);
+}
+
+.atk-badge.premium {
+    background: #2f7cff;
+}
+
+.atk-desc {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-bottom: 20px;
+}
+
+.atk-feature-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.atk-feature-list li {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-bottom: 8px;
+}
+
+/*vehicle identification number*/
+/* MODAL BASE */
+.atk-modal-dark {
+    background: radial-gradient(circle at top, #0f1e2e, #050b12);
+    border-radius: 20px;
+    color: #ffffff;
+    border: none;
+}
+
+/* HEADER */
+.atk-modal-header {
+    padding: 40px 30px 20px;
+}
+
+.atk-modal-header h2 {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.atk-modal-header p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.atk-booking-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+
+/* BODY */
+.atk-modal-body {
+    padding: 20px 30px;
+}
+
+.atk-form-group {
+    margin-bottom: 18px;
+}
+
+.atk-form-group label {
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.atk-select {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(145deg, #141b24, #0b1017);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.atk-select:focus {
+    outline: 1px solid #2f7cff;
+}
+
+/* FOOTER */
+.atk-modal-footer {
+    padding: 20px 30px 30px;
+}
 
 
 /* ---------- RESPONSIVE ---------- */
@@ -553,11 +660,6 @@
 
     .atk-nav-links a {
         font-size: 16px;
-    }
-
-    .atk-btn-primary {
-        width: 100%;
-        text-align: center;
     }
 }
 
@@ -707,6 +809,16 @@
         width: 100%;
         padding: 12px 18px;
         text-align: center;
+    }
+
+     /*Select Booking Track 1*/
+    .atk-booking-track {
+        padding: 50px 15px;
+    }
+
+    /*vehicle identification*/
+     .atk-modal-header h2 {
+        font-size: 22px;
     }
 }
 

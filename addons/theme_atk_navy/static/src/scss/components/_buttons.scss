@@ -1,0 +1,106 @@
+/* =====PRIMARY HERO BUTTON =======*/
+ /*hero section*/
+    .atk_hero_btn{
+        display: block!important;
+    }
+    .atk_hero_btn button{ 
+        margin-right: 0!important;
+        margin-bottom: 25px;
+    }
+
+.atk-hero-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    padding: 14px 28px;
+    border-radius: 999px;
+
+    /*border: none;*/
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 30px rgba(13,110,253,0.35);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Outline variant */
+.atk-hero-btn-primary.is-outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.35);
+    box-shadow: none;
+}
+
+/* Small variant */
+.atk-hero-btn-primary.is-sm {
+    padding: 10px 20px;
+    font-size: 13px;
+}
+
+/* Hover */
+.atk-hero-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(13,110,253,0.5);
+    color: #ffffff;
+}
+
+/* Focus / active safety */
+.atk-hero-btn-primary:focus,
+.atk-hero-btn-primary:active {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13,110,253,0.3);
+}
+
+/* Primary CTA */
+.atk-btn-primary {
+    display: inline-block;
+    background: #0d6efd;
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 24px;
+    transition: transform .25s ease, box-shadow .25s ease;
+    cursor: pointer;
+}
+
+.atk-btn-secondary {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+.atk-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(13,110,253,0.4);
+}
+
+/* BUTTONS */
+.atk-btn-outline {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 992px) {
+
+    .atk-btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+}
+

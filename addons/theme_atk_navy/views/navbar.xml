@@ -13,7 +13,7 @@
 
                     <!-- LOGO -->
                     <a href="/" class="atk-logo">
-                        <img src="/theme_atk_navy/static/src/img/logo.png"
+                        <img src="/theme_atk_navy/static/src/img/atk_logo.JPEG"
                              alt="ATK Logo"/>
                     </a>
 
@@ -29,11 +29,11 @@
                     <!-- LINKS -->
                     <div class="atk-nav-links">
                         <a href="/">Home</a>
-                        <a href="/services">Services</a>
-                        <a href="/aboutus">About</a>
+                        <a href="/">Services</a>
+                        <a href="/">About</a>
                         <a href="/contactus">Contact</a>
 
-                        <a href="/book"
+                        <a href="/atk-booking"
                            class="atk-btn-primary">
                             Book Appointment
                         </a>
