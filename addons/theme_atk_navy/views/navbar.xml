@@ -1,7 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <template id="atk_navbar" inherit_id="website.layout" name="ATK Navbar">
-        <xpath expr="//header" position="replace">
-            <header class="atk-navbar">
+
+        <!-- Replace Odoo default header safely -->
+        <xpath expr="//header[@id='top']" position="replace">
+
+            <header id="top" class="atk-navbar">
 
                 <div class="atk-nav-container">
 
@@ -11,7 +16,7 @@
                              alt="ATK Logo"/>
                     </a>
 
-                    <!-- HAMBURGER (MOBILE) -->
+                    <!-- MOBILE TOGGLE -->
                     <button class="atk-nav-toggle"
                             aria-label="Toggle navigation"
                             onclick="document.body.classList.toggle('atk-nav-open')">
@@ -20,15 +25,14 @@
                         <span></span>
                     </button>
 
-                    <!-- LINKS -->
+                    <!-- NAV LINKS -->
                     <nav class="atk-nav-links">
                         <a href="/">Home</a>
                         <a href="/services">Services</a>
                         <a href="/aboutus">About</a>
                         <a href="/contactus">Contact</a>
 
-                        <a href="/book"
-                           class="atk-btn-primary">
+                        <a href="/book" class="atk-btn-primary">
                             Book Appointment
                         </a>
                     </nav>
@@ -36,6 +40,9 @@
                 </div>
 
             </header>
+
         </xpath>
+
     </template>
+
 </odoo>
