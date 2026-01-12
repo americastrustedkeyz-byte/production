@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="atk_navbar" inherit_id="website.layout" name="ATK Navbar">
+    <template id="atk_navbar"
+              inherit_id="website.navbar"
+              name="ATK Custom Navbar">
 
-        <!-- Replace Odoo default header safely -->
-        <xpath expr="//header[@id='top']" position="replace">
+        <xpath expr="//nav" position="replace">
 
-            <header id="top" class="atk-navbar">
+            <nav class="atk-navbar">
 
                 <div class="atk-nav-container">
 
@@ -25,21 +26,22 @@
                         <span></span>
                     </button>
 
-                    <!-- NAV LINKS -->
-                    <nav class="atk-nav-links">
+                    <!-- LINKS -->
+                    <div class="atk-nav-links">
                         <a href="/">Home</a>
                         <a href="/services">Services</a>
                         <a href="/aboutus">About</a>
                         <a href="/contactus">Contact</a>
 
-                        <a href="/book" class="atk-btn-primary">
+                        <a href="/book"
+                           class="atk-btn-primary">
                             Book Appointment
                         </a>
-                    </nav>
+                    </div>
 
                 </div>
 
-            </header>
+            </nav>
 
         </xpath>
 
