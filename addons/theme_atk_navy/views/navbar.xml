@@ -17,7 +17,7 @@
                              alt="ATK Logo"/>
                     </a>
 
-                    <!--MOBILE TOGGLE -->
+                    <!--MOBILE TOGGLE-->
                     <button class="atk-nav-toggle"
                             aria-label="Toggle navigation"
                             onclick="document.body.classList.toggle('atk-nav-open')">
@@ -26,7 +26,7 @@
                         <span></span>
                     </button>
 
-                    <!-- LINKS -->
+                    <!--LINKS-->
                     <div class="atk-nav-links">
                         <a href="/">Home</a>
                         <a href="/atk-booking">Services</a>
@@ -38,13 +38,8 @@
                             Book Appointment
                         </a>
                     </div>
-
                 </div>
-
             </nav>
-
         </xpath>
-
     </template>
-
 </odoo>
