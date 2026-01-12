@@ -87,9 +87,9 @@
                 <p class="atk-trust-title">Trusted by industry leaders</p>
 
                 <div class="atk-trust-logos">
-                    <span>RANKEN</span>
+                    <!--span>RANKEN</span>
                     <span>HILCO</span>
-                    <span>METRO</span>
+                    <span>METRO</span-->
                 </div>
             </div>
         </section>
@@ -159,6 +159,83 @@
                 </div>
             </div>
         </section>
+
+        <!-- ================= TESTIMONIALS ================= -->
+            <div id="atk_testimonials" class="atk-testimonials">
+                <div class="container text-center">
+
+                    <span class="atk-section-eyebrow">
+                        Trusted by industry leaders and institutions
+                    </span>
+
+                    <h2 class="atk-section-title">
+                        What our customers are saying
+                    </h2>
+
+                    <div class="row justify-content-center mt-5">
+
+                        <!-- Testimonial Card -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="atk-testimonial-card">
+                                <div class="atk-quote">“</div>
+                                <p class="atk-testimonial-text">
+                                    Reliable, fast, and secure. The booking process was seamless
+                                    and the service exceeded expectations.
+                                </p>
+                                <div class="atk-user">
+                                    <img src="/theme_atk_navy/static/src/img/custom1.PNG"
+                                        alt="Customer"
+                                        class="atk-avatar"/>
+                                    <div>
+                                        <strong>Tim Tom</strong>
+                                        <span>Car Holder</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="atk-testimonial-card">
+                                <div class="atk-quote">“</div>
+                                <p class="atk-testimonial-text">
+                                    Professional service with attention to detail.
+                                    I felt confident throughout the entire process.
+                                </p>
+                                <div class="atk-user">
+                                    <img src="/theme_atk_navy/static/src/img/custom2.PNG"
+                                        alt="Customer"
+                                        class="atk-avatar"/>
+                                    <div>
+                                        <strong>Jane</strong>
+                                        <span>Car Holder</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="atk-testimonial-card">
+                                <div class="atk-quote">“</div>
+                                <p class="atk-testimonial-text">
+                                    Smooth experience from booking to delivery.
+                                    Highly recommended for secure key services.
+                                </p>
+                                <div class="atk-user">
+                                    <img src="/theme_atk_navy/static/src/img/custom3.PNG"
+                                        alt="Customer"
+                                        class="atk-avatar"/>
+                                    <div>
+                                        <strong>Amanda</strong>
+                                        <span>Car Holder</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </template>
 
     <!--Date countdown-->
