@@ -4,6 +4,77 @@
 ===================================================== */
 
 /* ---------- GLOBAL SAFETY ---------- */
+
+/*navbar*/
+.atk-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5, 11, 18, 0.95);
+    backdrop-filter: blur(8px);
+}
+
+.atk-nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.atk-logo img {
+    height: 38px;
+    width: auto;
+}
+.atk-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.atk-nav-links a {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity .2s;
+}
+
+.atk-nav-links a:hover {
+    opacity: 1;
+}
+.atk-btn-primary {
+    background: #0d6efd;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .2s;
+}
+
+.atk-btn-primary:hover {
+    background: #0b5ed7;
+}
+.atk-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.atk-nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 5px 0;
+    background: #ffffff;
+}
+
+
 #wrap,
 #wrapwrap,
 .atk-homepage {
@@ -456,6 +527,41 @@
 
 
 /* ---------- RESPONSIVE ---------- */
+@media (max-width: 992px) {
+
+    .atk-nav-toggle {
+        display: block;
+    }
+
+    .atk-nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        background: #050b12;
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px;
+
+        display: none;
+    }
+
+    body.atk-nav-open .atk-nav-links {
+        display: flex;
+    }
+
+    .atk-nav-links a {
+        font-size: 16px;
+    }
+
+    .atk-btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
 @media (max-width: 991px) {
     .atk-hero-bg {
         background-position: center;

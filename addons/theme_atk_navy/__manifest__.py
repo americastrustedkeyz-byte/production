@@ -5,7 +5,7 @@
     "depends": ["website"],
     "data": [
         'views/layout.xml',
-        #'views/navbar.xml',
+        'views/navbar.xml',
         'views/homepage.xml',
         'views/pagetemplate.xml',
         'views/atk_booking_page.xml',
@@ -15,6 +15,7 @@
             'theme_atk_navy/static/src/scss/atk_theme.scss',
             'theme_atk_navy/static/src/scss/atk_countdown.scss',
             'theme_atk_navy/static/src/js/atk_countdown.js',
+            'theme_atk_navy/static/src/js/atk_navbar.js',
         ],
     },
     "theme": True,
