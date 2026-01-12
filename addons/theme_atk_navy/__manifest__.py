@@ -5,7 +5,7 @@
     "depends": ["website"],
     "data": [
         'views/layout.xml',
-        'views/navbar.xml',
+        #'views/navbar.xml',
         'views/homepage.xml',
         'views/pagetemplate.xml',
         'views/atk_booking_page.xml',
