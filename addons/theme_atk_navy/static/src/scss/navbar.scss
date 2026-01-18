@@ -107,8 +107,9 @@
 @media (max-width: 992px) {
   .atk-nav-toggle {
     display: block;
-    background: red!important;
-    border: none;
+    background: white!important;
+    min-height: 200px!important;
+    /*.border: none;*/
     cursor: pointer;
 }
 
@@ -167,7 +168,7 @@
     .atk-nav-toggle {
         display: flex !important;
         position: relative;
-        z-index: 9999;
+        z-index: 9999!important;
     }
 
     .atk-nav-toggle span {
