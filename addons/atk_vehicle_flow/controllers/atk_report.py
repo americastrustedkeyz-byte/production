@@ -7,23 +7,22 @@ class AtkReportController(http.Controller):
 
     @http.route('/atk/report/checkout', type='http', auth='public', website=True)
     def atk_report_checkout(self, **kwargs):
-        track = kwargs.get('track', 'standard')
 
-        # 🔒 Public user → login WITH return URL preserved
+        # 🔒 If public → redirect to login WITH return URL
         if request.env.user._is_public():
             query = urlencode({
-                'redirect': '/atk/report/checkout?track=%s' % track
+                'redirect': '/shop/cart',
+                'track': kwargs.get('track', ''),
             })
             return redirect('/web/login?' + query)
 
-        # ✅ Logged-in user → ensure cart exists
+        # ✅ Logged-in user
         order = request.website.sale_get_order(force_create=True)
 
-        # 🔥 HARD RESET cart (guaranteed)
-        order.order
+        # Clean cart
         order.order_line.unlink()
 
-        # ✅ Add ONLY the $5 product
+        # Add ONLY the $5 product
         product = request.env.ref('theme_atk_navy.atk_processing_fee')
 
         order._cart_update(
@@ -31,5 +30,5 @@ class AtkReportController(http.Controller):
             add_qty=1
         )
 
-        # ✅ STABLE redirect (never 404)
-        return redirect('/shop/checkout')
+        # Redirect directly to cart
+        return redirect('/shop/cart')
