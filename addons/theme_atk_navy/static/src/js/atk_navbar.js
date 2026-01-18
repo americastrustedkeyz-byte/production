@@ -1,53 +1,17 @@
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.querySelector('.atk-nav-toggle');
+    const links = document.querySelector('.atk-nav-links');
 
-    function injectHamburger() {
+    if (!toggle || !links) return;
 
-        // Only mobile
-        if (window.innerWidth > 992) return;
-
-        const container = document.querySelector('.atk-nav-container');
-        const links = document.querySelector('.atk-nav-links');
-
-        if (!container || !links) return;
-
-        // Prevent duplicates
-        if (container.querySelector('.atk-mobile-toggle')) return;
-
-        const toggle = document.createElement('div');
-        toggle.className = 'atk-mobile-toggle';
-        toggle.setAttribute('aria-label', 'Toggle navigation');
-
-        toggle.innerHTML = `
-            <span></span>
-            <span></span>
-            <span></span>
-        `;
-
-        container.appendChild(toggle);
-
-        toggle.addEventListener('click', function () {
-            document.body.classList.toggle('atk-nav-open');
-            toggle.classList.toggle('active');
-        });
-
-        links.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.body.classList.remove('atk-nav-open');
-                toggle.classList.remove('active');
-            });
-        });
-
-        console.log('[ATK NAV] Mobile hamburger injected');
-    }
-
-    //OBSERVE DOM CHANGES (Odoo-safe)
-    const observer = new MutationObserver(() => {
-        injectHamburger();
+    toggle.addEventListener('click', function () {
+        document.body.classList.toggle('atk-nav-open');
     });
 
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
+    // Close menu when clicking a link (mobile UX)
+    links.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.body.classList.remove('atk-nav-open');
+        });
     });
-
-})();
+});
