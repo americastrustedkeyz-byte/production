@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.toggle('atk-nav-open');
     });
 
-    // Close menu when clicking a link (mobile UX)
+    //Close menu when clicking a link (mobile UX)
     links.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             document.body.classList.remove('atk-nav-open');
