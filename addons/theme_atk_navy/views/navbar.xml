@@ -18,18 +18,20 @@
                     </a>
 
                     <!--MOBILE TOGGLE-->
-                    <button class="atk-nav-toggle"
+                    <div class="atk-nav-toggle"
                             aria-label="Toggle navigation"
                             onclick="document.body.classList.toggle('atk-nav-open')">
-                            <img src="/theme_atk_navy/static/src/img/hamburger.png" alt="Menu" class="atk-hamburger-icon"/>
+                            <span></span>
+                        <span></span>
+                        <span></span>
 
-                    </button>
+                    </div>
 
                     <!--LINKS-->
                     <div class="atk-nav-links">
                         <a href="/">Home</a>
                         <a href="/atk-booking">Services</a>
-                        <a href="/">About</a>
+                        <a href="/atk-about-us">About</a>
                         <a href="/contactus">Contact</a>
 
                         <a href="/appointment/1"

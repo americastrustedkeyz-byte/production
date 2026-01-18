@@ -661,8 +661,65 @@
     padding: 20px 30px 30px;
 }
 
+/*about us*/
+/* =========================
+   ABOUT US SECTION
+========================= */
 
-/* ---------- RESPONSIVE ---------- */
+.atk-about-section {
+    background: linear-gradient(180deg, #0c1118, #0f1724);
+    padding: 80px 20px;
+    color: #ffffff;
+}
+
+.atk-about-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* TEXT SIDE */
+.atk-about-text h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.atk-about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #d1d5db;
+    margin-bottom: 16px;
+}
+
+.atk-about-text strong {
+    color: #ffffff;
+}
+
+/* BADGE */
+.atk-about-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.08);
+    color: #93c5fd;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+/* IMAGE SIDE */
+.atk-about-visual img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
 @media (max-width: 992px) {
 
     .atk-nav-toggle {
@@ -725,7 +782,7 @@
         padding: 30px 24px;
     }
 
-    /* =====================================================
+  /* =====================================================
    BOOKING & BILLING — RESPONSIVE
    ===================================================== */
  .atk-booking-billing {
@@ -766,6 +823,16 @@
   .atk-service-badges {
     justify-content: center;
   }
+
+  /*about us*/
+    .atk-about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .atk-about-text h2 {
+        font-size: 32px;
+    }
 }
 
 /* ================= TESTIMONIALS – RESPONSIVE ================= */

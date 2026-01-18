@@ -7,6 +7,7 @@
         'views/layout.xml',
         'views/navbar.xml',
         'views/homepage.xml',
+        'views/atk_about_page.xml',
         'views/pagetemplate.xml',
         'views/atk_booking_page.xml',
         'data/atk_products.xml',
