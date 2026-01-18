@@ -459,12 +459,11 @@
                     <!-- LOGIN / CREATE ACCOUNT (PUBLIC ONLY) -->
                     <t t-else="">
                         <div class="atk-login-link">
-                            <a t-att-href="'/web/login?redirect=' +
-                            url_quote_plus(request.httprequest.full_path)
-                            "
+                            <a t-att-href="'/web/login?redirect=' + request.httprequest.url"
                             title="Login or create an account">
-                            Login / Create an Account
+                                Login / Create an Account
                             </a>
+
                         </div>
                     </t>    
                 </div>
