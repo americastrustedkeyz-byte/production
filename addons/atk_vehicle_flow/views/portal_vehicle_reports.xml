@@ -1,0 +1,65 @@
+<odoo>
+  <template id="portal_vehicle_reports" name="Vehicle Reports">
+    <t t-call="portal.portal_layout">
+      <t t-set="title">Vehicle Reports</t>
+
+      <div class="o_portal_wrap">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <t t-foreach="reports" t-as="r">
+              <tr>
+                <td><t t-esc="r.create_date.date()"/></td>
+                <td><t t-esc="r.booking_track"/></td>
+                <td><t t-esc="r.vehicle_make"/></td>
+                <td><t t-esc="r.vehicle_model"/></td>
+                <td>
+                  <a t-att-href="'/my/vehicle-reports/%s' % r.id">
+                    View
+                  </a>
+                </td>
+              </tr>
+            </t>
+          </tbody>
+        </table>
+      </div>
+    </t>
+  </template>
+
+  <template id="portal_vehicle_report_detail" name="Vehicle Report Detail">
+  <t t-call="portal.portal_layout">
+    <t t-set="title">Vehicle Report</t>
+
+    <div class="o_portal_wrap">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Status:</strong> <t t-esc="report.booking_track"/>
+        </li>
+        <li class="list-group-item">
+          <strong>Key Type:</strong> <t t-esc="report.key_type"/>
+        </li>
+        <li class="list-group-item">
+          <strong>Vehicle:</strong>
+          <t t-esc="report.vehicle_make"/> –
+          <t t-esc="report.vehicle_model"/> –
+          <t t-esc="report.vehicle_year"/>
+        </li>
+        <li class="list-group-item">
+          <strong>Vehicle Type:</strong> <t t-esc="report.vehicle_type"/>
+        </li>
+        <li class="list-group-item">
+          <strong>Price:</strong> <t t-esc="report.price"/>
+        </li>
+      </ul>
+    </div>
+  </t>
+</template>
+<odoo>
