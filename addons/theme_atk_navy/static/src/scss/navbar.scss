@@ -88,14 +88,14 @@
     opacity: 1;
 }
 
-/*.atk-nav-toggle {
+.atk-nav-toggle {
     display: none;
     background: none;
     border: none;
     cursor: pointer;
 }
 
-.atk-nav-toggle span {
+/*.atk-nav-toggle span {
     display: block;
     width: 22px;
     height: 2px;
@@ -107,9 +107,9 @@
 @media (max-width: 992px) {
  
 
-   /* .atk-nav-toggle {
+  .atk-nav-toggle {
         display: flex;
-    }*/
+    }
 
     .atk-nav-links {
         position: absolute;
@@ -159,13 +159,13 @@
         transform: rotate(-45deg) translate(5px, -5px);
     }
 
-   /* .atk-nav-toggle {
+  .atk-nav-toggle {
         display: flex !important;
         position: relative;
         z-index: 9999!important;
     }
 
-  .atk-nav-toggle span {
+   /* .atk-nav-toggle span {
         background-color: #ffffff !important;
     }*/
 
