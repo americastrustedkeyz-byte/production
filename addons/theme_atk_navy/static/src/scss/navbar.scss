@@ -88,7 +88,7 @@
     opacity: 1;
 }
 
-.atk-nav-toggle {
+/*.atk-nav-toggle {
     display: none;
     background: none;
     border: none;
@@ -101,31 +101,11 @@
     height: 2px;
     margin: 5px 0;
     background: #ffffff;
-}
+}*/
 
 /*mobile responsiviness*/
 @media (max-width: 992px) {
-  .atk-nav-toggle {
-    background: white!important;
-    min-height: 70px!important;
-    min-width: 100px!important;
-    display: flex!important;
-    flex-direction: column;
-    align-items: center!important;
-    justify-content: center!important;
-    border: white!important;
-    cursor: pointer;
-    border-radius: 6px!important;
-}
-
-.atk-nav-toggle span{
-   background: red!important;
-    min-height: 5px!important;
-    width: 80%!important;
-    position: relative!important;
-    border: white!important;
-    cursor: pointer!important;
-}
+ 
 
    /* .atk-nav-toggle {
         display: flex;
@@ -179,15 +159,15 @@
         transform: rotate(-45deg) translate(5px, -5px);
     }
 
-    .atk-nav-toggle {
+   /* .atk-nav-toggle {
         display: flex !important;
         position: relative;
         z-index: 9999!important;
     }
 
-    .atk-nav-toggle span {
+  .atk-nav-toggle span {
         background-color: #ffffff !important;
-    }
+    }*/
 
     /* Ensure navbar stays above hero */
     .atk-navbar {
@@ -202,7 +182,7 @@
 
     /*harmbugger*/
        /* Hamburger */
-    .atk-mobile-toggle {
+   /* .atk-mobile-toggle {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -219,7 +199,7 @@
         background: #ffffff;
         border-radius: 2px;
         transition: all 0.35s ease;
-    }
+    }*/
 
     /* Animate hamburger → X */
     .atk-mobile-toggle.active span:nth-child(1) {
@@ -253,5 +233,30 @@
     /* Show menu */
     body.atk-nav-open .atk-nav-links {
         transform: translateY(0);
+    }
+
+        .atk-nav-toggle {
+        background: white!important;
+        min-height: 70px!important;
+        min-width: 100px!important;
+        display: flex!important;
+        flex-direction: column;
+        align-items: center!important;
+        justify-content: center!important;
+        border: white!important;
+        cursor: pointer;
+        border-radius: 6px!important;
+    }
+
+    .atk-nav-toggle span{
+      background: red!important;
+        min-height: 5px!important;
+        width: 80%!important;
+        position: relative!important;
+        border: white!important;
+        cursor: pointer!important;
+        border-radius: 2px;
+        transition: all 0.35s ease;
+        margin-bottom: 3px;
     }
 }
