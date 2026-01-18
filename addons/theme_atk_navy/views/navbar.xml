@@ -18,13 +18,6 @@
                     </a>
 
                     <!--MOBILE TOGGLE-->
-                    <button class="atk-nav-toggle"
-                            aria-label="Toggle navigation"
-                            onclick="document.body.classList.toggle('atk-nav-open')">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
 
                     <!--LINKS-->
                     <div class="atk-nav-links">
