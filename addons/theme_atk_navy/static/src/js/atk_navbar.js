@@ -10,15 +10,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Close menu when clicking a link (mobile UX)
     links.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.body.classList.remove('atk-nav-open');
+            });
+        });
+    });
+
+
+    /*document.querySelectorAll('.atk-nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             document.body.classList.remove('atk-nav-open');
         });
-    });
-});
-
-
-/*document.querySelectorAll('.atk-nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.body.classList.remove('atk-nav-open');
-    });
-});*/
+    });*/
