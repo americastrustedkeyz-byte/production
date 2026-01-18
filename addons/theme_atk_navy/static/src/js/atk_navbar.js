@@ -1,24 +1,46 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.querySelector('.atk-nav-toggle');
-    const links = document.querySelector('.atk-nav-links');
+(function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
-    if (!toggle || !links) return;
+        // Only run on mobile
+        if (window.innerWidth > 992) return;
 
-    toggle.addEventListener('click', function () {
-        document.body.classList.toggle('atk-nav-open');
-    });
+        const nav = document.querySelector('.atk-navbar');
+        const container = document.querySelector('.atk-nav-container');
+        const links = document.querySelector('.atk-nav-links');
 
-    // Close menu when clicking a link (mobile UX)
-    links.querySelectorAll('a').forEach(link => {
+        if (!nav || !container || !links) return;
+
+        // Prevent double injection
+        if (document.querySelector('.atk-mobile-toggle')) return;
+
+        // Create hamburger
+        const toggle = document.createElement('div');
+        toggle.className = 'atk-mobile-toggle';
+        toggle.setAttribute('aria-label', 'Toggle navigation');
+
+        toggle.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
+
+        container.appendChild(toggle);
+
+        // Toggle behavior
+        toggle.addEventListener('click', function () {
+            document.body.classList.toggle('atk-nav-open');
+            toggle.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        links.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 document.body.classList.remove('atk-nav-open');
+                toggle.classList.remove('active');
             });
         });
     });
+})();
 
 
-    /*document.querySelectorAll('.atk-nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.body.classList.remove('atk-nav-open');
-        });
-    });*/
+    
