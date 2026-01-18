@@ -21,9 +21,8 @@
                     <button class="atk-nav-toggle"
                             aria-label="Toggle navigation"
                             onclick="document.body.classList.toggle('atk-nav-open')">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                            <img src="/theme_atk_navy/static/src/img/hamburger.png" alt="Menu" class="atk-hamburger-icon"/>
+
                     </button>
 
                     <!--LINKS-->

@@ -255,6 +255,7 @@ function closeReportModal() {
 })();
 
 
+
 //=============================
 
 (function bindAtkContinueToBooking() {
@@ -273,6 +274,8 @@ function closeReportModal() {
   });
 })();
 
+
+//============cancel report=======================
 (function bindAtkReportCancel() {
   const cancelBtn = document.getElementById('atk_report_cancel');
   if (!cancelBtn) return;
