@@ -1,0 +1,110 @@
+/* ================================
+   ATK NAVBAR (SCOPED & SAFE)
+================================ */
+
+.atk-navbar {
+  background: linear-gradient(180deg, #0b0f14, #0f1621);
+  padding: 14px 32px;
+  position: relative;
+  z-index: 1000;
+}
+
+.atk-nav-container {
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.atk-nav-logo img {
+  height: 42px;
+}
+
+/* LINKS */
+.atk-nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+.atk-nav-links a {
+  color: #e5e7eb;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.atk-nav-links a:hover {
+  color: #4da3ff;
+}
+
+/* CTA BUTTON */
+.atk-btn-primary {
+  background: linear-gradient(135deg, #1a6cff, #0d4ed8);
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.atk-btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* MOBILE TOGGLE */
+.atk-nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.atk-nav-toggle span {
+  width: 26px;
+  height: 2px;
+  background: #fff;
+}
+
+/* MOBILE MENU */
+.atk-mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #0b0f14;
+  padding: 20px;
+}
+
+.atk-mobile-menu a {
+  color: #fff;
+  padding: 12px 0;
+  text-decoration: none;
+}
+
+.atk-mobile-menu .mobile-cta {
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .atk-nav-links,
+  .atk-nav-cta {
+    display: none;
+  }
+
+  .atk-nav-toggle {
+    display: flex;
+  }
+
+  .atk-mobile-menu.active {
+    display: flex;
+  }
+}

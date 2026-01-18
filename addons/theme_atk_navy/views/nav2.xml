@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template>
+        <xpath>
+                <t t-name="atk.navbar">
+  <nav class="atk-navbar">
+    <div class="atk-nav-container">
+
+      <!-- LOGO -->
+      <div class="atk-nav-logo">
+        <a href="/">
+          <img src="/theme_atk_navy/static/src/img/atk-logo.svg" alt="ATK Logo"/>
+        </a>
+      </div>
+
+      <!-- DESKTOP MENU -->
+      <ul class="atk-nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+
+      <!-- CTA BUTTON -->
+      <div class="atk-nav-cta">
+        <a href="#" class="atk-btn-primary">Book Appointment</a>
+      </div>
+
+      <!-- MOBILE TOGGLE -->
+      <button class="atk-nav-toggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="atk-mobile-menu">
+      <a href="/">Home</a>
+      <a href="/services">Services</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="#" class="atk-btn-primary mobile-cta">Book Appointment</a>
+    </div>
+  </nav>
+</t>
+
+        </xpath>
+    </template>
+</odoo>
