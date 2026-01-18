@@ -449,15 +449,14 @@
                     <input type="checkbox" id="vehicle_info" />
                     Appointment delays may occur if incorrect vehicle info is selected.
                     </label>
-
-                    <t t-if="request.website.is_public_user()">
+    
                         <button type="button" class="atk-primary-btn" id="atk_continue_btn">
                             Continue To Booking
                         </button>
-                    </t>
+                
 
                     <!-- LOGIN / CREATE ACCOUNT (PUBLIC ONLY) -->
-                    <t t-else="">
+                  
                         <div class="atk-login-link">
                             <a t-att-href="'/web/login?redirect=' + request.httprequest.url"
                             title="Login or create an account">
@@ -465,7 +464,7 @@
                             </a>
 
                         </div>
-                    </t>    
+                   
                 </div>
                </form>
             </div>
