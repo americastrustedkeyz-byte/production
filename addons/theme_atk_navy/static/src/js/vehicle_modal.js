@@ -245,18 +245,17 @@ function closeReportModal() {
   const proceedBtn = document.getElementById('atk_report_proceed');
   if (!proceedBtn) return;
 
-  let inProgress = false;
+  let locked = false;
 
   proceedBtn.addEventListener('click', function () {
-    if (inProgress) return; // prevent double-clicks
-    inProgress = true;
+    if (locked) return;
+    locked = true;
 
     const params = new URLSearchParams(window.location.search);
     const track = params.get('track') || 'standard';
 
-    console.log('[ATK] Proceed → checkout, track =', track);
+    console.log('[ATK] Redirecting to checkout, track =', track);
 
-    // 🔁 HARD REDIRECT (matches HTTP controller behavior)
     window.location.href =
       `/atk/report/checkout?track=${encodeURIComponent(track)}`;
   });
