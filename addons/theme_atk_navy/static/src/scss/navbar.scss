@@ -157,4 +157,25 @@
     body.atk-nav-open .atk-nav-toggle span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
     }
+
+    .atk-nav-toggle {
+        display: flex !important;
+        position: relative;
+        z-index: 9999;
+    }
+
+    .atk-nav-toggle span {
+        background-color: #ffffff !important;
+    }
+
+    /* Ensure navbar stays above hero */
+    .atk-navbar {
+        position: relative;
+        z-index: 9999;
+    }
+
+    /* Navbar must always sit above hero */
+    .atk-navbar {
+        z-index: 10000;
+    }
 }
