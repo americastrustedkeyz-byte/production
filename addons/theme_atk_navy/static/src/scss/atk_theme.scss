@@ -667,9 +667,10 @@
 ========================= */
 
 .atk-about-section {
-    background: linear-gradient(180deg, #0c1118, #0f1724);
+   /* background: linear-gradient(180deg, #0c1118, #0f1724);*/
     padding: 80px 20px;
-    color: #ffffff;
+   /* color: #ffffff;*/
+   color: #030303;
 }
 
 .atk-about-container {
@@ -691,12 +692,12 @@
 .atk-about-text p {
     font-size: 16px;
     line-height: 1.8;
-    color: #d1d5db;
+     color: #030303;
     margin-bottom: 16px;
 }
 
 .atk-about-text strong {
-    color: #ffffff;
+    color: #030303;
 }
 
 /* BADGE */

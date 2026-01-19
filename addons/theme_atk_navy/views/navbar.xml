@@ -19,9 +19,9 @@
                     <div class="atk-nav-toggle"
                             aria-label="Toggle navigation"
                             onclick="document.body.classList.toggle('atk-nav-open')">
-                        <p></p>
-                        <p></p>
-                        <p></p>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
 
                     <!--LINKS-->
