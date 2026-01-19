@@ -2,7 +2,6 @@
 
 (function () {
   const modal = document.querySelector('[data-atk-track-modal]');
-  
   if (!modal) return;
 
   const standardBtn = modal.querySelector('[data-track="standard"]');
@@ -19,14 +18,14 @@
   function applyTrackTimeLogic() {
     const usNow = getUSTime();
 
-    const day = usNow.getDay();     //0=Sun … 6=Sat
+    const day = usNow.getDay();     // 0=Sun … 6=Sat
     const hour = usNow.getHours();
     const minute = usNow.getMinutes();
 
     let standardActive = false;
     let priorityActive = false;
 
-    /*STANDARD BOOKING*/
+    /* STANDARD BOOKING */
     if (
       (day === 0 && hour >= 18) || // Sunday 18:00+
       (day >= 1 && day <= 4)       // Mon–Thu
@@ -34,7 +33,7 @@
       standardActive = true;
     }
 
-    /* SKIP-THE-LINE (Friday 00:01 EXACT) */
+    /* SKIP-THE-LINE */
     if (
       (day === 5 && hour === 0 && minute >= 1) ||
       (day === 5 && hour > 0) ||
@@ -44,7 +43,7 @@
       priorityActive = true;
     }
 
-    /*MUTUAL EXCLUSIVITY*/
+    /* MUTUAL EXCLUSIVITY */
     if (standardActive) priorityActive = false;
     if (priorityActive) standardActive = false;
 
@@ -52,31 +51,24 @@
     priorityBtn.disabled = !priorityActive;
   }
 
-  //===========APPLY TIME LOGIC TO SELECT BOOKING MODAL ON BUTTON CLICK====== 
+  /* ======================================================
+     SINGLE, AUTHORITATIVE CLICK HANDLER (FIX)
+     ====================================================== */
   document.addEventListener('click', function (e) {
-    const trigger = e.target.closest('[data-open-booking-track]');
+    const trigger =
+      e.target.closest('[data-open-booking-track]') ||
+      e.target.closest('[open-booking-track]');
+
     if (!trigger) return;
 
     e.preventDefault();
+
     modal.hidden = false;
+
+    //Always recalc state AFTER opening modal
     applyTrackTimeLogic();
+
+    console.log('[ATK] Booking modal opened → time logic applied');
   });
-
-  //====booking page buttons==================
-document.addEventListener('click', function (e) {
-  const trigger =
-    e.target.closest('[data-open-booking-track]') ||
-    e.target.closest('[open-booking-track]');
-
-  if (!trigger) return;
-
-  e.preventDefault();
-
-  if (!modal) return;
-
-  modal.hidden = false;
-  applyTrackTimeLogic();
-});
-
 
 })();
