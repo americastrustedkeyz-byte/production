@@ -87,7 +87,7 @@
 
   /* ======================================================
      CLOSE SELECT BOOKING MODAL (BACK BUTTON)
-     ====================================================== */
+    ================================================== */
   document.addEventListener('click', function (e) {
     const closeBtn = e.target.closest('[data-atk-track-close]');
     if (!closeBtn) return;
