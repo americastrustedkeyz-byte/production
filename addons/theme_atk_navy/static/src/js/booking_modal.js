@@ -1,12 +1,10 @@
-//console.log('[ATK] Booking modal JS FILE LOADED');
+// ======================================================
+// ATK SELECT BOOKING TRACK MODAL LOGIC (FINAL, STABLE)
+// ======================================================
 
 (function () {
   const modal = document.querySelector('[data-atk-track-modal]');
   if (!modal) return;
-
-  const standardBtn = modal.querySelector('[data-track="standard"]');
-  const priorityBtn = modal.querySelector('[data-track="priority"]');
-  if (!standardBtn || !priorityBtn) return;
 
   function getUSTime() {
     const now = new Date();
@@ -16,24 +14,33 @@
   }
 
   function applyTrackTimeLogic() {
-    const usNow = getUSTime();
+    // 🔑 CRITICAL FIX:
+    // Always re-query buttons AFTER modal is visible
+    const standardBtn = modal.querySelector('[data-track="standard"]');
+    const priorityBtn = modal.querySelector('[data-track="priority"]');
 
-    const day = usNow.getDay();     // 0=Sun … 6=Sat
+    if (!standardBtn || !priorityBtn) {
+      console.warn('[ATK] Booking buttons not found');
+      return;
+    }
+
+    const usNow = getUSTime();
+    const day = usNow.getDay();     // 0 = Sun … 6 = Sat
     const hour = usNow.getHours();
     const minute = usNow.getMinutes();
 
     let standardActive = false;
     let priorityActive = false;
 
-    /* STANDARD BOOKING */
+    // ---------- STANDARD ----------
     if (
-      (day === 0 && hour >= 18) || // Sunday 18:00+
+      (day === 0 && hour >= 18) || // Sunday 6pm+
       (day >= 1 && day <= 4)       // Mon–Thu
     ) {
       standardActive = true;
     }
 
-    /* SKIP-THE-LINE */
+    // ---------- PRIORITY ----------
     if (
       (day === 5 && hour === 0 && minute >= 1) ||
       (day === 5 && hour > 0) ||
@@ -43,65 +50,37 @@
       priorityActive = true;
     }
 
-    /* MUTUAL EXCLUSIVITY */
+    // Mutual exclusivity
     if (standardActive) priorityActive = false;
     if (priorityActive) standardActive = false;
 
     standardBtn.disabled = !standardActive;
     priorityBtn.disabled = !priorityActive;
 
-    console.log('[ATK DEBUG]', {
-      standardDisabled: standardBtn.disabled,
-      priorityDisabled: priorityBtn.disabled,
-      time: new Date().toISOString()
+    console.log('[ATK] Booking button state updated', {
+      standardActive,
+      priorityActive
     });
-
   }
 
-  /* ======================================================
-     SINGLE, AUTHORITATIVE CLICK HANDLER (FIX)
-     ====================================================== */
-  /* ======================================================
-   SINGLE, SAFE BOOKING MODAL OPEN HANDLER
-   ====================================================== */
-document.addEventListener('click', function (e) {
-  const trigger =
-    e.target.closest('[data-open-booking-track]') ||
-    e.target.closest('[open-booking-track]');
+  // ======================================================
+  // UNIVERSAL OPEN HANDLER (Homepage + Booking Page)
+  // ======================================================
+  document.addEventListener('click', function (e) {
+    const trigger =
+      e.target.closest('[data-open-booking-track]') ||
+      e.target.closest('[open-booking-track]');
 
-  if (!trigger) return;
+    if (!trigger) return;
 
-  e.preventDefault();
+    e.preventDefault();
 
-  modal.hidden = false;
+    modal.hidden = false;
 
-  // 🔒 Ensure DOM + layout are ready before applying logic
-  let attempts = 0;
-  const maxAttempts = 10;
-
-  function tryApplyLogic() {
-    attempts++;
-
-    // Buttons must exist AND be visible
-    if (
-      standardBtn &&
-      priorityBtn &&
-      standardBtn.offsetParent !== null
-    ) {
+    // Run AFTER modal is painted
+    requestAnimationFrame(() => {
       applyTrackTimeLogic();
-      console.log('[ATK] Booking logic applied (attempt:', attempts, ')');
-      return;
-    }
-
-    if (attempts < maxAttempts) {
-      requestAnimationFrame(tryApplyLogic);
-    } else {
-      console.error('[ATK ERROR] Booking buttons not ready in time');
-    }
-  }
-
-  requestAnimationFrame(tryApplyLogic);
-});
-
+    });
+  });
 
 })();
