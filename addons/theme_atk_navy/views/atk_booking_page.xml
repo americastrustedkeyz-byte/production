@@ -28,30 +28,6 @@
                                     <div class="col-lg-6">
                                         <h3 class="atk-column-title">Booking Type</h3>
 
-                                        <!-- Standard Booking -->
-                                        <div class="atk-card atk-card-light">
-                                            <span class="atk-card-icon">⏱</span>
-                                            <h4>Standard Booking</h4>
-                                            <p class="atk-card-desc">
-                                                Standard appointment scheduling using shared capacity slots.
-                                            </p>
-                                            <a href="/booking/standard" class="atk-btn-outline">
-                                                Get Started →
-                                            </a>
-                                        </div>
-
-                                        <!-- Skip The Line -->
-                                        <div class="atk-card atk-card-light">
-                                            <span class="atk-card-icon">⚡</span>
-                                            <h4>Skip-The-Line</h4>
-                                            <p class="atk-card-desc">
-                                                Priority access with guaranteed service slots.
-                                            </p>
-                                            <a href="/booking/priority" class="atk-btn-outline">
-                                                Get Started →
-                                            </a>
-                                        </div>
-
                                         <!-- Expanded Booking (Dark) -->
                                         <div class="atk-card atk-card-dark">
                                             <h4>Standard Booking</h4>
@@ -61,9 +37,9 @@
                                                 <li>Designed for urgent needs</li>
                                                 <li>Ideal for flexible schedules</li>
                                             </ul>
-                                            <a href="/booking/standard" class="atk-btn-primary">
+                                            <button class="atk-btn-primary"  data-track="standard" data-open-vehicle-modal="1">
                                                 Get Started →
-                                            </a>
+                                            </button>
                                         </div>
 
                                         <!-- Expanded Skip The Line -->
@@ -75,9 +51,9 @@
                                                 <li>Minimal wait time</li>
                                                 <li>Dedicated service window</li>
                                             </ul>
-                                            <a href="/booking/priority" class="atk-btn-primary">
+                                            <button class="atk-btn-primary" data-open-vehicle-modal="1" data-track="priority">
                                                 Get Started →
-                                            </a>
+                                            </button>
                                         </div>
 
                                     </div>
@@ -85,31 +61,6 @@
                                     <!-- RIGHT COLUMN: BILLING -->
                                     <div class="col-lg-6">
                                         <h3 class="atk-column-title">Billing</h3>
-
-                                        <!-- Smart Keys -->
-                                        <div class="atk-card atk-card-light">
-                                            <span class="atk-tag">Premium</span>
-                                            <h4>Smart Keys</h4>
-                                            <div class="atk-price">$195</div>
-                                            <p class="atk-card-desc">
-                                                OEM-grade smart keys programmed to match your vehicle system.
-                                            </p>
-                                            <a href="/billing/smart-keys" class="atk-btn-outline">
-                                                Select Service →
-                                            </a>
-                                        </div>
-
-                                        <!-- Transponder -->
-                                        <div class="atk-card atk-card-light">
-                                            <h4>Transponder Keys</h4>
-                                            <div class="atk-price">$85</div>
-                                            <p class="atk-card-desc">
-                                                Reliable transponder key replacements with secure chip programming.
-                                            </p>
-                                            <a href="/billing/transponder" class="atk-btn-outline">
-                                                Select Service →
-                                            </a>
-                                        </div>
 
                                         <!-- Premium Smart Keys -->
                                         <div class="atk-card atk-card-dark atk-card-premium">
@@ -123,9 +74,9 @@
                                             <p class="atk-card-desc">
                                                 Advanced smart key solutions for luxury and performance vehicles.
                                             </p>
-                                            <a href="/billing/smart-keys-premium" class="atk-btn-primary">
+                                            <button class="atk-btn-primary" data-open-booking-track="1">
                                                 Select Service →
-                                            </a>
+                                            </button>
                                         </div>
 
                                         <!-- Premium Transponder -->
@@ -136,9 +87,9 @@
                                             <p class="atk-card-desc">
                                                 Secure replacement services for supported vehicles.
                                             </p>
-                                            <a href="/billing/transponder-premium" class="atk-btn-primary">
+                                            <button class="atk-btn-primary" data-open-booking-track="1">
                                                 Select Service →
-                                            </a>
+                                            </button>
                                         </div>
 
                                     </div>
