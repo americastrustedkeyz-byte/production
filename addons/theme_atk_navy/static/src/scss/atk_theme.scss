@@ -103,7 +103,7 @@
     min-height: 60px;
      background-image: url('/theme_atk_navy/static/src/img/trusted_by.png');
     background-size: cover;
-    background-position: center right;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
@@ -748,6 +748,12 @@
 
     .atk-nav-links a {
         font-size: 16px;
+    }
+
+    /*affliate brands*/
+    .atk-trust-logos {
+        background-size: auto!important;
+        background-position: center!important;
     }
 }
 
