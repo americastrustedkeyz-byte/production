@@ -43,7 +43,7 @@
       priorityActive = true;
     }
 
-    /* MUTUAL EXCLUSIVITY */
+    /*MUTUAL EXCLUSIVITY*/
     if (standardActive) priorityActive = false;
     if (priorityActive) standardActive = false;
 
