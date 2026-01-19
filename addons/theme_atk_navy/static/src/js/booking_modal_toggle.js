@@ -68,7 +68,7 @@
 
       clearInterval(interval);
 
-      //Release URL lock AFTER modal is open & URL cleaned
+      //========Release URL lock AFTER modal is open & URL cleaned============
       setTimeout(() => {
         if (window.ATK_STATE) {
           window.ATK_STATE.urlResetActive = false;
@@ -98,6 +98,5 @@
       console.log('[ATK] Select Booking modal CLOSED (Back button)');
     }
   });
-
 
 })();
