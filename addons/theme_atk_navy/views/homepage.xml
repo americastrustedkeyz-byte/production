@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!--Override default Odoo homepage ONCE-->
+    <!--Override default Odoo homepage once-->
     <template id="atk_homepage" inherit_id="website.homepage" name="ATK Homepage">
 
         <xpath expr="//div[@id='wrap']" position="replace">
