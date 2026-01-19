@@ -62,36 +62,21 @@
   });
 
   //====booking page buttons==================
-
-/**
-   * Helper: redirect to homepage with params
-   */
-// Only run on booking page
-  if (!document.querySelector('.atk-booking-billing')) return;
-
-  function goHomeWithParams(params) {
-    const url = new URL('/', window.location.origin);
-    Object.keys(params).forEach(k => {
-      if (params[k]) {
-        url.searchParams.set(k, params[k]);
-      }
-    });
-    window.location.href = url.toString();
-  }
-
-  //========apply timming check==============
 document.addEventListener('click', function (e) {
-    const triggerj = e.target.closest('[open-booking-track]');
-    if (!triggerj) return;
+  const trigger =
+    e.target.closest('[data-open-booking-track]') ||
+    e.target.closest('[open-booking-track]');
 
-    //modal.hidden = false;
+  if (!trigger) return;
 
-    console.log('[ATK] Select Booking modal opened');
-    applyTrackTimeLogic();
+  e.preventDefault();
 
-       goHomeWithParams({
-        reset: 'open_booking_track_modal'
-      });
-  });
+  const modal = getBookingModal();
+  if (!modal) return;
+
+  modal.hidden = false;
+  applyTrackTimeLogic();
+});
+
 
 })();
