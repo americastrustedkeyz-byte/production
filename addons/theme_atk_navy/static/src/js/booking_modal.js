@@ -2,6 +2,7 @@
 
 (function () {
   const modal = document.querySelector('[data-atk-track-modal]');
+  
   if (!modal) return;
 
   const standardBtn = modal.querySelector('[data-track="standard"]');
@@ -71,7 +72,6 @@ document.addEventListener('click', function (e) {
 
   e.preventDefault();
 
-  const modal = getBookingModal();
   if (!modal) return;
 
   modal.hidden = false;
