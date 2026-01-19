@@ -32,8 +32,6 @@
           modal.hidden = false;
 
           console.log('[ATK] Select Booking modal OPENED');
-
-        //applyTrackTimeLogic(modal);
   });
 
 
@@ -101,7 +99,5 @@
     }
   });
 
-
- 
 
 })();
