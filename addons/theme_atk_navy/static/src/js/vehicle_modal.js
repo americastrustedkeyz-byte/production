@@ -72,6 +72,9 @@ window.ATK_STATE = window.ATK_STATE || {};
   /* ======================================================
      OPEN MODAL FROM URL (NO FLICKER, SINGLE RUN)
      ====================================================== */
+/* ======================================================
+   OPEN MODAL FROM URL (NO FLICKER, SINGLE RUN)
+   ====================================================== */
 (function openVehicleModalFromUrlSafe() {
   const params = new URLSearchParams(window.location.search);
 
@@ -121,6 +124,7 @@ window.ATK_STATE = window.ATK_STATE || {};
     }
   }, 100);
 })();
+
 
 
   /* ======================================================
@@ -283,50 +287,28 @@ function closeReportModal() {
   cancelBtn.addEventListener('click', closeReportModal);
 })();
 
-/* ===============================================
-   OPEN VEHICLE MODAL FROM URL (POLLING SAFE)
-================================================ */
-(function openVehicleModalFromUrlSafe() {
+ /* =====================================================
+   CAPTURE BOOKING TRACK FROM BUTTON CLICK
+   ===================================================== */
+document.addEventListener('click', function (e) {
+  const trigger = e.target.closest('[data-open-vehicle-modal]');
+  if (!trigger) return;
 
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('reset') !== 'open_vehicle_modal') return;
+  const track = trigger.dataset.track || 'standard';
 
-  const track = params.get('track') || 'standard';
-  let attempts = 0;
+  console.log('[ATK] Booking track captured:', track);
 
-  const interval = setInterval(function () {
-    attempts++;
+  const url = new URL(window.location.href);
 
-    const modal = document.querySelector('[data-atk-vehicle-modal]');
-    const form  = qs('atk_vehicle_form');
+  //THESE TWO PARAMS ARE THE CONTRACT
+  url.searchParams.set('reset', 'open_vehicle_modal');
+  url.searchParams.set('track', track);
 
-    if (modal && form) {
-      modal.hidden = false;
+  console.log('[ATK] Redirecting →', url.toString());
 
-      let input = qs('booking_track');
-      if (!input) {
-        input = document.createElement('input');
-        input.type = 'hidden';
-        input.id = 'booking_track';
-        input.name = 'booking_track';
-        form.appendChild(input);
-      }
-      input.value = track;
-
-      const cleanUrl = new URL(window.location.href);
-      cleanUrl.searchParams.delete('reset');
-      window.history.replaceState({}, document.title, cleanUrl.pathname + cleanUrl.search);
-
-      clearInterval(interval);
-    }
-
-    if (attempts >= 40) {
-      clearInterval(interval);
-      console.error('[ATK] Vehicle modal not found');
-    }
-
-  }, 100);
-})();
+  //HARD reload so Odoo cannot block it
+  window.location.href = url.toString();
+});
 
 
 })();

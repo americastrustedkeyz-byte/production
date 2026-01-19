@@ -51,6 +51,7 @@
     priorityBtn.disabled = !priorityActive;
   }
 
+  //===========APPLY TIME LOGIC TO SELECT BOOKING MODAL ON BUTTON CLICK====== 
   document.addEventListener('click', function (e) {
     const trigger = e.target.closest('[data-open-booking-track]');
     if (!trigger) return;
@@ -59,30 +60,5 @@
     modal.hidden = false;
     applyTrackTimeLogic();
   });
-
-  //url param
-  /* =====================================================
-   CAPTURE BOOKING TRACK FROM BUTTON CLICK
-   ===================================================== */
-document.addEventListener('click', function (e) {
-  const trigger = e.target.closest('[data-open-vehicle-modal]');
-  if (!trigger) return;
-
-  const track = trigger.dataset.track || 'standard';
-
-  console.log('[ATK] Booking track captured:', track);
-
-  const url = new URL(window.location.href);
-
-  //THESE TWO PARAMS ARE THE CONTRACT
-  url.searchParams.set('reset', 'open_vehicle_modal');
-  url.searchParams.set('track', track);
-
-  console.log('[ATK] Redirecting →', url.toString());
-
-  //HARD reload so Odoo cannot block it
-  window.location.href = url.toString();
-});
-
 
 })();
