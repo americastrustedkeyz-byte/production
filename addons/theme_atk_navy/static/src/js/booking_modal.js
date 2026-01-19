@@ -49,26 +49,59 @@
 
     standardBtn.disabled = !standardActive;
     priorityBtn.disabled = !priorityActive;
+
+    console.log('[ATK DEBUG]', {
+      standardDisabled: standardBtn.disabled,
+      priorityDisabled: priorityBtn.disabled,
+      time: new Date().toISOString()
+    });
+
   }
 
   /* ======================================================
      SINGLE, AUTHORITATIVE CLICK HANDLER (FIX)
      ====================================================== */
-  document.addEventListener('click', function (e) {
-    const trigger =
-      e.target.closest('[data-open-booking-track]') ||
-      e.target.closest('[open-booking-track]');
+  /* ======================================================
+   SINGLE, SAFE BOOKING MODAL OPEN HANDLER
+   ====================================================== */
+document.addEventListener('click', function (e) {
+  const trigger =
+    e.target.closest('[data-open-booking-track]') ||
+    e.target.closest('[open-booking-track]');
 
-    if (!trigger) return;
+  if (!trigger) return;
 
-    e.preventDefault();
+  e.preventDefault();
 
-    modal.hidden = false;
+  modal.hidden = false;
 
-    //Always recalc state AFTER opening modal
-    applyTrackTimeLogic();
+  // 🔒 Ensure DOM + layout are ready before applying logic
+  let attempts = 0;
+  const maxAttempts = 10;
 
-    console.log('[ATK] Booking modal opened → time logic applied');
-  });
+  function tryApplyLogic() {
+    attempts++;
+
+    // Buttons must exist AND be visible
+    if (
+      standardBtn &&
+      priorityBtn &&
+      standardBtn.offsetParent !== null
+    ) {
+      applyTrackTimeLogic();
+      console.log('[ATK] Booking logic applied (attempt:', attempts, ')');
+      return;
+    }
+
+    if (attempts < maxAttempts) {
+      requestAnimationFrame(tryApplyLogic);
+    } else {
+      console.error('[ATK ERROR] Booking buttons not ready in time');
+    }
+  }
+
+  requestAnimationFrame(tryApplyLogic);
+});
+
 
 })();
