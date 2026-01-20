@@ -7,7 +7,7 @@
       <!--ATK Intent Router (booking ↔ vehicle modals)-->
       <script
         type="text/javascript"
-        src="/theme_atk_navy/static/src/js/atk_intent_router.js"/>
+        src="/theme_atk_navy/static/src/js/atk_hash_router.js"/>
 
     </xpath>
   </template>
