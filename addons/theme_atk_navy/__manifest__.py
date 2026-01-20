@@ -27,7 +27,6 @@
             'theme_atk_navy/static/src/js/atk_countdown.js',
             'theme_atk_navy/static/src/js/atk_navbar.js',
             'theme_atk_navy/static/src/js/booking_modal_toggle.js',
-            'theme_atk_navy/static/src/js/billing_booking_page.js',
             'theme_atk_navy/static/src/js/booking_modal.js',
             'theme_atk_navy/static/src/js/vehicle_modal.js',
             'theme_atk_navy/static/src/js/vehicle_data.js',
