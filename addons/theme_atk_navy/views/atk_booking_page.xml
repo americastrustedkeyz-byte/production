@@ -37,9 +37,10 @@
                                                 <li>Designed for urgent needs</li>
                                                 <li>Ideal for flexible schedules</li>
                                             </ul>
-                                                <a href="/#open-vehicle-standard" class="atk-btn-primary">
-                                                Get Started →
-                                                </a>
+                                                <button class="atk-track-btn btn-standard-service" 
+                        data-track="standard" data-open-vehicle-modal="1"> 
+                            Get Started →
+                        </button>
                                         </div>
 
                                         <!-- Expanded Skip The Line -->
@@ -51,9 +52,10 @@
                                                 <li>Minimal wait time</li>
                                                 <li>Dedicated service window</li>
                                             </ul>
-<a href="/#open-vehicle-priority" class="atk-btn-primary">
-  Get Started →
-</a>
+<button class="atk-track-btn btn-skip-the-line"
+                        data-track="priority" data-open-vehicle-modal="1">
+                        Get Started →
+                        </button>
 
                                         </div>
 
@@ -75,9 +77,11 @@
                                             <p class="atk-card-desc">
                                                 Advanced smart key solutions for luxury and performance vehicles.
                                             </p>
-<a href="/#open-booking-track" class="atk-btn-primary">
-  Select Service →
-</a>
+<button
+                    class="atk-service-btn"
+                    data-open-booking-track="1">
+                    Select Service →
+                    </button>
                                         </div>
 
                                         <!-- Premium Transponder -->
@@ -88,9 +92,11 @@
                                             <p class="atk-card-desc">
                                                 Secure replacement services for supported vehicles.
                                             </p>
-<a href="/#open-booking-track" class="atk-btn-primary">
-  Select Service →
-</a>
+<button
+                    class="atk-service-btn"
+                    data-open-booking-track="1">
+                    Select Service →
+                    </button>
                                         </div>
 
                                     </div>

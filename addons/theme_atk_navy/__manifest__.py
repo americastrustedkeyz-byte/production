@@ -11,6 +11,7 @@
         'views/pagetemplate.xml',
         'views/atk_booking_page.xml',
         'data/atk_products.xml',
+        'views/global_modals.xml',
     ],
     'assets': {
         'web.assets_frontend': [
