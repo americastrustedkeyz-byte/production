@@ -37,7 +37,7 @@
                                                 <li>Designed for urgent needs</li>
                                                 <li>Ideal for flexible schedules</li>
                                             </ul>
-                                                <button class="atk-track-btn btn-standard-service" 
+                                                <button class="btn-track-standard" 
                         data-track="standard" data-open-vehicle-modal="1"> 
                             Get Started →
                         </button>
@@ -52,7 +52,7 @@
                                                 <li>Minimal wait time</li>
                                                 <li>Dedicated service window</li>
                                             </ul>
-<button class="atk-track-btn btn-skip-the-line"
+<button class="btn-track-priority"
                         data-track="priority" data-open-vehicle-modal="1">
                         Get Started →
                         </button>
@@ -77,8 +77,7 @@
                                             <p class="atk-card-desc">
                                                 Advanced smart key solutions for luxury and performance vehicles.
                                             </p>
-<button
-                    class="atk-service-btn"
+<button class="atk-service-logic"
                     data-open-booking-track="1">
                     Select Service →
                     </button>
@@ -92,8 +91,7 @@
                                             <p class="atk-card-desc">
                                                 Secure replacement services for supported vehicles.
                                             </p>
-<button
-                    class="atk-service-btn"
+<button class="atk-service-logic"
                     data-open-booking-track="1">
                     Select Service →
                     </button>
