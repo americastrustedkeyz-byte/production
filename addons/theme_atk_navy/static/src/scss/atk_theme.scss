@@ -767,8 +767,13 @@
 
     /*affliate brands*/
     .atk-trust-logos {
-        background-size: auto!important;
+        width: 100%;
+        background-size: contain!important;
         background-position: center!important;
+    }
+
+    .atk-image-placeholder-wrapper{
+        margin-bottom: 22px!important;
     }
 }
 
@@ -789,7 +794,7 @@
 
     /*======services======*/
     .atk-trust-logos {
-        width: 85%;
+        width: 100%;
     }
 
     /* ================= TESTIMONIALS – RESPONSIVE ================= */
