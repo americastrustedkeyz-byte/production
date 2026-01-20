@@ -36,7 +36,7 @@
         </section>
     </template>
 
-    <!-- Hero section-->
+    <!-- Hero/home section-->
     <!-- ========================= -->
     <!-- ADMIN / LOGGED-IN HOMEPAGE -->
     <!-- ========================= -->
@@ -116,7 +116,7 @@
                 </h2>
 
                 <div class="row align-items-center mt-4">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 atk-image-placeholder-wrapper">
                         <div class="atk-image-placeholder"></div>
                     </div>
 

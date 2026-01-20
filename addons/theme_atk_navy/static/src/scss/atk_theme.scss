@@ -764,12 +764,6 @@
     .atk-nav-links a {
         font-size: 16px;
     }
-
-    /*affliate brands*/
-    .atk-trust-logos {
-        background-size: auto!important;
-        background-position: center!important;
-    }
 }
 
 
@@ -789,7 +783,7 @@
 
     /*======services======*/
     .atk-trust-logos {
-        width: 85%;
+        width: 100%;
     }
 
     /* ================= TESTIMONIALS – RESPONSIVE ================= */
@@ -957,16 +951,22 @@
      .atk-modal-header h2 {
         font-size: 22px;
     }
+
+     /*affliate brands*/
+    .atk-trust-logos {
+        width: 100%;
+        background-size: contain!important;
+        background-position: center!important;
+    }
+
+    .atk-image-placeholder-wrapper{
+        margin-bottom: 22px!important;
+    }
 }
 
 
 /* Small Mobile (≤ 480px) */
 @media (max-width: 480px) {
-    /*services*/
-    .atk-trust-logos {
-        width: 100%;
-    }
-
     /*testimonial*/
     .atk-testimonials {
         padding: 56px 0;
