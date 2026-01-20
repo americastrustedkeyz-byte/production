@@ -37,7 +37,7 @@
                                                 <li>Designed for urgent needs</li>
                                                 <li>Ideal for flexible schedules</li>
                                             </ul>
-                                                <a href="/?intent=vehicle&track=standard"
+                                                <a href="/?intent=vehicle&amp;track=standard"
                                                 class="atk-btn-primary"
                                                 >
                                                 Get Started →
@@ -53,7 +53,7 @@
                                                 <li>Minimal wait time</li>
                                                 <li>Dedicated service window</li>
                                             </ul>
-                                            <a href="/?intent=vehicle&track=priority"
+                                            <a href="/?intent=vehicle&amp;track=priority"
                                             class="atk-btn-primary"
                                             >
                                             Get Started →
