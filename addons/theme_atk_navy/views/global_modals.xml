@@ -7,38 +7,38 @@
             <div class="atk-track-modal" data-atk-track-modal='1'  hidden="hidden">
                 <div class="atk-track-backdrop"></div>
 
-                <div class="atk-track-panel">
-                    <button
-                    class="atk-track-close"
-                    data-atk-track-close="1">
-                    ← Back
-                    </button>
-
-
-                    <h2 class="atk-track-title">SELECT BOOKING TRACK</h2>
-                    <p class="atk-track-subtitle">
-                    Choose your priority level for this appointment.
-                    </p>
-
-                    <div class="atk-track-grid">
-
-                    <!-- Standard Booking -->
-                    <div class="atk-track-card">
-                        <h3>Standard Booking</h3>
-                        <span class="atk-track-badge">Weekend Access</span>
-
-                        <ul>
-                        <li>Standard appointment scheduling</li>
-                        <li>Available weekdays only</li>
-                        <li>Shared capacity slots</li>
-                        <li>Served in standard order</li>
-                        </ul>
-
-                        <button class="atk-track-btn btn-standard-service" 
-                        data-track="standard" data-open-vehicle-modal="1"> 
-                            Get Started →
+                    <div class="atk-track-panel">
+                        <button
+                        class="atk-track-close"
+                        data-atk-track-close="1">
+                        ← Back
                         </button>
-            </div>
+
+
+                        <h2 class="atk-track-title">SELECT BOOKING TRACK</h2>
+                        <p class="atk-track-subtitle">
+                        Choose your priority level for this appointment.
+                        </p>
+
+                        <div class="atk-track-grid">
+
+                        <!-- Standard Booking -->
+                        <div class="atk-track-card">
+                            <h3>Standard Booking</h3>
+                            <span class="atk-track-badge">Weekend Access</span>
+
+                            <ul>
+                            <li>Standard appointment scheduling</li>
+                            <li>Available weekdays only</li>
+                            <li>Shared capacity slots</li>
+                            <li>Served in standard order</li>
+                            </ul>
+
+                            <button class="atk-track-btn btn-standard-service" 
+                            data-track="standard" data-open-vehicle-modal="1"> 
+                                Get Started →
+                            </button>
+                    </div>
 
                     <!-- Skip The Line -->
                     <div class="atk-track-card highlight">
@@ -57,9 +57,9 @@
                         Get Started →
                         </button>
 
-                     </div>
                     </div>
                 </div>
+              </div>
             </div>
         </section>
 
@@ -187,6 +187,28 @@
             </div>
             </div>
        </section>
+
+        <!--Vehicle Report/Invoice-->
+        <section>
+           <div id="atk_report_overlay" class="atk-modal-overlay hidden">
+            <div id="atk_report_modal" class="atk-report-modal">
+
+                <h3>Vehicle Report Summary</h3>
+
+                <div id="atk_report_body"></div>
+
+                <div class="atk-report-actions">
+                <button type="button" id="atk_report_cancel" class="atk-secondary-btn">
+                    Cancel
+                </button>
+
+                <button type="button" id="atk_report_proceed" class="atk-primary-btn">
+                    Proceed to Checkout
+                </button>
+                </div>
+            </div>
+            </div>
+        </section>
 
     </xpath>
   </template>
