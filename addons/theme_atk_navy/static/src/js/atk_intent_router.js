@@ -1,22 +1,24 @@
 // =====================================================
-// ATK INTENT ROUTER (SINGLE RESPONSIBILITY)
+// ATK INTENT ROUTER — ODOO SAFE (POLLING)
 // =====================================================
 (function () {
   const params = new URLSearchParams(window.location.search);
   const intent = params.get('intent');
-  const track = params.get('track') || 'standard';
+  const track  = params.get('track') || 'standard';
 
   if (!intent) return;
 
-  console.log('[ATK] Intent detected →', intent);
+  console.log('[ATK] Intent detected →', intent, track);
 
   let attempts = 0;
-  const maxAttempts = 40;
+  const maxAttempts = 50;
 
   const interval = setInterval(() => {
     attempts++;
 
-    // ---------- VEHICLE MODAL ----------
+    /* ==========================
+       VEHICLE IDENTIFICATION MODAL
+       ========================== */
     if (intent === 'vehicle') {
       const modal = document.querySelector('[data-atk-vehicle-modal]');
       const form  = document.getElementById('atk_vehicle_form');
@@ -24,12 +26,10 @@
       if (modal && form) {
         modal.hidden = false;
 
-        // Inject booking track
-        let input = document.getElementById('booking_track');
+        let input = form.querySelector('[name="booking_track"]');
         if (!input) {
           input = document.createElement('input');
           input.type = 'hidden';
-          input.id = 'booking_track';
           input.name = 'booking_track';
           form.appendChild(input);
         }
@@ -37,40 +37,43 @@
 
         console.log('[ATK] Vehicle modal opened via intent:', track);
 
-        cleanupUrl();
+        cleanup();
         clearInterval(interval);
+        return;
       }
     }
 
-    // ---------- BOOKING TRACK MODAL ----------
+    /* ==========================
+       BOOKING TRACK MODAL
+       ========================== */
     if (intent === 'booking') {
       const modal = document.querySelector('[data-atk-track-modal]');
 
       if (modal) {
         modal.hidden = false;
 
-        console.log('[ATK] Booking track modal opened via intent');
-
-        // Apply time logic if present
         if (typeof window.applyTrackTimeLogic === 'function') {
           window.applyTrackTimeLogic();
         }
 
-        cleanupUrl();
+        console.log('[ATK] Booking track modal opened via intent');
+
+        cleanup();
         clearInterval(interval);
+        return;
       }
     }
 
     if (attempts >= maxAttempts) {
-      clearInterval(interval);
       console.error('[ATK ERROR] Intent router timeout:', intent);
+      clearInterval(interval);
     }
   }, 100);
 
-  function cleanupUrl() {
-    const clean = new URL(window.location.href);
-    clean.searchParams.delete('intent');
-    clean.searchParams.delete('track');
-    window.history.replaceState({}, document.title, clean.pathname + clean.search);
+  function cleanup() {
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.delete('intent');
+    cleanUrl.searchParams.delete('track');
+    history.replaceState({}, document.title, cleanUrl.pathname + cleanUrl.search);
   }
 })();
