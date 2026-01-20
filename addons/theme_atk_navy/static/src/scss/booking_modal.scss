@@ -149,6 +149,12 @@
   opacity: 0.55;
 }
 
+@media (max-width: 769px) {
+  .atk-track-grid {
+    max-height: 700px!important;
+    overflow-y: auto!important;
+}
+
 @media (max-width: 480px) {
   .atk-track-grid {
     grid-template-columns: repeat(1, 1fr)!important;
@@ -156,4 +162,5 @@
     max-height: 750px!important;
     overflow-y: auto!important;
   }
+ }
 }
