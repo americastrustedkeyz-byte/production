@@ -31,12 +31,14 @@
                                         <!-- Expanded Booking (Dark) -->
                                         <div class="atk-card atk-card-dark">
                                             <h4>Standard Booking</h4>
+                                             <span class="atk-track-badge">Weekend Access</span>
                                             <ul class="atk-feature-list">
-                                                <li>Available on weekdays</li>
-                                                <li>Select from available windows</li>
-                                                <li>Designed for urgent needs</li>
-                                                <li>Ideal for flexible schedules</li>
-                                            </ul>
+                                                <li>✅ Bookable onlyon Sunday from 12:00pm-6:00pm</li>
+                                <li>✅ Services is provided on weekends (Friday, Saturday and Sunday)</li>
+                                <li>✅ Select from available weekend time slot</li>
+                                <li>✅ Ideal for flexible schedules</li>
+                                <li>✅ Served in standard service order</li>
+                                <li>✅ $5 non-refundable donation at checkout</li>                            </ul>
                                                 <button class="btn-track-standard" 
                         data-track="standard" data-open-vehicle-modal="1"> 
                             Get Started →
@@ -46,11 +48,16 @@
                                         <!-- Expanded Skip The Line -->
                                         <div class="atk-card atk-card-dark">
                                             <h4>Skip-The-Line</h4>
+                                             <span class="atk-track-badge premium">Priority Access</span>
+
                                             <ul class="atk-feature-list">
-                                                <li>Priority scheduling</li>
-                                                <li>Guaranteed time slot</li>
-                                                <li>Minimal wait time</li>
-                                                <li>Dedicated service window</li>
+                                                 <li>✅ Bookable on weekend (Friday, Saturday and Sunday)</li>
+                            <li>✅ Booking guaranteed 30 minutes time blocks</li>
+                            <li>✅ Priority handling with a dedicated booking track</li>
+                            <li>✅ Designed for urgent or time sensitive needs</li>
+                            <li>✅ Services is provided during normal business hours</li>
+                            <li>✅ $125 donation applied</li>
+                            <li>✅ May still require up to a 30-minute wait on arrival due to on site services flow</li>
                                             </ul>
 <button class="btn-track-priority"
                         data-track="priority" data-open-vehicle-modal="1">
