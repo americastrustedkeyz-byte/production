@@ -66,9 +66,7 @@
                     <!-- OUTLINE / MODAL BUTTON -->
                     <button
                         type="button"
-                        class="atk-hero-btn atk-hero-btn-outline"
-                        data-bs-toggle="modal"
-                        data-bs-target="#atkVehicleModal">
+                        class="atk-hero-btn atk-hero-btn-outline" data-open-booking-track="1">
                         Check Vehicle Availability
                     </button>
 
@@ -136,7 +134,7 @@
         </section>
 
         <!-- SERVICES -->
-        <section class="atk-services-entry">
+        <section class="atk-services-entry" id="serviceId">
           <div class="container">
             <div class="atk-services-inner">
 
@@ -150,11 +148,6 @@
 
                 <!-- Card 1 -->
                 <div class="atk-service-card">
-                    <div class="atk-service-badges">
-                    <!--span class="badge k">K</span>
-                    <span class="badge o">O</span-->
-                    </div>
-
                     <h3>Transponder Keys</h3>
                     <div class="atk-price">✅ $85 <span>Flat Rate</span></div>
 
@@ -172,11 +165,7 @@
 
                 <!-- Card 2 -->
                 <div class="atk-service-card">
-                    <div class="atk-service-badges">
-                    <!--span class="badge k">K</span>
-                    <span class="badge o">O</span-->
-                    </div>
-
+                    
                     <h3>Smart Keys</h3>
 
                     <ul class="atk-price-list">
