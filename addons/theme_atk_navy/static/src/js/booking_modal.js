@@ -1,10 +1,12 @@
-// ======================================================
-// ATK SELECT BOOKING TRACK MODAL LOGIC (FINAL, STABLE)
-// ======================================================
+//console.log('[ATK] Booking modal JS FILE LOADED');
 
 (function () {
   const modal = document.querySelector('[data-atk-track-modal]');
   if (!modal) return;
+
+  const standardBtn = modal.querySelector('[data-track="standard"]');
+  const priorityBtn = modal.querySelector('[data-track="priority"]');
+  if (!standardBtn || !priorityBtn) return;
 
   function getUSTime() {
     const now = new Date();
@@ -14,33 +16,24 @@
   }
 
   function applyTrackTimeLogic() {
-    // 🔑 CRITICAL FIX:
-    // Always re-query buttons AFTER modal is visible
-    const standardBtn = modal.querySelector('[data-track="standard"]');
-    const priorityBtn = modal.querySelector('[data-track="priority"]');
-
-    if (!standardBtn || !priorityBtn) {
-      console.warn('[ATK] Booking buttons not found');
-      return;
-    }
-
     const usNow = getUSTime();
-    const day = usNow.getDay();     // 0 = Sun … 6 = Sat
+
+    const day = usNow.getDay();     // 0=Sun … 6=Sat
     const hour = usNow.getHours();
     const minute = usNow.getMinutes();
 
     let standardActive = false;
     let priorityActive = false;
 
-    // ---------- STANDARD ----------
+    /* STANDARD BOOKING */
     if (
-      (day === 0 && hour >= 18) || // Sunday 6pm+
+      (day === 0 && hour >= 18) || // Sunday 18:00+
       (day >= 1 && day <= 4)       // Mon–Thu
     ) {
       standardActive = true;
     }
 
-    // ---------- PRIORITY ----------
+    /* SKIP-THE-LINE */
     if (
       (day === 5 && hour === 0 && minute >= 1) ||
       (day === 5 && hour > 0) ||
@@ -50,20 +43,26 @@
       priorityActive = true;
     }
 
-    // Mutual exclusivity
+    /* MUTUAL EXCLUSIVITY */
     if (standardActive) priorityActive = false;
     if (priorityActive) standardActive = false;
 
     standardBtn.disabled = !standardActive;
     priorityBtn.disabled = !priorityActive;
 
-    console.log('[ATK] Booking button state updated', {
-      standardActive,
-      priorityActive
+    console.log('[ATK DEBUG]', {
+      standardDisabled: standardBtn.disabled,
+      priorityDisabled: priorityBtn.disabled,
+      time: new Date().toISOString()
     });
+
   }
 
-  document.addEventListener('click', function (e) {
+  /* ======================================================
+     SINGLE, AUTHORITATIVE CLICK HANDLER (FIX)
+     ====================================================== */
+
+ document.addEventListener('click', function (e) {
     const trigger = e.target.closest('[data-open-booking-track]');
     if (!trigger) return;
 
@@ -72,28 +71,5 @@
     applyTrackTimeLogic();
   });
 
-  //url param
-  /* =====================================================
-   CAPTURE BOOKING TRACK FROM BUTTON CLICK
-   ===================================================== */
-document.addEventListener('click', function (e) {
-  const trigger = e.target.closest('[data-open-vehicle-modal]');
-  if (!trigger) return;
-
-  const track = trigger.dataset.track || 'standard';
-
-  console.log('[ATK] Booking track captured:', track);
-
-  const url = new URL(window.location.href);
-
-  //THESE TWO PARAMS ARE THE CONTRACT
-  url.searchParams.set('reset', 'open_vehicle_modal');
-  url.searchParams.set('track', track);
-
-  console.log('[ATK] Redirecting →', url.toString());
-
-  //HARD reload so Odoo cannot block it
-  window.location.href = url.toString();
-});
 
 })();
