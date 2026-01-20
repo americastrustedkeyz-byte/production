@@ -79,14 +79,14 @@
   }
 
   /* ==============================
-     APPLY WHEN MODAL OPENS
+     APPLY timming check WHEN MODAL OPENS
      ============================== */
   document.addEventListener('click', function (e) {
     const trigger = e.target.closest('[data-open-booking-track]');
     if (!trigger) return;
 
     e.preventDefault();
-    modal.hidden = false;
+    //modal.hidden = false;
 
     console.log('[ATK] Select Booking modal opened');
     applyTrackTimeLogic();

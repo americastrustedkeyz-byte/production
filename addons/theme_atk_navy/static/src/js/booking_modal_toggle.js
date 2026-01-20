@@ -32,14 +32,62 @@
           modal.hidden = false;
 
           console.log('[ATK] Select Booking modal OPENED');
-
-        //applyTrackTimeLogic(modal);
-    
   });
+
+
+  /* ======================================================
+   OPEN SELECT BOOKING MODAL FROM URL (SAFE EXTENSION)
+   ====================================================== */
+(function openBookingTrackModalFromUrlSafe() {
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('reset') !== 'open_booking_track_modal') return;
+
+  console.log('[ATK] URL reset detected → waiting for booking track modal');
+
+  let attempts = 0;
+  const maxAttempts = 40;
+
+  const interval = setInterval(() => {
+    attempts++;
+
+    const modal = getBookingModal();
+    if (modal) {
+      modal.hidden = false;
+
+      console.log('[ATK] Select Booking modal OPENED via URL');
+
+      // Clean URL (remove reset only)
+      const cleanUrl = new URL(window.location.href);
+      cleanUrl.searchParams.delete('reset');
+      window.history.replaceState(
+        {},
+        document.title,
+        cleanUrl.pathname + cleanUrl.search
+      );
+
+      clearInterval(interval);
+
+      //========Release URL lock AFTER modal is open & URL cleaned============
+      setTimeout(() => {
+        if (window.ATK_STATE) {
+          window.ATK_STATE.urlResetActive = false;
+          console.log('[ATK] URL reset released → homepage buttons active');
+        }
+      }, 0);
+    }
+
+    if (attempts >= maxAttempts) {
+      clearInterval(interval);
+      console.error('[ATK ERROR] Booking track modal never appeared in DOM');
+    }
+  }, 100);
+})();
+
 
   /* ======================================================
      CLOSE SELECT BOOKING MODAL (BACK BUTTON)
-     ====================================================== */
+    ================================================== */
   document.addEventListener('click', function (e) {
     const closeBtn = e.target.closest('[data-atk-track-close]');
     if (!closeBtn) return;

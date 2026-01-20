@@ -245,7 +245,7 @@
   margin: 16px 0 24px;
 }
 
-/* CTA */
+/*CTA*/
 .atk-service-btn {
   background: transparent;
   border: 1px solid #6B7280;
@@ -253,6 +253,21 @@
   padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
+}
+.btn-track-standard, .btn-track-priority, .atk-service-logic
+ {
+ background: #2563EB;
+  border-color: #2563EB;
+  color: #FFFFFF;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn-track-standard:hover, .btn-track-priority:hover, .atk-track-btn-logic:hover
+ {
+  background: transparent;
+  border: #6B7280;
+  color: #FFFFFF;
 }
 
 .atk-service-btn:hover {
