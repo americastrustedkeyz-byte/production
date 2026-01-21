@@ -2,20 +2,21 @@
   <template
     id="atk_appointment_info_override"
     inherit_id="appointment.appointment_info"
-    priority="50">
+    priority="100">
 
-    <xpath expr="//h1[contains(text(),'Appointment Scheduled')]" position="after">
+    <!-- SAFEST POSSIBLE INSERTION POINT -->
+    <xpath expr="//div[@id='wrap']" position="inside">
+      <!-- Keep default content untouched -->
+      <div id="atk-appointment-confirmed"
+           data-atk-confirmed="1"
+           style="display:none;"></div>
 
-      <div class="alert alert-info mt-3">
-        <strong>Next step:</strong>
-        You'll be redirected to complete payment.
-      </div>
-
-      <!-- Marker element for JS redirect -->
-      <div id="atk-appointment-confirmed" data-atk="confirmed"/>
+      <script type="text/javascript">
+        setTimeout(function () {
+          window.location.href = "/atk/report/checkout";
+        }, 2000);
+      </script>
 
     </xpath>
-
   </template>
 </odoo>
-
