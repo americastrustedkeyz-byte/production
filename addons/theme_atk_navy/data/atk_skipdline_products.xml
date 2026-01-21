@@ -5,6 +5,8 @@
             <field name="name">ATK Skip-The-Line Priority Fee</field>
             <field name="type">product</field>
             <field name="lst_price">125</field> <!-- This sets the price -->
+            <field name="sale_ok" eval="True"/>
+            <field name="purchase_ok" eval="False"/>
             <field name="description">A product for testing purposes.</field>
             <!-- Add other fields like barcode, image, etc. -->
         </record>
