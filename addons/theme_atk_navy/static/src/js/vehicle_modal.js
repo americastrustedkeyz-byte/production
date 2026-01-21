@@ -72,9 +72,6 @@ window.ATK_STATE = window.ATK_STATE || {};
   /* ======================================================
      OPEN MODAL FROM URL (NO FLICKER, SINGLE RUN)
      ====================================================== */
-/* ======================================================
-   OPEN MODAL FROM URL (NO FLICKER, SINGLE RUN)
-   ====================================================== */
 (function openVehicleModalFromUrlSafe() {
   const params = new URLSearchParams(window.location.search);
 

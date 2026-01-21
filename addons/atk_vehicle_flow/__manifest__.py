@@ -9,7 +9,7 @@
         "sale"
     ],
     "data": [
-        "views/appointment_thank_you.xml",
+        "views/appointment_thank_you_redirect.xml",
         "views/assets.xml",
     ],
     "assets": {},
