@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Inherit the base appointment info template (the Thank You Page) -->
+        <!-- Inherit the base appointment info template (the Thank You Page shown in your screenshot) -->
         <template id="appointment_confirmation_custom_atk" inherit_id="appointment.appointment_info" name="Custom ATK Confirmation Message Fix">
             
             <!-- Target the specific div that wraps the confirmation details content -->
-            <xpath expr="//div[hasclass('o_appointment_validation_details')]" position="inside">
+            <xpath expr="//div[hasclass('o_appointment_validation_details')]" position="before">
                  <div class="alert alert-info mt-4">
-                    **Thank You Page Custom Message:** Your appointment details are above this box.
+                    **Thank You Page Custom Message:** This should appear only after successfully booking.
                  </div>
             </xpath>
         </template>
