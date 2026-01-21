@@ -2,11 +2,15 @@
 <odoo>
     <data>
         <template id="appointment_confirmation_custom" inherit_id="appointment.appointment_info" name="Custom Appointment Confirmation Message">
-            <!-- In Odoo 18, we target the main column inside the appointment info container -->
-            <xpath expr="//div[@id='wrap']//div[hasclass('container')]" position="inside">
-                <div class="alert alert-success mt-4" role="alert">
-                    <h4 class="alert-heading">Booking Confirmed for 2026!</h4>
-                    <p>Thank you for your booking. Please ensure you have your confirmation details ready upon arrival.</p>
+            <!-- Target the main wrapper of the page content -->
+            <xpath expr="//div[@id='wrap']" position="inside">
+                <div class="container mt-4">
+                    <div class="alert alert-success border-0 shadow-sm" role="alert">
+                        <h4 class="alert-heading">Booking Confirmed for 2026!</h4>
+                        <p>Thank you for booking with America's Trusted Keyz. Your appointment is officially scheduled.</p>
+                        <hr/>
+                        <p class="mb-0">Please arrive 10 minutes early at our Pakuro location for check-in.</p>
+                    </div>
                 </div>
             </xpath>
         </template>
