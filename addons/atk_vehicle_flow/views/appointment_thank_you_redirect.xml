@@ -1,18 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <template id="appointment_confirmation_custom" inherit_id="appointment.appointment_info" name="Custom Appointment Confirmation Message">
-            <!-- Target the main wrapper of the page content -->
-            <xpath expr="//div[@id='wrap']" position="inside">
-                <div class="container mt-4">
-                    <div class="alert alert-success border-0 shadow-sm" role="alert">
-                        <h4 class="alert-heading">Booking Confirmed for 2026!</h4>
-                        <p>Thank you for booking with America's Trusted Keyz. Your appointment is officially scheduled.</p>
-                        <hr/>
-                        <p class="mb-0">Please arrive 10 minutes early at our Pakuro location for check-in.</p>
-                    </div>
-                </div>
-            </xpath>
-        </template>
-    </data>
+  <template
+    id="atk_appointment_info_override"
+    inherit_id="appointment.appointment_info"
+    priority="100">
+
+    <!-- SAFEST POSSIBLE INSERTION POINT -->
+    <xpath expr="//div[@id='wrap']" position="inside">
+
+      <!-- Keep default content untouched -->
+      <div id="atk-appointment-confirmed"
+           data-atk-confirmed="1"
+           style="display:none;"></div>
+
+      <script type="text/javascript">
+        setTimeout(function () {
+          window.location.href = "/atk/report/checkout";
+        }, 2000);
+      </script>
+
+    </xpath>
+
+  </template>
 </odoo>
