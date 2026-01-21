@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Inherit the base appointment info template (the Thank You Page shown in your screenshot) -->
+        <!-- Inherit the base appointment info template -->
         <template id="appointment_confirmation_custom_atk_final" inherit_id="appointment.appointment_info" name="Custom ATK Confirmation Message Final Fix">
-            
-            <!-- Target the specific div that wraps the confirmation details content -->
-            <xpath expr="//div[hasclass('o_appointment_validation_details')]" position="inside">
+            <!-- Targeting a simple container which is universal -->
+            <xpath expr="//div[hasclass('container')]" position="inside">
                  <div class="alert alert-info mt-4">
-                    **Thank You Page Custom Message:** This message is confirmed to work with Odoo validation.
+                    **Confirmation Message:** This is the universal message for the thank you page.
                  </div>
             </xpath>
         </template>
