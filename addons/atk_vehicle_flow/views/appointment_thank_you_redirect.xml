@@ -1,17 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <template id="atk_frontend_assets" inherit_id="web.assets_frontend">
-
-    <xpath expr="." position="inside">
-
-      <!-- ATK hash-based router -->
-      <script type="text/javascript"
-              src="/theme_atk_navy/static/src/js/atk_hash_router.js"/>
-
-      <!-- ATK post-appointment redirect -->
-      <script type="text/javascript"
-              src="/theme_atk_navy/static/src/js/atk_after_booking_redirect.js"/>
-
-    </xpath>
-
-  </template>
+    <data>
+        <template id="appointment_confirmation_custom" inherit_id="appointment.appointment_info" name="Custom Appointment Confirmation Message">
+            <!-- Target the main wrapper of the page content -->
+            <xpath expr="//div[@id='wrap']" position="inside">
+                <div class="container mt-4">
+                    <div class="alert alert-success border-0 shadow-sm" role="alert">
+                        <h4 class="alert-heading">Booking Confirmed for 2026!</h4>
+                        <p>Thank you for booking with America's Trusted Keyz. Your appointment is officially scheduled.</p>
+                        <hr/>
+                        <p class="mb-0">Please arrive 10 minutes early at our Pakuro location for check-in.</p>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
 </odoo>
