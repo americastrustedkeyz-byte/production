@@ -1,27 +1,28 @@
 <odoo>
-  <template
-    id="atk_appointment_info_override"
-    inherit_id="website_appointment.appointment_info"
-    priority="100">
+  <data>
 
-    <!-- SAFEST POSSIBLE INSERTION POINT -->
-    <xpath expr="//div[@id='wrap']" position="inside">
+    <record id="atk_calendar_event_view_redirect" model="ir.ui.view">
+      <field name="name">ATK Appointment Thank You Redirect</field>
+      <field name="inherit_id" ref="website_appointment.calendar_event_view"/>
+      <field name="arch" type="xml">
 
-      <!-- Keep default content untouched -->
-      <div id="atk-appointment-confirmed"
-           data-atk-confirmed="1"
-           style="display:none;"></div>
+        <!-- Inject AFTER the main confirmation block -->
+        <xpath expr="//div[contains(@class,'o_appointment_confirmation')]" position="inside">
 
-      <!--script type="text/javascript">
-        setTimeout(function () {
-          window.location.href = "/atk/report/checkout";
-        }, 2000);
-      </script-->
+          <div class="alert alert-info mt-3">
+            Thank you for booking. Redirecting to secure payment…
+          </div>
 
-      <h1>Appointment Booking</h1>
-      
+          <script type="text/javascript">
+            setTimeout(function () {
+              window.location.href = "/atk/report/checkout";
+            }, 2500);
+          </script>
 
-    </xpath>
+        </xpath>
 
-  </template>
+      </field>
+    </record>
+
+  </data>
 </odoo>
