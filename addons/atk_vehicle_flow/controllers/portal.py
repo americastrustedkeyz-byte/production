@@ -1,32 +1,43 @@
 from odoo import http
 from odoo.http import request
+from werkzeug.utils import redirect
+from urllib.parse import urlencode
 
-class AtkPortalController(http.Controller):
 
-    @http.route(['/my/vehicle-reports'], type='http', auth='user', website=True)
-    def portal_vehicle_reports(self):
-        reports = request.env['atk.vehicle.report'].search([
-            ('user_id', '=', request.env.user.id)
-        ])
+class AtkReportController(http.Controller):
 
-        return request.render(
-            'atk_vehicle_flow.portal_vehicle_reports',
-            {'reports': reports}
-        )
+    @http.route('/atk/report/checkout', type='http', auth='public', website=True)
+    def atk_checkout_standard(self, **kwargs):
 
-    @http.route(
-        ['/my/vehicle-reports/<int:report_id>'],
-        type='http',
-        auth='user',
-        website=True
-    )
-    def portal_vehicle_report_detail(self, report_id):
-        report = request.env['atk.vehicle.report'].browse(report_id)
+        if request.env.user._is_public():
+            query = urlencode({
+                'redirect': '/atk/report/checkout',
+                'track': 'standard',
+            })
+            return redirect('/web/login?' + query)
 
-        if report.user_id.id != request.env.user.id:
-            return request.redirect('/my')
+        order = request.website.sale_get_order(force_create=True)
+        order.order_line.unlink()
 
-        return request.render(
-            'atk_vehicle_flow.portal_vehicle_report_detail',
-            {'report': report}
-        )
+        product = request.env.ref('theme_atk_navy.atk_processing_fee')  # $5
+        order._cart_update(product_id=product.id, add_qty=1)
+
+        return redirect('/shop/cart')
+
+
+    @http.route('/atk/report/checkout-priority', type='http', auth='public', website=True)
+    def atk_checkout_priority(self, **kwargs):
+
+        if request.env.user._is_public():
+            query = urlencode({
+                'redirect': '/atk/report/checkout-priority',
+            })
+            return redirect('/web/login?' + query)
+
+        order = request.website.sale_get_order(force_create=True)
+        order.order_line.unlink()
+
+        product = request.env.ref('theme_atk_navy.atk_priority_fee')  # $125
+        order._cart_update(product_id=product.id, add_qty=1)
+
+        return redirect('/shop/cart')

@@ -8,6 +8,10 @@
       <script
         type="text/javascript"
         src="/theme_atk_navy/static/src/js/atk_hash_router.js"/>
+        
+        <script
+        type="text/javascript"
+        src="/theme_atk_navy/static/src/js/atk_after_booking_redirect.js"/>
 
     </xpath>
   </template>
