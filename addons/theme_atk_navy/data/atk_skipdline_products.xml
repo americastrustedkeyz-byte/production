@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-        <!-- Create a new product record -->
-        <record id="atk_priority_fee" model="product.template">
-            <field name="name">ATK Skip-The-Line Priority Fee</field>
-            <field name="type">product</field>
-            <field name="lst_price">125</field> <!-- This sets the price -->
+    <data noupdate="1">
+        <record id="atk_priority_fee" model="product.product">
+            <field name="name">ATK Skip-The-Line</field>
+            <field name="list_price">125.0</field>
+            <field name="standard_price">100.0</field>
+            <field name="type">consu</field> <!-- 'consu' for consumable, 'service' for service -->
             <field name="sale_ok" eval="True"/>
             <field name="purchase_ok" eval="False"/>
-            <field name="description">A product for testing purposes.</field>
-            <!-- Add other fields like barcode, image, etc. -->
+             <field name="description">A product for testing purposes.</field>
         </record>
     </data>
 </odoo>
+
