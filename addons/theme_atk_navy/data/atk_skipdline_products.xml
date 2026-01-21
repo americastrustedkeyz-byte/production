@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data noupdate="1">
-        <record id="atk_priority_fee" model="product.product">
+        <record id="product_atk_skip_line" model="product.template">
             <field name="name">ATK Skip-The-Line</field>
             <field name="list_price">125.0</field>
-            <field name="standard_price">100.0</field>
-            <field name="type">consu</field> <!-- 'consu' for consumable, 'service' for service -->
+            <!-- Fixed the error: setting default value for base_unit_count -->
+            <field name="base_unit_count">1.0</field>
+            <field name="default_code">SKU-ATK-001</field>
+            
+            <!-- Type logic for Odoo 18 -->
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            
+            <!-- Sales and Purchase visibility -->
             <field name="sale_ok" eval="True"/>
-            <field name="purchase_ok" eval="False"/>
-             <field name="description">A product for testing purposes.</field>
+            <field name="purchase_ok" eval="True"/>
+            
+            <field name="description_sale">A product for testing purposes.</field>
         </record>
     </data>
 </odoo>
-
