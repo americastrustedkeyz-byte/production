@@ -1,7 +1,16 @@
-<record id="atk_priority_fee" model="product.product">
-    <field name="name">ATK Skip-The-Line Priority Fee</field>
-    <field name="type">service</field>
-    <field name="list_price">125.0</field>
-    <field name="sale_ok">True</field>
-    <field name="purchase_ok">False</field>
-</record>
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data noupdate="1">
+
+    <!-- Skip-The-Line Priority Fee ($125) -->
+    <record id="atk_priority_fee" model="product.template">
+      <field name="name">ATK Skip-The-Line Priority Fee</field>
+      <field name="type">service</field>
+      <field name="list_price">125.0</field>
+      <field name="sale_ok">True</field>
+      <field name="purchase_ok">False</field>
+      <field name="website_published">False</field>
+    </record>
+
+  </data>
+</odoo>
