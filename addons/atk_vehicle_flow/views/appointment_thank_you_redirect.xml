@@ -12,11 +12,14 @@
            data-atk-confirmed="1"
            style="display:none;"></div>
 
-      <script type="text/javascript">
+      <!--script type="text/javascript">
         setTimeout(function () {
           window.location.href = "/atk/report/checkout";
         }, 2000);
-      </script>
+      </script-->
+
+      <h1>Appointment Booking</h1>
+      
 
     </xpath>
 
