@@ -1,7 +1,7 @@
 <odoo>
   <template
     id="atk_appointment_info_override"
-    inherit_id="appointment.appointment_info"
+    inherit_id="website_appointment.appointment_info"
     priority="100">
 
     <!-- SAFEST POSSIBLE INSERTION POINT -->
