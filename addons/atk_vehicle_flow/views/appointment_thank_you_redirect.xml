@@ -1,0 +1,21 @@
+<odoo>
+  <template
+    id="atk_appointment_info_override"
+    inherit_id="website_appointment_sale.appointment_info"
+    priority="20">
+
+    <!-- Keep ALL original content -->
+    <xpath expr="//div[contains(@class,'o_appointment_confirmation')]" position="inside">
+
+      <!-- Custom message -->
+      <div class="alert alert-info mt-3">
+        <strong>Next step:</strong> You’ll be redirected to complete payment.
+      </div>
+
+      <!-- Marker for JS (SAFE & PRECISE) -->
+      <div id="atk-appointment-confirmed" data-atk="confirmed"/>
+    </xpath>
+
+  </template>
+</odoo>
+

@@ -1,6 +1,17 @@
 {
     'name': 'ATK Vehicle Flow',
     'version': '1.0',
-    'depends': ['website', 'sale'],
+    "depends": [
+        "website",
+        "website_appointment",
+        "website_appointment_sale",
+        "website_sale",
+        "sale"
+    ],
+    "data": [
+        "views/appointment_thank_you.xml",
+        "views/assets.xml",
+    ],
+    "assets": {},
     'installable': True,
 }
