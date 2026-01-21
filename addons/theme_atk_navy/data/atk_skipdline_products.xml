@@ -1,16 +1,1 @@
-<odoo>
-  <record id="atk_priority_fee" model="product.template">
-    <field name="name">ATK Skip-The-Line Priority Fee</field>
-    <field name="type">service</field>
-    <field name="list_price">125.0</field>
-
-    <!-- REQUIRED FIELDS (DO NOT OMIT) -->
-    <field name="uom_id" ref="uom.product_uom_unit"/>
-    <field name="uom_po_id" ref="uom.product_uom_unit"/>
-    <field name="base_unit_count">1</field>
-
-    <!-- BUSINESS FLAGS -->
-    <field name="sale_ok">True</field>
-    <field name="purchase_ok">False</field>
-  </record>
-</odoo>
+<!-- REQUIRED FIELDS (DO NOT OMIT) -->
