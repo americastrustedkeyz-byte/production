@@ -1,22 +1,13 @@
-<odoo>
-  <template
-    id="atk_appointment_info_override"
-    inherit_id="appointment.appointment_info"
-    priority="100">
-
-    <!-- SAFEST POSSIBLE INSERTION POINT -->
-    <xpath expr="//div[@id='wrap']" position="inside">
-      <!-- Keep default content untouched -->
-      <div id="atk-appointment-confirmed"
-           data-atk-confirmed="1"
-           style="display:none;"></div>
-
-      <script type="text/javascript">
-        setTimeout(function () {
-          window.location.href = "/atk/report/checkout";
-        }, 2000);
-      </script>
-
+<?xml version="1.0"?>
+<data inherit_id="website_appointment.appointment_info">
+    <!-- This xpath targets the main container of the thank you page -->
+    <xpath expr="//div[hasclass('o_appointment_validation_details')]" position="inside">
+        <div class="alert alert-success mt-4" role="alert">
+            <h4 class="alert-heading">Booking Confirmed for 2026!</h4>
+            <p>Thank you for choosing our services. Please ensure you have your confirmation QR code ready on your mobile device for check-in.</p>
+            <hr/>
+            <p class="mb-0">Need to change something? Use the "Manage Appointment" link below.</p>
+        </div>
     </xpath>
-  </template>
-</odoo>
+</data>
+
