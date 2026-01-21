@@ -1,20 +1,17 @@
-(function () {
-  // Run ONLY on appointment confirmation page
-  if (!document.querySelector('.o_appointment_confirmation')) return;
+document.addEventListener('DOMContentLoaded', function () {
+  const marker = document.getElementById('atk-appointment-confirmed');
+  if (!marker) return;
 
-  console.log('[ATK] Appointment confirmation detected');
+  // Prevent repeat execution
+  if (marker.dataset.redirected) return;
+  marker.dataset.redirected = '1';
 
+  // Extract track safely (if any)
   const params = new URLSearchParams(window.location.search);
-
-  // Track is passed earlier in your flow (standard / priority)
   const track = params.get('track') || 'standard';
 
-  // Delay slightly so user sees confirmation
   setTimeout(function () {
-    if (track === 'priority') {
-      window.location.href = '/atk/report/checkout-priority';
-    } else {
-      window.location.href = '/atk/report/checkout?track=standard';
-    }
+    window.location.href =
+      `/atk/report/checkout?track=${encodeURIComponent(track)}`;
   }, 1500);
-})();
+});
