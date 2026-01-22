@@ -6,7 +6,7 @@
     inherit_id="website_appointment.appointment_info"
     name="ATK Appointment Confirmation Redirect">
 
-    <!-- Inject logic without relying on DOM structure -->
+    <!--Inject logic without relying on DOM structure -->
     <xpath expr="." position="inside">
 
       <t t-call-assets="web.assets_frontend"/>
