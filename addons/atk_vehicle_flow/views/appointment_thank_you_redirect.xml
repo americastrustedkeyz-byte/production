@@ -3,7 +3,7 @@
 
   <template
     id="appointment_confirmation_custom_atk_final"
-    inherit_id="website_appointment.appointment_info"
+    inherit_id="appointment.appointment_info"
     name="ATK Appointment Confirmation Redirect">
 
     <xpath expr="." position="inside">
