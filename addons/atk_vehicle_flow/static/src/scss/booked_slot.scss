@@ -1,0 +1,18 @@
+/* ATK – Booked appointment slot */
+.atk-slot-booked {
+  background-color: #f1f1f1 !important;
+  color: #999 !important;
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.atk-slot-booked::after {
+  content: "Booked";
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 11px;
+  color: #777;
+}
