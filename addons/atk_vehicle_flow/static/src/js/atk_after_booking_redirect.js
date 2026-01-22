@@ -72,7 +72,7 @@
         ? "/atk/report/checkout?track=priority"
         : "/atk/report/checkout?track=standard";
 
-    /* ==========================================
+    /*==========================================
        Inject UI
        ========================================== */
     const wrapper = document.createElement("div");
