@@ -10,7 +10,7 @@
         "sale"
     ],
     "data": [
-        "views/appointment_templates.xml",
+        #"views/appointment_templates.xml",
         #"views/appointment_thank_you_redirect.xml",
     ],
     'assets': {
