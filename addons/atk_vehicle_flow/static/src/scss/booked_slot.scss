@@ -1,38 +1,10 @@
-/* ATK – Booked appointment slot */
-.o_slot_booked {
-    background-color: #f0f0f0 !important; /* Light grey */
-    color: #a0a0a0 !important;          /* Faded text */
-    border: 1px solid #dcdcdc !important;
-    cursor: not-allowed;
-    opacity: 0.7;
+.o_appointment_slot[data-available="false"] {
+    background: #e0e0e0 !important;
+    color: #999 !important;
+    pointer-events: none;
 }
 
-/*
-Avilable slot
- Styling for all available slot buttons */
-.o_appointment_slot_button {
-    background-color: #16742c !important; 
-    color: white !important;             
-    border-radius: 8px !important;      
-    font-weight: bold;
-    transition: all 0.3s ease;           
+.o_appointment_slot[data-available="true"] {
+    background: #2ecc71 !important;
+    color: #fff !important;
 }
-
-/* Styling when a user hovers over an available slot 
-.o_appointment_slot_button:hover {
-    background-color: #218838 !important; 
-    transform: scale(1.05);            
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-*/
-/* Styling for the currently selected slot 
-.o_appointment_slot_button.active {
-    background-color: #004d1a !important;
-    border: 2px solid #ffffff !important;
-}
-*/
-
-
-
-
-
