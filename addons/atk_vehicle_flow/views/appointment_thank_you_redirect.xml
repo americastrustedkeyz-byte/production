@@ -6,19 +6,19 @@
     inherit_id="website_appointment.appointment_info"
     name="ATK Appointment Confirmation Redirect">
 
-    <xpath expr="//div[contains(@class, 'o_appointment_confirmation')]" position="inside">
+    <!-- Inject logic without relying on DOM structure -->
+    <xpath expr="." position="inside">
 
-      <!-- Custom message -->
-      <div class="alert alert-info mt-3">
-        Thank you for booking. You will be redirected to secure payment shortly.
-      </div>
+      <t t-call-assets="web.assets_frontend"/>
 
-      <!-- Redirect AFTER confirmation page is rendered -->
       <script type="text/javascript">
         (function () {
-          setTimeout(function () {
-            window.location.href = "/atk/report/checkout";
-          }, 3000);
+          // Only run on appointment confirmation pages
+          if (window.location.pathname.startsWith("/calendar/view/")) {
+            setTimeout(function () {
+              window.location.href = "/atk/report/checkout";
+            }, 3000);
+          }
         })();
       </script>
 
