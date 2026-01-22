@@ -81,7 +81,7 @@
 
     wrapper.innerHTML = `
       <div class="alert alert-info">
-        <strong>Thank you for booking.</strong><br/>
+        <strong>Complete your booking.</strong><br/>
         Please proceed to payment to confirm your appointment.
       </div>
 
