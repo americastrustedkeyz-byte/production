@@ -9,7 +9,7 @@
     <xpath expr="." position="inside">
 
       <div class="alert alert-info mt-3">
-        Thank you for booking. You will be redirected to secure payment shortly…
+        Custom Message: Thank you for booking. You will be redirected to secure payment shortly…
       </div>
 
       <script type="text/javascript">
@@ -19,7 +19,7 @@
           ) {
             setTimeout(function () {
               window.location.href = "/atk/report/checkout";
-            }, 3000);
+            }, 50000);
           }
         })();
       </script>
