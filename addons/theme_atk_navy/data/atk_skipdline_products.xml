@@ -12,8 +12,8 @@
             <field name="type">consu</field>
             <!-- Field 'is_storable' is obsolete in this context and must be REMOVED -->
             
-            <field name="sale_ok" eval="True""")/>>
-            <field name="purchase_ok" eval="True""")/>>
+            <field name="sale_ok" eval="True"/>
+            <field name="purchase_ok" eval="False"/>
             
             <field name="description_sale">A product for testing purposes.</field>
         </record>
