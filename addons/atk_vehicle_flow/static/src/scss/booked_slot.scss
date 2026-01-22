@@ -1,10 +1,11 @@
-.o_appointment_slot[data-available="false"] {
+.atk-slot-booked {
     background: #e0e0e0 !important;
-    color: #999 !important;
-    pointer-events: none;
+    color: #888 !important;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
-.o_appointment_slot[data-available="true"] {
+.atk-slot-available {
     background: #2ecc71 !important;
     color: #fff !important;
 }

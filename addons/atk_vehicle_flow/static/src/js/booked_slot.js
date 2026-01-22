@@ -1,11 +1,17 @@
 /** @odoo-module **/
 
-document.addEventListener("click", function (e) {
-    const slot = e.target.closest(".o_appointment_slot");
-    if (!slot) return;
+import { registry } from "@web/core/registry";
 
-    if (slot.dataset.available === "false") {
-        e.preventDefault();
-        e.stopPropagation();
-    }
+registry.category("appointment.slot").add("atk_slot_renderer", {
+    apply(slotEl, slotData) {
+        if (slotData.atk_state === "booked") {
+            slotEl.classList.add("atk-slot-booked");
+            slotEl.setAttribute("aria-disabled", "true");
+            slotEl.style.pointerEvents = "none";
+        }
+
+        if (slotData.atk_state === "available") {
+            slotEl.classList.add("atk-slot-available");
+        }
+    },
 });
