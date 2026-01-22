@@ -1,39 +1,46 @@
 (function () {
-  // Run only on appointment confirmation pages
-  const path = window.location.pathname;
-  const params = new URLSearchParams(window.location.search);
+  /* ==========================================
+     ATK – Appointment Thank You → Checkout
+     Runs ONLY on confirmation page
+     ========================================== */
 
   const isThankYouPage =
-    path.startsWith("/calendar/view/") &&
-    params.get("state") === "new";
+    window.location.pathname.startsWith("/calendar/view/") &&
+    new URLSearchParams(window.location.search).get("state") === "new";
 
   if (!isThankYouPage) return;
 
-  // Detect track
-  const track = params.get("track") || "standard";
+  console.log("[ATK] Appointment confirmation detected");
 
-  // Create checkout button
-  const btn = document.createElement("a");
-  btn.innerText =
-    track === "priority"
-      ? "Proceed to Priority Checkout ($125)"
-      : "Proceed to Checkout ($5)";
+  // Prevent double execution
+  if (window.__atkCheckoutRedirected) return;
+  window.__atkCheckoutRedirected = true;
 
-  btn.href = `/atk/report/checkout?track=${encodeURIComponent(track)}`;
-  btn.className = "btn btn-primary btn-lg mt-4";
+  // Create UI message
+  const msg = document.createElement("div");
+  msg.className = "alert alert-info mt-4";
+  msg.innerHTML = `
+    <strong>Thank you for booking.</strong><br/>
+    You will be redirected to secure payment shortly…
+    <br/><br/>
+    <button class="btn btn-primary" id="atk-checkout-now">
+      Proceed to Payment
+    </button>
+  `;
 
-  // Insert safely after page loads
-  window.addEventListener("load", function () {
-    const container =
-      document.querySelector("main") ||
-      document.querySelector("body");
+  // Insert message at top of page
+  document.body.prepend(msg);
 
-    if (!container) return;
+  // Auto redirect
+  const redirect = () => {
+    window.location.href = "/atk/report/checkout";
+  };
 
-    const wrapper = document.createElement("div");
-    wrapper.className = "text-center";
-    wrapper.appendChild(btn);
+  // Manual button
+  document
+    .getElementById("atk-checkout-now")
+    .addEventListener("click", redirect);
 
-    container.appendChild(wrapper);
-  });
+  // Auto after delay
+  setTimeout(redirect, 3000);
 })();
