@@ -1,14 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-        <!-- Inherit the base appointment info template -->
-        <template id="appointment_confirmation_custom_atk_final" inherit_id="appointment.appointment_info" name="Custom ATK Confirmation Message Final Fix">
-            <!-- Targeting a simple container which is universal -->
-            <xpath expr="//div[hasclass('container')]" position="inside">
-                 <div class="alert alert-info mt-4">
-                    **Confirmation Message:** This is the universal message for the thank you page.
-                 </div>
-            </xpath>
-        </template>
-    </data>
+
+  <template
+    id="appointment_confirmation_custom_atk_final"
+    inherit_id="website_appointment.appointment_info"
+    name="ATK Appointment Confirmation Redirect">
+
+    <xpath expr="//div[contains(@class, 'o_appointment_confirmation')]" position="inside">
+
+      <!-- Custom message -->
+      <div class="alert alert-info mt-3">
+        Thank you for booking. You will be redirected to secure payment shortly.
+      </div>
+
+      <!-- Redirect AFTER confirmation page is rendered -->
+      <script type="text/javascript">
+        (function () {
+          setTimeout(function () {
+            window.location.href = "/atk/report/checkout";
+          }, 3000);
+        })();
+      </script>
+
+    </xpath>
+
+  </template>
+
 </odoo>
