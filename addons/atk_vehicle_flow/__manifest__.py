@@ -8,7 +8,8 @@
         "website_appointment_sale",
         "website_sale",
         "sale"
-         "resource_booking",
+        "resource_booking",
+        "resource_booking_website",
     ],
     "data": [
         "views/booking_page.xml",
