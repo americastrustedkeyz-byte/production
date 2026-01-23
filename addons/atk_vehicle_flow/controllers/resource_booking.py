@@ -1,7 +1,7 @@
 from odoo import http
 from odoo.http import request
 
-class ATKResourceBookingDebug(http.Controller):
+class ATKResourceBookingController(http.Controller):
 
     @http.route(
         '/book/vehicle-onboarding/slots',
@@ -10,14 +10,29 @@ class ATKResourceBookingDebug(http.Controller):
         website=True
     )
     def booking_slots(self, booking_type_id, **kw):
-        booking_type = request.env['resource.booking.type'].sudo().browse(int(1))
+        BookingType = request.env['resource.booking.type'].sudo()
+        booking_type = BookingType.browse(int(booking_type_id))
 
-        # DEBUG: expose model capabilities safely
+        if not booking_type.exists():
+            return {
+                'error': 'Invalid booking type'
+            }
+
+        # ✅ OCA OFFICIAL SLOT GENERATOR
+        slots = booking_type._slots_()
+
+        result = []
+
+        for slot in slots:
+            result.append({
+                'start': slot.get('start'),
+                'end': slot.get('end'),
+                'available': slot.get('available', True),
+                'resource_ids': slot.get('resource_ids', []),
+            })
+
         return {
-            'id': booking_type.id,
-            'name': booking_type.name,
-            'methods': [
-                m for m in dir(booking_type)
-                if 'slot' in m or 'avail' in m or 'calendar' in m
-            ],
+            'booking_type': booking_type.name,
+            'slot_duration': booking_type.slot_duration,
+            'slots': result,
         }
