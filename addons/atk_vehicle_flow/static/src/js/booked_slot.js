@@ -6,135 +6,161 @@
 
     const PAGE_PATH_REQUIRED = '/appointment/1';
     const STORAGE_KEY = 'atk_booked_slots';
-    const SLOT_PARENT_SELECTOR = '.o_slots_list.row.px-0';
-    const CONFIRM_BTN_SELECTOR = '.btn.btn-primary.o_appointment_form_confirm_btn';
+
+    const AVAILABILITY_SELECTOR =
+        '.o_appointment_availabilities, [data-appointments-count="1"]';
+
+    const CONFIRM_BTN_SELECTOR =
+        '.btn.btn-primary.o_appointment_form_confirm_btn';
 
     /* ==========================
-       SAFETY CHECK
+       PAGE GUARD
     ========================== */
 
     if (!window.location.pathname.includes(PAGE_PATH_REQUIRED)) {
-        console.log('[ATK] Not on appointment page, script ignored.');
         return;
     }
 
-    console.log('[ATK] Appointment page detected.');
+    console.log('[ATK] Appointment page active');
 
     /* ==========================
-       UTILS
+       STORAGE
     ========================== */
 
-    function getStoredBookings() {
+    function getBookings() {
         try {
             return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-        } catch (e) {
+        } catch {
             return {};
         }
     }
 
-    function saveStoredBookings(data) {
+    function saveBookings(data) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
+
+    function resetBookings() {
+        localStorage.removeItem(STORAGE_KEY);
+    }
+
+    function getBookedCount() {
+        return Object.keys(getBookings()).length;
+    }
+
+    /* ==========================
+       USER ROLE DETECTION
+       (safe frontend-only check)
+    ========================== */
+
+    function isAdminUser() {
+        return (
+            document.body.classList.contains('o_is_admin') ||
+            document.querySelector('[data-oe-model="res.users"]') ||
+            document.cookie.includes('admin')
+        );
+    }
+
+    /* ==========================
+       DATE_TIME FROM URL
+    ========================== */
 
     function getDateTimeFromURL() {
         const params = new URLSearchParams(window.location.search);
         const dt = params.get('date_time');
-        if (!dt) return null;
-        return decodeURIComponent(dt).replace('+', ' ');
+        return dt ? decodeURIComponent(dt).replace('+', ' ') : null;
     }
 
     /* ==========================
-       UI
+       COUNTER RENDER
     ========================== */
 
-    function renderCounter() {
-        const slotParent = document.querySelector(SLOT_PARENT_SELECTOR);
-        if (!slotParent) return;
+    function renderCounter(target) {
+        if (!target) return;
 
-        let counter = slotParent.querySelector('.atk-slot-counter');
+        let counter = target.querySelector('.atk-slot-counter');
+
         if (!counter) {
             counter = document.createElement('div');
             counter.className = 'atk-slot-counter';
-            slotParent.appendChild(counter);
+            target.appendChild(counter);
         }
 
-        const data = getStoredBookings();
-        const count = Object.keys(data).length;
+        const count = getBookedCount();
 
         if (count === 0) {
-            counter.style.display = 'none';
+            counter.remove();
             return;
         }
 
-        counter.style.display = 'block';
-        counter.innerHTML = count === 1
-            ? '<strong>1 slot is booked</strong>'
-            : `<strong>${count} slots are booked</strong>`;
+        counter.innerHTML =
+            count === 1
+                ? `<strong>1 slot is booked</strong>`
+                : `<strong>${count} slots are booked</strong>`;
 
-        console.log('[ATK] Counter updated:', count);
+        if (isAdminUser()) {
+            counter.style.cursor = 'pointer';
+            counter.title = 'Click to reset slot counter';
+
+            counter.onclick = function () {
+                const confirmReset = window.confirm(
+                    'Admin action: Reset booked slot counter?'
+                );
+
+                if (confirmReset) {
+                    resetBookings();
+                    console.log('[ATK] Slot counter reset by admin');
+                    window.location.reload();
+                }
+            };
+        } else {
+            counter.onclick = null;
+            counter.style.cursor = 'default';
+        }
     }
 
     /* ==========================
-       CONFIRM LISTENER
+       OBSERVER (KEY FIX)
+    ========================== */
+
+    const observer = new MutationObserver(() => {
+        document.querySelectorAll(AVAILABILITY_SELECTOR).forEach(renderCounter);
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+    });
+
+    /* ==========================
+       CONFIRM BUTTON LISTENER
     ========================== */
 
     function attachConfirmListener() {
         const btn = document.querySelector(CONFIRM_BTN_SELECTOR);
-        if (!btn) return false;
+        if (!btn || btn.dataset.atkBound) return;
 
-        btn.addEventListener('click', function () {
+        btn.dataset.atkBound = 'true';
 
+        btn.addEventListener('click', () => {
             const dateTime = getDateTimeFromURL();
+            if (!dateTime) return;
 
-            console.log('[ATK] Confirm button clicked');
-            console.log('[ATK] URL date_time:', dateTime);
+            const data = getBookings();
 
-            if (!dateTime) {
-                console.warn('[ATK] No date_time in URL. Booking not stored.');
-                return;
+            if (!data[dateTime]) {
+                data[dateTime] = true;
+                saveBookings(data);
+                console.log('[ATK] Slot confirmed:', dateTime);
             }
-
-            const data = getStoredBookings();
-
-            if (data[dateTime]) {
-                console.log('[ATK] Slot already recorded:', dateTime);
-                return;
-            }
-
-            // STORE
-            data[dateTime] = true;
-            saveStoredBookings(data);
-
-            console.log('[ATK] Slot stored in localStorage:', dateTime);
-            console.log('[ATK] Current storage:', data);
-
-            // update UI
-            setTimeout(renderCounter, 500);
-
-        }, { once: true });
-
-        console.log('[ATK] Confirm listener attached.');
-        return true;
+        });
     }
 
     /* ==========================
        INIT
     ========================== */
 
-    function init() {
+    setInterval(() => {
+        attachConfirmListener();
+    }, 300);
 
-        console.log('[ATK] Initializing booking counter system...');
-
-        // Render existing count on load
-        setTimeout(renderCounter, 500);
-
-        // Wait for confirm button (async render)
-        const confirmWatcher = setInterval(() => {
-            if (attachConfirmListener()) {
-                clearInterval(confirmWatcher);
-            }
-        }, 300);
-    }
-
-    init();
 })();

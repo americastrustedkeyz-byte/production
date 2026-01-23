@@ -9,6 +9,13 @@
     border-radius: 6px;
 }
 
+.o_appointment_availabilities button, .o_day_wrapper.o_slot_button.active{
+ background: green!important;
+ color: white!important; 
+}
+
+
+
 /*.atk-slots-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
