@@ -1,8 +1,7 @@
 from odoo import http
 from odoo.http import request
 
-
-class ATKResourceBookingController(http.Controller):
+class ATKResourceBookingDebug(http.Controller):
 
     @http.route(
         '/book/vehicle-onboarding/slots',
@@ -11,25 +10,14 @@ class ATKResourceBookingController(http.Controller):
         website=True
     )
     def booking_slots(self, booking_type_id, **kw):
-        """
-        Backend-aware slot fetcher using OCA resource_booking.
-        Returns computed slots exactly as Odoo sees them.
-        """
+        booking_type = request.env['resource.booking.type'].sudo().browse(int(1))
 
-        BookingType = request.env['resource.booking.type'].sudo()
-        booking_type = BookingType.browse(int(1))
-
-        if not booking_type.exists():
-            return {
-                "error": "Booking type not found"
-            }
-
-        # OCA core slot computation (calendar + duration + holidays + bookings)
-        slots = booking_type._get_available_slots()
-
-        # Return RAW slots first (important for debugging)
+        # DEBUG: expose model capabilities safely
         return {
-            "booking_type": booking_type.name,
-            "total_slots": len(slots),
-            "slots": slots,
+            'id': booking_type.id,
+            'name': booking_type.name,
+            'methods': [
+                m for m in dir(booking_type)
+                if 'slot' in m or 'avail' in m or 'calendar' in m
+            ],
         }
