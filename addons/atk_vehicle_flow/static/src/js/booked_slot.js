@@ -1,14 +1,56 @@
 (function () {
+
+    /* ==========================
+       CONFIG
+    ========================== */
+
+    const PAGE_PATH_REQUIRED = '/appointment/1';
+    const STORAGE_KEY = 'atk_booked_slots';
     const SLOT_PARENT_SELECTOR = '.o_slots_list.row.px-0';
+    const CONFIRM_BTN_SELECTOR = '.btn.btn-primary.o_appointment_form_confirm_btn';
 
-    // CHANGE THIS if Odoo uses a different class for booked slots
-    const BOOKED_SLOT_SELECTOR = '.o_slot.booked, .o_slot.o_booked';
+    /* ==========================
+       SAFETY CHECK
+    ========================== */
 
-    function updateSlotCounter() {
+    if (!window.location.pathname.includes(PAGE_PATH_REQUIRED)) {
+        console.log('[ATK] Not on appointment page, script ignored.');
+        return;
+    }
+
+    console.log('[ATK] Appointment page detected.');
+
+    /* ==========================
+       UTILS
+    ========================== */
+
+    function getStoredBookings() {
+        try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function saveStoredBookings(data) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function getDateTimeFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const dt = params.get('date_time');
+        if (!dt) return null;
+        return decodeURIComponent(dt).replace('+', ' ');
+    }
+
+    /* ==========================
+       UI
+    ========================== */
+
+    function renderCounter() {
         const slotParent = document.querySelector(SLOT_PARENT_SELECTOR);
         if (!slotParent) return;
 
-        // Remove old counter if exists
         let counter = slotParent.querySelector('.atk-slot-counter');
         if (!counter) {
             counter = document.createElement('div');
@@ -16,44 +58,83 @@
             slotParent.appendChild(counter);
         }
 
-        const bookedSlots = slotParent.querySelectorAll(BOOKED_SLOT_SELECTOR).length;
+        const data = getStoredBookings();
+        const count = Object.keys(data).length;
 
-        if (bookedSlots === 0) {
+        if (count === 0) {
             counter.style.display = 'none';
             return;
         }
 
         counter.style.display = 'block';
-        counter.innerHTML =
-            bookedSlots === 1
-                ? '<strong>1 slot is booked</strong>'
-                : `<strong>${bookedSlots} slots are booked</strong>`;
+        counter.innerHTML = count === 1
+            ? '<strong>1 slot is booked</strong>'
+            : `<strong>${count} slots are booked</strong>`;
+
+        console.log('[ATK] Counter updated:', count);
     }
 
-    // Observe slot changes (day selection, refresh, re-render)
-    const observer = new MutationObserver(() => {
-        updateSlotCounter();
-    });
+    /* ==========================
+       CONFIRM LISTENER
+    ========================== */
 
-    function startObserver() {
-        const slotParent = document.querySelector(SLOT_PARENT_SELECTOR);
-        if (!slotParent) return;
+    function attachConfirmListener() {
+        const btn = document.querySelector(CONFIRM_BTN_SELECTOR);
+        if (!btn) return false;
 
-        observer.disconnect();
-        observer.observe(slotParent, {
-            childList: true,
-            subtree: true,
-        });
+        btn.addEventListener('click', function () {
 
-        updateSlotCounter();
+            const dateTime = getDateTimeFromURL();
+
+            console.log('[ATK] Confirm button clicked');
+            console.log('[ATK] URL date_time:', dateTime);
+
+            if (!dateTime) {
+                console.warn('[ATK] No date_time in URL. Booking not stored.');
+                return;
+            }
+
+            const data = getStoredBookings();
+
+            if (data[dateTime]) {
+                console.log('[ATK] Slot already recorded:', dateTime);
+                return;
+            }
+
+            // STORE
+            data[dateTime] = true;
+            saveStoredBookings(data);
+
+            console.log('[ATK] Slot stored in localStorage:', dateTime);
+            console.log('[ATK] Current storage:', data);
+
+            // update UI
+            setTimeout(renderCounter, 500);
+
+        }, { once: true });
+
+        console.log('[ATK] Confirm listener attached.');
+        return true;
     }
 
-    // Retry until slots exist (Odoo renders async)
-    const initInterval = setInterval(() => {
-        const slotParent = document.querySelector(SLOT_PARENT_SELECTOR);
-        if (slotParent) {
-            clearInterval(initInterval);
-            startObserver();
-        }
-    }, 300);
+    /* ==========================
+       INIT
+    ========================== */
+
+    function init() {
+
+        console.log('[ATK] Initializing booking counter system...');
+
+        // Render existing count on load
+        setTimeout(renderCounter, 500);
+
+        // Wait for confirm button (async render)
+        const confirmWatcher = setInterval(() => {
+            if (attachConfirmListener()) {
+                clearInterval(confirmWatcher);
+            }
+        }, 300);
+    }
+
+    init();
 })();
