@@ -2,7 +2,12 @@
     "name": "ATK Navy Theme",
     "version": "18.0.1.0.0",
     "category": "Theme/Corporate",
-    "depends": ["website", "sale"],
+    "depends": [
+        "website", 
+        "product", 
+        "sale", 
+        "website_sale",
+    ],
     "data": [
         'views/layout.xml',
         'views/navbar.xml',
@@ -11,6 +16,7 @@
         'views/pagetemplate.xml',
         'views/atk_booking_page.xml',
         'data/atk_products.xml',
+        'data/atk_skipdline_products.xml',
         'views/global_modals.xml',
     ],
     'assets': {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="atk_booking_counter_admin_gate" inherit_id="website.layout">
+        <xpath expr="//body" position="inside">
+
+            <!-- Admin marker -->
+            <t t-if="request.env.user.has_group('base.group_system')">
+                <div id="atk-admin-flag"
+                     data-atk-admin="1"
+                     style="display:none"></div>
+            </t>
+
+            <!-- Non-admin marker -->
+            <t t-else="">
+                <div id="atk-admin-flag"
+                     data-atk-admin="0"
+                     style="display:none"></div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

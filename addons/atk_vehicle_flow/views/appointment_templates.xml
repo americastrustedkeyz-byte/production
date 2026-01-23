@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="appointment_info_custom" inherit_id="appointment.appointment_info">
+        <xpath expr="//div[contains(@class, 'o_appointment_slot_button')]" position="attributes">
+            <attribute name="t-att-class">
+                'o_appointment_slot_button ' + ('o_slot_booked' if slot.get('is_booked') else '')
+            </attribute>
+            <!-- Disable clicking if booked -->
+            <attribute name="t-att-style">
+                'pointer-events: none;' if slot.get('is_booked') else ''
+            </attribute>
+        </xpath>
+    </template>
+</odoo>

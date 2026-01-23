@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="atk_vehicle_booking_thank_you" name="ATK Booking Thank You">
+    <t t-call="website.layout">
+      <div class="container my-5">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+
+            <div class="card shadow-sm p-4">
+
+              <h3 class="mb-3 text-success">
+                Booking Confirmed 🎉
+              </h3>
+
+              <p>
+                Your booking has been successfully created.
+              </p>
+
+              <ul class="list-unstyled mt-3">
+                <li><strong>Reference:</strong> <t t-out="booking.name"/></li>
+                <li><strong>Date:</strong> <t t-out="booking.start_datetime"/></li>
+                <li><strong>Status:</strong> <t t-out="booking.state"/></li>
+              </ul>
+
+              <!-- PAYMENT BUTTON -->
+              <div class="mt-4">
+                <a
+                  t-att-href="'/shop/cart?booking_id=%s' % booking.id"
+                  class="btn btn-primary btn-lg">
+                  Proceed to Payment
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </t>
+  </template>
+</odoo>

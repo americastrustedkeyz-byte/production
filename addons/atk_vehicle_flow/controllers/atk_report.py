@@ -19,7 +19,7 @@ class AtkReportController(http.Controller):
         #Logged-in user
         order = request.website.sale_get_order(force_create=True)
 
-        # Clean cart
+        #Clean cart
         order.order_line.unlink()
 
         #Add ONLY the $5 product

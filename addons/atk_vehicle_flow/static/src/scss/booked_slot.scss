@@ -1,0 +1,47 @@
+.atk-slot-counter {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: clamp(13px, 1.2vw, 15px);
+    color: #0d6efd;
+    background: rgba(13, 110, 253, 0.08);
+    border-radius: 6px;
+}
+
+
+.o_appointment_availabilities button, .o_day_wrapper.o_slot_button.active{
+ background: green!important;
+ color: white!important; 
+}
+
+
+
+/*.atk-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.atk-slot {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.atk-slot-available {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.atk-slot-available:hover {
+  background-color: #218838;
+}
+
+.atk-slot-booked {
+  background-color: #e0e0e0;
+  color: #777;
+  cursor: not-allowed;
+}*/

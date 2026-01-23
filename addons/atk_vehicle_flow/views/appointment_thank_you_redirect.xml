@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <template
+    id="appointment_confirmation_custom_atk_final"
+    inherit_id="appointment.appointment_info"
+    name="ATK Appointment Confirmation Redirect">
+
+    <xpath expr="." position="inside">
+
+      <div class="alert alert-info mt-3">
+        Custom Message: Thank you for booking. You will be redirected to secure payment shortly…
+      </div>
+
+      <script type="text/javascript">
+        (function () {
+          if (
+            window.location.pathname.startsWith("/calendar/view/")
+          ) {
+            setTimeout(function () {
+              window.location.href = "/atk/report/checkout";
+            }, 50000);
+          }
+        })();
+      </script>
+
+    </xpath>
+
+  </template>
+
+</odoo>
