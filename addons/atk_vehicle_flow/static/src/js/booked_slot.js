@@ -2,10 +2,18 @@
 
     const PAGE_PATH_REQUIRED = '/appointment/1';
     const STORAGE_KEY = 'atk_booked_slots';
+
     const TARGET_SELECTOR =
         '.o_appointment_availabilities, [data-appointments-count]';
 
     if (!window.location.pathname.includes(PAGE_PATH_REQUIRED)) return;
+
+    /* ---------- ADMIN FLAG (QWEB) ---------- */
+
+    function isAdmin() {
+        const flag = document.getElementById('atk-admin-flag');
+        return flag && flag.dataset.atkAdmin === '1';
+    }
 
     /* ---------- STORAGE ---------- */
 
@@ -18,17 +26,8 @@
         }
     }
 
-    function resetData() {
+    function resetStorage() {
         localStorage.removeItem(STORAGE_KEY);
-    }
-
-    /* ---------- ADMIN ---------- */
-
-    function isAdmin() {
-        return (
-            document.body.classList.contains('o_is_admin') ||
-            document.cookie.includes('admin')
-        );
     }
 
     /* ---------- COUNTER ---------- */
@@ -55,12 +54,19 @@
                 ? '<strong>1 slot is booked</strong>'
                 : `<strong>${count} slots are booked</strong>`;
 
+        /* ---------- ADMIN ONLY ACTION ---------- */
+
         if (isAdmin()) {
             counter.style.cursor = 'pointer';
-            counter.onclick = () => {
-                if (confirm('Reset booked slot counter?')) {
-                    resetData();
-                    location.reload();
+            counter.title = 'Admin: Click to reset booked slots';
+
+            counter.onclick = function () {
+                const proceed = window.confirm(
+                    'Admin action: reset booked slot counter?'
+                );
+                if (proceed) {
+                    resetStorage();
+                    window.location.reload();
                 }
             };
         } else {
@@ -69,7 +75,7 @@
         }
     }
 
-    /* ---------- SAFE POLLING ---------- */
+    /* ---------- SAFE POLLING (UNCHANGED) ---------- */
 
     setInterval(() => {
         document.querySelectorAll(TARGET_SELECTOR).forEach(render);

@@ -1,11 +1,22 @@
-<template id="atk_vehicle_booking_page" name="ATK Vehicle Booking Page">
-  <t t-call="website.layout">
-    <div class="container my-5">
-      <h1>Book Vehicle Onboarding</h1>
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
 
-      <div id="atk-slots-loader">Loading available slots…</div>
+    <template id="atk_booking_counter_admin_gate" inherit_id="website.layout">
+        <xpath expr="//body" position="inside">
 
-      <div id="atk-slots" class="row d-none"></div>
-    </div>
-  </t>
-</template>
+            <!-- Admin marker -->
+            <t t-if="request.env.user.has_group('base.group_system')">
+                <div id="atk-admin-flag"
+                     data-atk-admin="1"
+                     style="display:none"></div>
+            </t>
+
+            <!-- Non-admin marker -->
+            <t t-else="">
+                <div id="atk-admin-flag"
+                     data-atk-admin="0"
+                     style="display:none"></div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

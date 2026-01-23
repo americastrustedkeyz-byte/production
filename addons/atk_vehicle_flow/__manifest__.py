@@ -12,7 +12,7 @@
         "web_calendar_slot_duration",
     ],
     "data": [
-        #"views/booking_page.xml",
+        "views/booking_page.xml",
         #"views/booking_thank_you.xml",
     ],
     'assets': {
