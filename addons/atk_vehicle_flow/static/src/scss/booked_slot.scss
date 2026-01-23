@@ -1,11 +1,28 @@
-.atk-slot-booked {
-    background: #e0e0e0 !important;
-    color: #888 !important;
-    cursor: not-allowed;
-    opacity: 0.7;
+.atk-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.atk-slot {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .atk-slot-available {
-    background: #2ecc71 !important;
-    color: #fff !important;
+  background-color: #28a745;
+  color: #fff;
+}
+
+.atk-slot-available:hover {
+  background-color: #218838;
+}
+
+.atk-slot-booked {
+  background-color: #e0e0e0;
+  color: #777;
+  cursor: not-allowed;
 }
