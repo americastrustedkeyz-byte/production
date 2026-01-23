@@ -7,7 +7,7 @@
         "website_appointment",
         "website_appointment_sale",
         "website_sale",
-        "sale"
+        "sale",
         "resource_booking",
         "resource_booking_website",
     ],
