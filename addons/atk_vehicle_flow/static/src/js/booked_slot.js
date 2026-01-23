@@ -6,6 +6,9 @@
     const TARGET_SELECTOR =
         '.o_appointment_availabilities, [data-appointments-count]';
 
+    const CONFIRM_BTN_SELECTOR =
+        '.btn.btn-primary.o_appointment_form_confirm_btn';
+
     if (!window.location.pathname.includes(PAGE_PATH_REQUIRED)) return;
 
     /* ---------- ADMIN FLAG (QWEB) ---------- */
@@ -17,17 +20,30 @@
 
     /* ---------- STORAGE ---------- */
 
-    function getCount() {
+    function getData() {
         try {
-            const d = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-            return Object.keys(d).length;
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
         } catch {
-            return 0;
+            return {};
         }
     }
 
-    function resetStorage() {
+    function saveData(data) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function resetData() {
         localStorage.removeItem(STORAGE_KEY);
+    }
+
+    function getCount() {
+        return Object.keys(getData()).length;
+    }
+
+    /* ---------- FORCE REFRESH (KEY FIX) ---------- */
+
+    function refreshCounters() {
+        document.querySelectorAll(TARGET_SELECTOR).forEach(render);
     }
 
     /* ---------- COUNTER ---------- */
@@ -54,8 +70,6 @@
                 ? '<strong>1 slot is booked</strong>'
                 : `<strong>${count} slots are booked</strong>`;
 
-        /* ---------- ADMIN ONLY ACTION ---------- */
-
         if (isAdmin()) {
             counter.style.cursor = 'pointer';
             counter.title = 'Admin: Click to reset booked slots';
@@ -65,7 +79,7 @@
                     'Admin action: reset booked slot counter?'
                 );
                 if (proceed) {
-                    resetStorage();
+                    resetData();
                     window.location.reload();
                 }
             };
@@ -80,5 +94,33 @@
     setInterval(() => {
         document.querySelectorAll(TARGET_SELECTOR).forEach(render);
     }, 600);
+
+    /* ---------- CONFIRM LISTENER (FIXED) ---------- */
+
+    setInterval(() => {
+        const btn = document.querySelector(CONFIRM_BTN_SELECTOR);
+        if (!btn || btn.dataset.atkBound) return;
+
+        btn.dataset.atkBound = '1';
+
+        btn.addEventListener('click', () => {
+            const params = new URLSearchParams(window.location.search);
+            const dt = params.get('date_time');
+            if (!dt) return;
+
+            const key = decodeURIComponent(dt).replace('+', ' ');
+            const data = getData();
+
+            if (!data[key]) {
+                data[key] = true;
+                saveData(data);
+
+                console.log('[ATK] Slot stored after reset-safe:', key);
+
+                // 🔑 CRITICAL FIX
+                setTimeout(refreshCounters, 300);
+            }
+        });
+    }, 300);
 
 })();
