@@ -1,4 +1,16 @@
-.atk-slots-grid {
+.atk-slot-counter {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: clamp(13px, 1.2vw, 15px);
+    color: #0d6efd; /* Odoo primary blue */
+    background: rgba(13, 110, 253, 0.08);
+    border-radius: 6px;
+}
+
+
+/*.atk-slots-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 12px;
@@ -25,4 +37,4 @@
   background-color: #e0e0e0;
   color: #777;
   cursor: not-allowed;
-}
+}*/

@@ -1,55 +1,59 @@
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(loadSlots, 300);
-});
+(function () {
+    const SLOT_PARENT_SELECTOR = '.o_slots_list.row.px-0';
 
-function loadSlots() {
-  fetch('/book/vehicle-onboarding/slots', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-    },
-    body: JSON.stringify({
-      jsonrpc: '2.0',
-      method: 'call',
-      params: { booking_type_id: 1 },
-      id: Date.now(),
-    }),
-  })
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById('atk-slots');
-      document.getElementById('atk-slots-loader').remove();
-      container.classList.remove('d-none');
+    // CHANGE THIS if Odoo uses a different class for booked slots
+    const BOOKED_SLOT_SELECTOR = '.o_slot.booked, .o_slot.o_booked';
 
-      if (!data.result || !data.result.length) {
-        container.innerHTML = '<p>No slots available.</p>';
-        return;
-      }
+    function updateSlotCounter() {
+        const slotParent = document.querySelector(SLOT_PARENT_SELECTOR);
+        if (!slotParent) return;
 
-      data.result.forEach(slot => {
-        const div = document.createElement('div');
-        div.className = 'col-md-3 mb-3';
-
-        const btn = document.createElement('button');
-        btn.className = 'btn w-100';
-        btn.textContent = slot.label;
-
-        if (slot.available) {
-          btn.classList.add('btn-success');
-          btn.onclick = () => selectSlot(slot);
-        } else {
-          btn.classList.add('btn-secondary');
-          btn.disabled = true;
+        // Remove old counter if exists
+        let counter = slotParent.querySelector('.atk-slot-counter');
+        if (!counter) {
+            counter = document.createElement('div');
+            counter.className = 'atk-slot-counter';
+            slotParent.appendChild(counter);
         }
 
-        div.appendChild(btn);
-        container.appendChild(div);
-      });
-    });
-}
+        const bookedSlots = slotParent.querySelectorAll(BOOKED_SLOT_SELECTOR).length;
 
-function selectSlot(slot) {
-  console.log('Selected slot:', slot);
-  alert(`Slot selected: ${slot.label}`);
-}
+        if (bookedSlots === 0) {
+            counter.style.display = 'none';
+            return;
+        }
+
+        counter.style.display = 'block';
+        counter.innerHTML =
+            bookedSlots === 1
+                ? '<strong>1 slot is booked</strong>'
+                : `<strong>${bookedSlots} slots are booked</strong>`;
+    }
+
+    // Observe slot changes (day selection, refresh, re-render)
+    const observer = new MutationObserver(() => {
+        updateSlotCounter();
+    });
+
+    function startObserver() {
+        const slotParent = document.querySelector(SLOT_PARENT_SELECTOR);
+        if (!slotParent) return;
+
+        observer.disconnect();
+        observer.observe(slotParent, {
+            childList: true,
+            subtree: true,
+        });
+
+        updateSlotCounter();
+    }
+
+    // Retry until slots exist (Odoo renders async)
+    const initInterval = setInterval(() => {
+        const slotParent = document.querySelector(SLOT_PARENT_SELECTOR);
+        if (slotParent) {
+            clearInterval(initInterval);
+            startObserver();
+        }
+    }, 300);
+})();
