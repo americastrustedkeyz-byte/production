@@ -1,1 +1,0 @@
- #response["slots"] is what populates the right-hand column
