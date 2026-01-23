@@ -1,26 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<odoo>
-  <template id="atk_vehicle_booking_page" name="ATK Vehicle Booking">
-    <t t-call="website.layout">
-      <div class="container my-5">
-        <h2 class="mb-4">Book Vehicle Onboarding</h2>
+<template id="atk_vehicle_booking_page" name="ATK Vehicle Booking Page">
+  <t t-call="website.layout">
+    <div class="container my-5">
+      <h1>Book Vehicle Onboarding</h1>
 
-        <!--Slot container-->
-        <div
-          id="atk-slot-container"
-          data-booking-type-id="1"
-          class="atk-slots-grid"
-        >
-          <div class="text-muted">Loading available slots…</div>
-        </div>
-      </div>
-    </t>
-  </template>
+      <div id="atk-slots-loader">Loading available slots…</div>
 
-  <!-- Public route -->
-  <record id="action_atk_vehicle_booking" model="ir.ui.view">
-    <field name="name">ATK Vehicle Booking Page</field>
-    <field name="type">qweb</field>
-    <field name="key">atk_vehicle_flow.booking_page</field>
-  </record>
-</odoo>
+      <div id="atk-slots" class="row d-none"></div>
+    </div>
+  </t>
+</template>
