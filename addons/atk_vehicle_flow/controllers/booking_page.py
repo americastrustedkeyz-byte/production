@@ -12,6 +12,6 @@ class ATKVehicleBookingPage(http.Controller):
     )
     def vehicle_onboarding_booking(self, **kw):
         return request.render(
-            'atk_vehicle_flow.website_resource_booking',
+            'atk_vehicle_flow.atk_vehicle_booking_page',
             {}
         )

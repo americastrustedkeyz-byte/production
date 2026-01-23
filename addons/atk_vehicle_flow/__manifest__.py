@@ -8,9 +8,10 @@
         "website_appointment_sale",
         "website_sale",
         "sale"
+         "resource_booking",
     ],
     "data": [
-        #"views/website_resource_booking.xml",
+        "views/booking_page.xml",
     ],
     'assets': {
         'web.assets_frontend': [
