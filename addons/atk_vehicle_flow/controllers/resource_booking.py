@@ -17,7 +17,7 @@ class ATKResourceBookingController(http.Controller):
         """
 
         BookingType = request.env['resource.booking.type'].sudo()
-        booking_type = BookingType.browse(int(booking_type_id))
+        booking_type = BookingType.browse(int(1))
 
         if not booking_type.exists():
             return {
