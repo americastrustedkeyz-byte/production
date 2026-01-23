@@ -9,10 +9,11 @@
         "website_sale",
         "sale",
         "resource_booking",
-        "resource_booking_website",
+       #"resource_booking_website",
     ],
     "data": [
         "views/booking_page.xml",
+        "views/booking_thank_you.xml",
     ],
     'assets': {
         'web.assets_frontend': [
