@@ -1,0 +1,14 @@
+<odoo>
+  <template id="website_resource_booking_page">
+    <t t-call="website.layout">
+      <div class="container mt-5">
+        <h2 t-esc="booking_type.name"/>
+
+        <div id="atk-booking-calendar"
+             t-att-data-booking-type-id="booking_type.id">
+          <!-- Slots injected here -->
+        </div>
+      </div>
+    </t>
+  </template>
+</odoo>
