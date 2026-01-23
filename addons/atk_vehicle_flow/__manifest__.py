@@ -8,8 +8,6 @@
         "website_appointment_sale",
         "website_sale",
         "sale",
-        "resource_booking",
-        "web_calendar_slot_duration",
     ],
     "data": [
         "views/booking_page.xml",
