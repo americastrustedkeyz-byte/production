@@ -39,7 +39,7 @@
       (day === 0 && hour >= 18) || // Sunday 18:00+
       (day >= 1 && day <= 4)       // Mon–Thu (all day)
     ) {
-      //standardActive = true;//changed
+      standardActive = true;
     }
 
     /* ==============================
@@ -52,20 +52,20 @@
       day === 6 ||                                // Saturday
       (day === 0 && hour < 18)                    // Sunday before 18:00
     ) {
-     // priorityActive = true; // changed
+      priorityActive = true;
     }
 
     /* ==============================
-       MUTUAL EXCLUSIVITY (CRITICAL)// changed
+       MUTUAL EXCLUSIVITY (CRITICAL)
        ============================== */
-    //if (standardActive) priorityActive = false;
-    //if (priorityActive) standardActive = false;
+    if (standardActive) priorityActive = false;
+    if (priorityActive) standardActive = false;
 
-    /*==============================
-       APPLY STATES//changed
-       ==============================*/
-    //standardBtn.disabled = !standardActive;
-    //priorityBtn.disabled = !priorityActive;
+    /* ==============================
+       APPLY STATES
+       ============================== */
+    standardBtn.disabled = !standardActive;
+    priorityBtn.disabled = !priorityActive;
 
     /* ==============================
        DEBUG OUTPUT
@@ -89,7 +89,7 @@
     //modal.hidden = false;
 
     console.log('[ATK] Select Booking modal opened');
-    applyTrackTimeLogic();
+    //applyTrackTimeLogic();
   });
 
 })();
