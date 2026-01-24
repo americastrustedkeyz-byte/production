@@ -64,8 +64,8 @@
     /* ==============================
        APPLY STATES
        ============================== */
-    standardBtn.disabled = !standardActive;
-    priorityBtn.disabled = !priorityActive;
+    //standardBtn.disabled = !standardActive;
+    //priorityBtn.disabled = !priorityActive;
 
     /* ==============================
        DEBUG OUTPUT
