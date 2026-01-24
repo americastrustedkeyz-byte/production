@@ -116,3 +116,12 @@ p.mt-2 a {
 body.atk-modal-open {
   overflow: hidden;
 }
+
+@media (max-width: 992px) {
+.atk-vehicle-panel{
+    min-height: 0!important;
+    max-height: 85vh!important;
+    overflow-y: auto!important;
+}
+}
+
