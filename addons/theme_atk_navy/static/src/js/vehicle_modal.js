@@ -242,10 +242,12 @@ function closeReportModal() {
 /* ===============================================
    Proceed to Checkout
 ================================================ */
+
 (function bindAtkCheckoutProceed() {
   const proceedBtn = document.getElementById('atk_report_proceed');
   if (!proceedBtn) return;
-
+   console.log('You can book now');
+   /*
   proceedBtn.addEventListener('click', function () {
     const params = new URLSearchParams(window.location.search);
     const track = params.get('track') || 'standard';
@@ -253,6 +255,7 @@ function closeReportModal() {
     window.location.href =
       `/atk/report/checkout?track=${encodeURIComponent(track)}`;
   });
+  */
 })();
 
 

@@ -42,7 +42,7 @@ window.ATK_VEHICLE_TRANSPONDER_DATA = [
 
 
   { make: 'Jeep/2015 Downward', model: 'Cherokee/Commander/Compass/Grand Cherokee/Liberty(Cherokee)/Patriot/Renegade/Wagoneer /Wrangler', year: 2015, type: 'Workhorse', price: 195 },
-  { make: 'Jeep/2016 Upward', model: 'Cherokee/Compass/Gladiator/Grand Cherokee/Cherokee/Patriot/Renegade/Wagoneer_Grand/Wagoneer/Wrangler', year: 2014, type: 'Workhorse', price: 245 },
+  { make: 'Jeep/2016 Upward', model: 'Cherokee/Compass/Gladiator/Grand Cherokee/Cherokee/Patriot/Renegade/Wagoneer_Grand/Wagoneer/Wrangler', year: 2016, type: 'Workhorse', price: 245 },
   { make: 'Honda', model: 'Accord/Civic/Crosstour/CR-V/Element/Fit/HR-V/Insight(Civic Hybrid)/Odyssey/Passport/Pilot/Prologue(Electric)/Ridgeline', year: 2015, type: 'Workhorse', price: 195 },
   { make: 'Honda', model: 'Accord/Civic/Crosstour/CR-V/Element/Fit/HR-V/Insight(Civic Hybrid)/Odyssey/Passport/Pilot/Prologue(Electric)/Ridgeline', year: 2016, type: 'Workhorse', price: 245 },
   { make: 'Hyundai', model: 'Accent/Azera/Elantra/Genesis(G80)/Ioniq 5 / 6(Electric)/Ioniq Hybrid/Kona/Palisade/Santa Cruz(Truck)/Santa Fe/Sonata/Tucson/Venue/Veracruz(Santa Fe XL)', year: 2015, type: 'Workhorse', price: 195 },
