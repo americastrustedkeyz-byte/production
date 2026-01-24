@@ -208,8 +208,7 @@
                 </button>
 
                 <a href="/appointment/1" type="button" id="atk_report_proceed" class="atk-primary-btn">
-                    Proceed to Checkout
-                </a>
+                     Proceed
                 </div>
             </div>
             </div>
