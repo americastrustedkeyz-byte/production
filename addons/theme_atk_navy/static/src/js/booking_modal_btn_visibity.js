@@ -39,7 +39,7 @@
       (day === 0 && hour >= 18) || // Sunday 18:00+
       (day >= 1 && day <= 4)       // Mon–Thu (all day)
     ) {
-      standardActive = true;
+      //standardActive = true;//changed
     }
 
     /* ==============================
