@@ -104,8 +104,8 @@
                 <label>Key Type</label>
                 <select id="key_type">
                     <option>Don't know</option>
-                    <option>Smart Key</option>
-                    <option>Transponder</option>
+                    <option value="smart_key">Smart Key</option>
+                    <option value="transponder">Transponder</option>
                 </select>
 
                 <!-- VEHICLE MAKE -->
@@ -172,6 +172,9 @@
                     Appointment delays may occur if incorrect vehicle info is selected.
                     </label>
 
+                    <div class="others_wrapper" id="others_wrapper">
+                    </div>
+
                      <t t-if="request.env.user.has_group('base.group_user')">
                         <button type="button" class="atk-primary-btn" id="atk_continue_btn">
                             Continue To Booking
@@ -203,13 +206,13 @@
                 <div id="atk_report_body"></div>
 
                 <div class="atk-report-actions">
-                <button type="button" id="atk_report_cancel" class="atk-secondary-btn">
-                    Cancel
-                </button>
+                    <button type="button" id="atk_report_cancel" class="atk-secondary-btn">
+                        Cancel
+                    </button>
 
-                <button type="button" id="atk_report_proceed" class="atk-primary-btn">
-                    Proceed to Checkout
-                </button>
+                    <a href="/appointment/1" type="button" id="atk_report_proceed" class="atk-primary-btn text-center">
+                        Proceed
+                    </a>
                 </div>
             </div>
             </div>

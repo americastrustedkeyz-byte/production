@@ -169,7 +169,8 @@ function collectVehicleData() {
     price: val('price'),
     vehicle_type: val('vehicle_type'),
     battery: chk('battery'),
-    vehicle_info: chk('vehicle_info')
+    vehicle_info: chk('vehicle_info'),
+    others: val('others')
   };
 }
 
@@ -178,6 +179,17 @@ function collectVehicleData() {
 ================================================ */
 function computeReport(data) {
   const isPriority = data.track === 'priority';
+  const isOthers = data.others === 'others';
+
+  let finalPrice = 'To be determined';
+
+  if (!isOthers) {
+    if (isPriority) {
+      finalPrice = `$${Number(data.price || 0) + 125}`;
+    } else {
+      finalPrice = `$${Number(data.price || 0)}`;
+    }
+  }
 
   return {
     status: isPriority ? 'Skip-The-Line' : 'Standard',
@@ -185,17 +197,14 @@ function computeReport(data) {
     make: data.make,
     model: data.model,
     year: data.year,
-    vehicle_type: isPriority
-      ? data.vehicle_type
-      : 'To be determined',
-    price: isPriority
-      ? `$${Number(data.price || 0) + 125}`
-      : 'To be determined',
+    vehicle_type: data.vehicle_type,
+    price: finalPrice,
     battery: data.battery,
     vehicle_info: data.vehicle_info,
     donation: '$5 (Non-refundable)'
   };
 }
+
 
 /* ===============================================
    RENDER REPORT SUMMARY (SAFE)
@@ -242,10 +251,12 @@ function closeReportModal() {
 /* ===============================================
    Proceed to Checkout
 ================================================ */
+
 (function bindAtkCheckoutProceed() {
   const proceedBtn = document.getElementById('atk_report_proceed');
   if (!proceedBtn) return;
-
+   console.log('You can book now');
+   /*
   proceedBtn.addEventListener('click', function () {
     const params = new URLSearchParams(window.location.search);
     const track = params.get('track') || 'standard';
@@ -253,6 +264,7 @@ function closeReportModal() {
     window.location.href =
       `/atk/report/checkout?track=${encodeURIComponent(track)}`;
   });
+  */
 })();
 
 
