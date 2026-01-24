@@ -68,7 +68,7 @@
 
     e.preventDefault();
     modal.hidden = false;
-    //applyTrackTimeLogic();
+    applyTrackTimeLogic();
   });
 
 
