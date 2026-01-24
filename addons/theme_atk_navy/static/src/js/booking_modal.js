@@ -58,9 +58,9 @@
 
   }
 
-  /* ======================================================
+  /*======================================================
      SINGLE, AUTHORITATIVE CLICK HANDLER (FIX)
-     ====================================================== */
+     ======================================================*/
 
  document.addEventListener('click', function (e) {
     const trigger = e.target.closest('[data-open-booking-track]');
