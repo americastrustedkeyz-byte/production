@@ -207,7 +207,7 @@
                         Cancel
                     </button>
 
-                    <a href="/appointment/1" type="button" id="atk_report_proceed" class="atk-primary-btn">
+                    <a href="/appointment/1" type="button" id="atk_report_proceed" class="atk-primary-btn text-center">
                         Proceed
                     </a>
                 </div>

@@ -178,6 +178,17 @@ function collectVehicleData() {
 ================================================ */
 function computeReport(data) {
   const isPriority = data.track === 'priority';
+  const isOthers = data.make === 'Others';
+
+  let finalPrice = 'To be determined';
+
+  if (!isOthers) {
+    if (isPriority) {
+      finalPrice = `$${Number(data.price || 0) + 125}`;
+    } else {
+      finalPrice = `$${Number(data.price || 0)}`;
+    }
+  }
 
   return {
     status: isPriority ? 'Skip-The-Line' : 'Standard',
@@ -185,17 +196,14 @@ function computeReport(data) {
     make: data.make,
     model: data.model,
     year: data.year,
-    vehicle_type: isPriority
-      ? data.vehicle_type
-      : 'To be determined',
-    price: isPriority
-      ? `$${Number(data.price || 0) + 125}`
-      : 'To be determined',
+    vehicle_type: data.vehicle_type,
+    price: finalPrice,
     battery: data.battery,
     vehicle_info: data.vehicle_info,
     donation: '$5 (Non-refundable)'
   };
 }
+
 
 /* ===============================================
    RENDER REPORT SUMMARY (SAFE)
