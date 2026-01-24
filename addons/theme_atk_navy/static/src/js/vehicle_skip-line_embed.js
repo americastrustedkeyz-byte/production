@@ -120,7 +120,7 @@
     if (keyType === 'transponder') {
         if (!window.ATK_VEHICLE_TRANSPONDER_DATA) {
             console.warn('[ATK] Transponder dataset not loaded yet');
-            return null; // 👈 important
+            return null;
         }
         return window.ATK_VEHICLE_TRANSPONDER_DATA;
     }
@@ -139,7 +139,15 @@
 
     debugState('Key Type changed');
 
-    const DATA = getVehicleDatasetByKeyType();
+    const RAW_DATA = getVehicleDatasetByKeyType();
+
+    // Dataset not ready yet → exit safely
+    if (RAW_DATA === null) {
+        return;
+    }
+
+    const DATA = RAW_DATA;
+
 
     clearSelect(makeEl, 'Select a make');
     clearSelect(modelEl, '');
