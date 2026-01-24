@@ -135,37 +135,41 @@
      HANDLE KEY TYPE CHANGE (POPULATE MAKE)
      =====================================================*/
 
-  qs('key_type')?.addEventListener('change', function () {
+ qs('key_type')?.addEventListener('change', function () {
 
     debugState('Key Type changed');
-
-    const RAW_DATA = getVehicleDatasetByKeyType();
-
-    // Dataset not ready yet → exit safely
-    if (RAW_DATA === null) {
-        return;
-    }
-
-    const DATA = RAW_DATA;
-
 
     clearSelect(makeEl, 'Select a make');
     clearSelect(modelEl, '');
     clearSelect(yearEl, '');
-
     hideHiddenContents();
 
-    if (!DATA.length) {
-      console.warn('[ATK] No dataset for key type:', this.value);
-      return;
+    function tryPopulate() {
+        const RAW_DATA = getVehicleDatasetByKeyType();
+
+        // ⛔ Dataset not loaded yet → retry
+        if (RAW_DATA === null) {
+            setTimeout(tryPopulate, 200);
+            return;
+        }
+
+        const DATA = RAW_DATA;
+
+        if (!DATA.length) {
+            console.warn('[ATK] Dataset resolved but empty');
+            return;
+        }
+
+        const makes = unique(DATA.map(d => d.make));
+        makes.forEach(m => makeEl.appendChild(new Option(m, m)));
+        makeEl.appendChild(new Option('Others', 'Others'));
+
+        console.log('[ATK] Makes populated:', makes);
     }
 
-    const makes = unique(DATA.map(d => d.make));
-    makes.forEach(m => makeEl.appendChild(new Option(m, m)));
-    makeEl.appendChild(new Option('Others', 'Others'));
+    tryPopulate();
+});
 
-    console.log('[ATK] Makes populated:', makes);
-  });
 
   /*=====================================================
      HANDLE MAKE CHANGE
@@ -173,7 +177,10 @@
 
   makeEl.addEventListener('change', function () {
 
-    const DATA = getVehicleDatasetByKeyType();
+    const RAW_DATA = getVehicleDatasetByKeyType();
+    if (RAW_DATA === null) return;
+
+    const DATA = RAW_DATA;
     const make = this.value;
 
     debugState('Make changed');
