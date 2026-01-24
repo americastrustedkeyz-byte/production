@@ -50,14 +50,12 @@
 
   function debugState(label) {
     console.log(`[ATK DEBUG] ${label}`, {
+      key_type: qs('key_type')?.value,
       make: qs('vehicle_make')?.value,
       model: qs('vehicle_model')?.value,
       year: qs('vehicle_year')?.value,
       price: qs('price')?.value,
-      vehicle_type: qs('vehicle_type')?.value,
-      makeTag: qs('vehicle_make')?.tagName,
-      modelTag: qs('vehicle_model')?.tagName,
-      yearTag: qs('vehicle_year')?.tagName
+      vehicle_type: qs('vehicle_type')?.value
     });
   }
 
@@ -85,132 +83,118 @@
     if (priceEl) priceEl.value = price;
     if (vehicleTypeEl) vehicleTypeEl.value = type;
 
-    console.log('[ATK DEBUG] Price & Vehicle Type SET', {
-      price,
-      vehicle_type: type
-    });
+    console.log('[ATK DEBUG] Price & Vehicle Type SET', { price, type });
   }
 
   /* =====================================================
      ELEMENT REFERENCES
      ===================================================== */
 
-  let makeEl        = qs('vehicle_make');
-  let modelEl       = qs('vehicle_model');
-  let modelWrapEl   = qs('vehicle_model_wrapper');
-  let yearEl        = qs('vehicle_year');
-  let yearWrapEl    = qs('vehicle_year_wrapper');
-  let priceLabelE1    = qs('price_label');
-  let vehicleTypeLabelE1    = qs('vehicle_type_label');
-  const priceEl     = qs('price');
+  let makeEl      = qs('vehicle_make');
+  let modelEl     = qs('vehicle_model');
+  let modelWrapEl = qs('vehicle_model_wrapper');
+  let yearEl      = qs('vehicle_year');
+  let yearWrapEl  = qs('vehicle_year_wrapper');
+
+  const priceEl       = qs('price');
   const vehicleTypeEl = qs('vehicle_type');
+  const priceLabelEl  = qs('price_label');
+  const vehicleTypeLabelEl = qs('vehicle_type_label');
 
   if (!makeEl || !modelEl || !yearEl) {
     console.warn('[ATK] Vehicle inputs not found');
     return;
   }
 
-  /*======FILTER DATASET TO CALL=========*/
-  function getVehicleDatasetByKeyType() {
-    const keyTypeEl = document.getElementById('key_type');
-    if (!keyTypeEl) return [];
+  /*=====================================================
+     DATASET SELECTOR (KEY FIX)
+     =====================================================*/
 
-    const keyType = keyTypeEl.value;
+  function getVehicleDatasetByKeyType() {
+    const keyType = qs('key_type')?.value;
 
     if (keyType === 'smart_key') {
-        return window.ATK_VEHICLE_DATA || [];
+      return window.ATK_VEHICLE_DATA || [];
     }
 
     if (keyType === 'transponder') {
-        return window.ATK_VEHICLE_TRANSPONDER_DATA || [];
+      return window.ATK_VEHICLE_TRANSPONDER_DATA || [];
     }
 
     return [];
-}
-
-
-
-  /* =====================================================
-     DATA
-     ===================================================== */
-
-  //const DATA = window.ATK_VEHICLE_DATA || [];
-  const DATA = getVehicleDatasetByKeyType();
-  if (!DATA.length) {
-    console.warn('[ATK] ATK_VEHICLE_DATA is empty');
   }
-
-  /* =====================================================
-     INITIAL POPULATION (MAKE)
-     ===================================================== */
-
-  const makes = unique(DATA.map(d => d.make));
-  makes.forEach(m => makeEl.appendChild(new Option(m, m)));
-  makeEl.appendChild(new Option('Others', 'Others'));
 
   hideHiddenContents();
 
-  /* =====================================================
+  /*=====================================================
+     HANDLE KEY TYPE CHANGE (POPULATE MAKE)
+     =====================================================*/
+
+  qs('key_type')?.addEventListener('change', function () {
+
+    debugState('Key Type changed');
+
+    const DATA = getVehicleDatasetByKeyType();
+
+    clearSelect(makeEl, 'Select a make');
+    clearSelect(modelEl, '');
+    clearSelect(yearEl, '');
+
+    hideHiddenContents();
+
+    if (!DATA.length) {
+      console.warn('[ATK] No dataset for key type:', this.value);
+      return;
+    }
+
+    const makes = unique(DATA.map(d => d.make));
+    makes.forEach(m => makeEl.appendChild(new Option(m, m)));
+    makeEl.appendChild(new Option('Others', 'Others'));
+
+    console.log('[ATK] Makes populated:', makes);
+  });
+
+  /*=====================================================
      HANDLE MAKE CHANGE
-     ===================================================== */
+     =====================================================*/
 
   makeEl.addEventListener('change', function () {
 
+    const DATA = getVehicleDatasetByKeyType();
     const make = this.value;
+
     debugState('Make changed');
 
     clearSelect(modelEl, '');
     clearSelect(yearEl, '');
 
-    if (!make) {
+    if (!make || !DATA.length) {
       hideHiddenContents();
       return;
     }
 
-/* -------- OTHERS MODE -------- */
-if (make === 'Others') {
+    /* -------- OTHERS MODE -------- */
+    if (make === 'Others') {
 
-  // Replace all selects with text inputs
-  ['vehicle_make', 'vehicle_model_wrapper', 'vehicle_year_wrapper'].forEach(id => {
-    replaceSelectWithInput(id);
-  });
+      ['vehicle_make', 'vehicle_model_wrapper', 'vehicle_year_wrapper'].forEach(id => {
+        replaceSelectWithInput(id);
+      });
 
-  //Rebind elements after DOM replacement
-  makeEl  = qs('vehicle_make');
-  modelWrapEl   = qs('vehicle_model_wrapper');
-  yearWrapEl    = qs('vehicle_year_wrapper');
+      makeEl      = qs('vehicle_make');
+      modelWrapEl = qs('vehicle_model_wrapper');
+      yearWrapEl  = qs('vehicle_year_wrapper');
 
-  // Hide price & vehicle type for Others
-  if (priceEl) {
-    priceEl.value = '';
-    priceEl.style.display = 'none';
-  }
+      if (priceEl) priceEl.style.display = 'none';
+      if (vehicleTypeEl) vehicleTypeEl.style.display = 'none';
+      if (priceLabelEl) priceLabelEl.style.display = 'none';
+      if (vehicleTypeLabelEl) vehicleTypeLabelEl.style.display = 'none';
 
-  if (vehicleTypeEl) {
-    vehicleTypeEl.value = '';
-    vehicleTypeEl.style.display = 'none';
-  }
+      qs('vehicle_reset_btn')?.style.setProperty('display', 'flex');
 
-   if (priceLabelE1) {
-    priceLabelE1.style.display = 'none';
-  }
-
-   if (vehicleTypeLabelE1) {
-    vehicleTypeLabelE1.style.display = 'none';
-  }
-
-  let vehicleReseBtnE1    = qs('vehicle_reset_btn');
-  if(vehicleReseBtnE1){
-        vehicleReseBtnE1.style.display = 'flex';
-   }
-
-  console.log('[ATK DEBUG] Others mode activated → all fields are inputs');
-  debugState('Others mode state');
-
-  showHiddenContents();
-  return;
-}
-
+      console.log('[ATK DEBUG] Others mode activated');
+      showHiddenContents();
+      return;
+    }
 
     /* -------- NORMAL FLOW -------- */
 
@@ -218,7 +202,6 @@ if (make === 'Others') {
 
     setPriceAndType(filtered);
 
-    /* MODELS */
     const models = unique(
       filtered
         .map(d => d.model)
@@ -230,7 +213,6 @@ if (make === 'Others') {
 
     models.forEach(m => modelEl.appendChild(new Option(m, m)));
 
-    /* YEARS */
     const years = unique(
       filtered
         .map(d => String(d.year).trim())
@@ -241,24 +223,20 @@ if (make === 'Others') {
 
     debugState('After dependent population');
 
-    if (allRequiredFilled()) {
-      showHiddenContents();
-      debugState('Hidden shown after auto population');
-    } else {
-      hideHiddenContents();
-    }
+    allRequiredFilled() ? showHiddenContents() : hideHiddenContents();
   });
 
-  /* =====================================================
+  /*=====================================================
      HANDLE MODEL / YEAR CHANGE
-     ===================================================== */
+     =====================================================*/
 
   [modelEl, yearEl].forEach(el => {
     el.addEventListener('change', function () {
-      debugState('Model/Year changed by user');
+      debugState('Model/Year changed');
       if (allRequiredFilled()) {
         showHiddenContents();
       }
     });
   });
+
 })();
