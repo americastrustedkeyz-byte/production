@@ -203,13 +203,14 @@
                 <div id="atk_report_body"></div>
 
                 <div class="atk-report-actions">
-                <button type="button" id="atk_report_cancel" class="atk-secondary-btn">
-                    Cancel
-                </button>
+                    <button type="button" id="atk_report_cancel" class="atk-secondary-btn">
+                        Cancel
+                    </button>
 
-                <a href="/appointment/1" type="button" id="atk_report_proceed" class="atk-primary-btn">
-                     Proceed
-                </a>
+                    <a href="/appointment/1" type="button" id="atk_report_proceed" class="atk-primary-btn">
+                        Proceed
+                    </a>
+                </div>
             </div>
             </div>
         </section>
