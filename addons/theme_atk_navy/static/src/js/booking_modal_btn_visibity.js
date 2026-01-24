@@ -61,9 +61,9 @@
     if (standardActive) priorityActive = false;
     if (priorityActive) standardActive = false;
 
-    /* ==============================
+    /*==============================
        APPLY STATES
-       ============================== */
+       ==============================*/
     //standardBtn.disabled = !standardActive;
     //priorityBtn.disabled = !priorityActive;
 
