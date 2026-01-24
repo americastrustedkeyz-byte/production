@@ -104,8 +104,8 @@
                 <label>Key Type</label>
                 <select id="key_type">
                     <option>Don't know</option>
-                    <option>Smart Key</option>
-                    <option>Transponder</option>
+                    <option value="smart_key">Smart Key</option>
+                    <option value="transponder">Transponder</option>
                 </select>
 
                 <!-- VEHICLE MAKE -->

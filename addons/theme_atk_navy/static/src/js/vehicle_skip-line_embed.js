@@ -110,11 +110,32 @@
     return;
   }
 
+  /*======FILTER DATASET TO CALL=========*/
+  function getVehicleDatasetByKeyType() {
+    const keyTypeEl = document.getElementById('key_type');
+    if (!keyTypeEl) return [];
+
+    const keyType = keyTypeEl.value;
+
+    if (keyType === 'smart_key') {
+        return window.ATK_VEHICLE_DATA || [];
+    }
+
+    if (keyType === 'transponder') {
+        return window.ATK_VEHICLE_TRANSPONDER_DATA || [];
+    }
+
+    return [];
+}
+
+
+
   /* =====================================================
      DATA
      ===================================================== */
 
-  const DATA = window.ATK_VEHICLE_DATA || [];
+  //const DATA = window.ATK_VEHICLE_DATA || [];
+  const DATA = getVehicleDatasetByKeyType();
   if (!DATA.length) {
     console.warn('[ATK] ATK_VEHICLE_DATA is empty');
   }

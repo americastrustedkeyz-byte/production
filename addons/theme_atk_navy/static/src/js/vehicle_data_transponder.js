@@ -1,28 +1,28 @@
 /* ==========================================================
-   ATK VEHICLE DATA — COMPLETE (C1)
+   ATK VEHICLE TRSANPONDER DATA — COMPLETE (C2)
    ========================================================== */
 
-window.ATK_VEHICLE_DATA = [
+window.ATK_VEHICLE_TRANSPONDER_DATA = [
 
   { 
     make: 'Acura/2015 Downward', 
-    model: 'ADX/ILX/MDX/Integra/RDX/RL/RLX/TL/TLX/TSX/ZDX', year: 2015, 
+    model: 'All Model', year: 2015, 
     type: 'Luxury', price: 195 
 },
 { 
     make: 'Acura/2016 Upward', 
-    model: 'ADX/ILX/MDX/Integra/RDX/RL/RLX/TL/TLX/TSX/ZDX', year: 2016/2025, 
+    model: 'All Model', year: 2016/2025, 
     type: 'Luxury', price: 245 
 },
 
-  { make: 'Buick/2015 Downward', model: 'Enclave/Regal/Cascada/Encore/Envision/Envista/LaCrosse/Lucerne/Regal/Verano', year: 2015, type: 'Luxury', price: 195 },
-  { make: 'Buick/2016 Upward', model: 'Enclave/Regal/Cascada/Encore/Envision/Envista/LaCrosse/Lucerne/Regal/Verano', year: 2016, type: 'Luxury', price: 245 },
+  { make: 'Buick/2015 Downward', model: 'All Model', year: 2015, type: 'Luxury', price: 195 },
+  { make: 'Buick/2016 Upward', model: 'All Model', year: 2016, type: 'Luxury', price: 245 },
 
-  { make: 'Cadillac/2015 Downward', model: 'ATS/CT4/CT5/CT6/CTS(CT5)/DTS(XTS)//ELR(Hybrid)/Escalade/Escalade IQ(Electric)/Lyriq(Electric)/Optiq(Electric)/SRX(XT5)/STS(XTS)/Vistiq/(Electric)/XT4/XT5/XT6/XTS(Successor to DTS/STS)', year: 2015, type: 'Luxury', price: 195 },
-  { make: 'Cadillac/2016 Upward', model: 'ATS/CT4/CT5/CT6/CTS(CT5)/DTS(XTS)//ELR(Hybrid)/Escalade/Escalade IQ(Electric)/Lyriq(Electric)/Optiq(Electric)/SRX(XT5)/STS(XTS)/Vistiq/(Electric)/XT4/XT5/XT6/XTS(Successor to DTS/STS)', year: 2016, type: 'Luxury', price: 245 },
+  { make: 'Cadillac/2015 Downward', model: 'All Model', year: 2015, type: 'Luxury', price: 195 },
+  { make: 'Cadillac/2016 Upward', model: 'All Model', year: 2016, type: 'Luxury', price: 245 },
 
-  { make: 'Infiniti/2015 Downward', model: 'EX35(QX50)/FX35_ FX50(QX70)/G37(Q50)/JX35(Renamed QX60)/M35_M45(Q70)/Q50/Q60/QX30/QX50_QX55/QX56(QX80)/QX60/QX80', year: 2015, type: 'Luxury', price: 195 },
-  { make: 'Infiniti/2016 Upward', model: 'EX35(QX50)/FX35_ FX50(QX70)/G37(Q50)/JX35(Renamed QX60)/M35_M45(Q70)/Q50/Q60/QX30/QX50_QX55/QX56(QX80)/QX60/QX80', year: 2016, type: 'Luxury', price: 245 },
+  { make: 'Infiniti/2015 Downward', model: 'All Model', year: 2015, type: 'Luxury', price: 195 },
+  { make: 'Infiniti/2016 Upward', model: 'All Model', year: 2016, type: 'Luxury', price: 245 },
 
   { make: 'Lexus/2015 Downward', model: 'CT 200h/ES 350/GS 350_450h _460/GX 460/HS 250h/IS 250_350/LC 500/LS 460_600h/LX 570/NX/RC_RC F/RX 350_450h/SC 430', year: 2014, type: 'Luxury', price: 195 },
   { make: 'Lexus/2016 Upward', model: 'ES 350/GS 350_450h_ 460/GX 460/IS 250_350/LC 500/LS 460_600h/LX 570/NX/RC_RC F/RX 350_450h:/RZ(Electric)/TX/UX', year: 2014, type: 'Luxury', price: 245 },
