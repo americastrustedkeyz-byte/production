@@ -37,6 +37,7 @@
             'theme_atk_navy/static/src/js/booking_modal.js',
             'theme_atk_navy/static/src/js/vehicle_modal.js',
             'theme_atk_navy/static/src/js/vehicle_data.js',
+            'theme_atk_navy/static/src/js/vehicle_data_transponder.js',
             'theme_atk_navy/static/src/js/vehicle_skip-line_embed.js',
         ],
     },
