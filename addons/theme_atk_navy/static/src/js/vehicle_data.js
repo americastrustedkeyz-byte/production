@@ -6,12 +6,18 @@
 window.ATK_VEHICLE_DATA = [
 
   { 
-    make: 'Acura', 
-    model: 'All Models', year: 2014, 
-    type: 'Luxury', price: 295 
+    make: 'Acura/2015 Downward', 
+    model: 'All Models', year: 2015, 
+    type: 'Luxury', price: 195 
+},
+{ 
+    make: 'Acura/2016 Upward', 
+    model: 'All Models', year: 2016/2025, 
+    type: 'Luxury', price: 245 
 },
 
-  { make: 'Buick', model: 'Enclave/Regal/Cascada', year: 2017, type: 'Luxury', price: 295 },
+  { make: 'Buick/2015 Downward', model: 'Enclave/Regal/Cascada/Encore/Envision/Envista/LaCrosse/Lucerne/Regal/Verano', year: 2015, type: 'Luxury', price: 195 },
+  { make: 'Buick/2016 Upward', model: 'Enclave/Regal/Cascada/Encore/Envision/Envista/LaCrosse/Lucerne/Regal/Verano', year: 2016, type: 'Luxury', price: 245 },
 
   { make: 'Cadillac', model: 'All Models', year: 2015, type: 'Luxury', price: 295 },
 
@@ -23,11 +29,8 @@ window.ATK_VEHICLE_DATA = [
 
   { make: 'Toyota', model: 'Land Cruiser', year: 2016, type: 'Luxury', price: 295 },
 
-  { make: 'Chevrolet', model: 'C7/C8', year: 2014, type: 'Performance/Luxury', price: 295 },
-
-  { make: 'Chevrolet Silverado', model: 'Smart Key', year: 2019, type: 'Workhorse', price: 245 },
-
-  { make: 'Chevrolet Tahoe/Suburban', model: 'Chevrolet Tahoe/Suburban', year: 2015, type: 'Workhorse', price: 245 },
+  { make: 'Chevrolet/2015 Downward', model: 'Avalanche/Aveo/Blazer/Blazer/Bolt(EV/EUV)/Camaro/Cobalt/Colorado/Cruze/Equinox/Equinox EV/Express/HHR/Impala/Malibu/Silverado/Silverado EV/Sonic/Spark/Suburban/Tahoe/Trailblazer/Traverse/Trax', year: 2015, type: 'Performance/Luxury', price: 195 },
+  { make: 'Chevrolet/2016 Upward', model: 'Avalanche/Aveo/Blazer/Blazer/Bolt(EV/EUV)/Camaro/Cobalt/Colorado/Cruze/Equinox/Equinox EV/Express/HHR/Impala/Malibu/Silverado/Silverado EV/Sonic/Spark/Suburban/Tahoe/Trailblazer/Traverse/Trax', year: 2016, type: 'Performance/Luxury', price: 245 },
 
   { make: 'Ford', model: 'Expedition/Explorer', year: 2016, type: 'Workhorse', price: 245 },
   
@@ -45,7 +48,7 @@ window.ATK_VEHICLE_DATA = [
   
   { make: 'Toyota Sequoia/Tundra', model: 'Sequoia', year: 2015, type: 'Workhorse', price: 245 },
 
-  { make: 'Toyota Sienna', model: 'Smart Key Models', year: 2021, type: 'Workhorse', price: 245 },
+  { make: 'Toyota Sienna', model: 'Smart Key Models', year: 1998/2021, type: 'Workhorse', price: 195 },
 
   { make: 'Others', model: 'Other', year: null, type: 'Standard', price: null }
 
