@@ -169,7 +169,8 @@ function collectVehicleData() {
     price: val('price'),
     vehicle_type: val('vehicle_type'),
     battery: chk('battery'),
-    vehicle_info: chk('vehicle_info')
+    vehicle_info: chk('vehicle_info'),
+    others: val('others')
   };
 }
 
@@ -178,7 +179,7 @@ function collectVehicleData() {
 ================================================ */
 function computeReport(data) {
   const isPriority = data.track === 'priority';
-  const isOthers = data.make === 'Others';
+  const isOthers = data.others === 'others';
 
   let finalPrice = 'To be determined';
 

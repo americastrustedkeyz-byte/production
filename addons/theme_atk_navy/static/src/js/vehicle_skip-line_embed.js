@@ -196,6 +196,23 @@
     /* -------- OTHERS MODE -------- */
     if (make === 'Others') {
 
+        /*Append hideen input element to track others*/
+            const othersWrapper = qs('others_wrapper');
+
+            if (othersWrapper && !qs('others')) {
+              const hiddenInput = document.createElement('input');
+              hiddenInput.type = 'hidden';
+              hiddenInput.id = 'others';
+              hiddenInput.name = 'others';
+              hiddenInput.value = 'others';
+
+              othersWrapper.appendChild(hiddenInput);
+
+              console.log('[ATK DEBUG] Hidden others input appended');
+            }
+
+        /*Append hideen input element to track others*/
+
       ['vehicle_make', 'vehicle_model_wrapper', 'vehicle_year_wrapper'].forEach(id => {
         replaceSelectWithInput(id);
       });
