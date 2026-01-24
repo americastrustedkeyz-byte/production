@@ -52,17 +52,17 @@
       day === 6 ||                                // Saturday
       (day === 0 && hour < 18)                    // Sunday before 18:00
     ) {
-      priorityActive = true;
+     // priorityActive = true; // changed
     }
 
     /* ==============================
-       MUTUAL EXCLUSIVITY (CRITICAL)
+       MUTUAL EXCLUSIVITY (CRITICAL)// changed
        ============================== */
-    if (standardActive) priorityActive = false;
-    if (priorityActive) standardActive = false;
+    //if (standardActive) priorityActive = false;
+    //if (priorityActive) standardActive = false;
 
     /*==============================
-       APPLY STATES
+       APPLY STATES//changed
        ==============================*/
     //standardBtn.disabled = !standardActive;
     //priorityBtn.disabled = !priorityActive;
