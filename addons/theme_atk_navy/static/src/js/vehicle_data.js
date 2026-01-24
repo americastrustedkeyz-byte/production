@@ -6,17 +6,31 @@ window.ATK_VEHICLE_DATA = [
 
   { 
     make: 'Acura/2015 Downward', 
-    model: 'ADX/ILX/MDX/Integra/RDX/RL/RLX/TL/TLX/TSX/ZDX', year: 2015, 
-    type: 'Luxury', price: 195 
+    model: 'ADX/ILX/MDX/Integra/RDX/RL/RLX/TL/TLX/TSX/ZDX', 
+    year: '2015', 
+    type: 'Luxury', 
+    price: 195 
 },
 { 
     make: 'Acura/2016 Upward', 
-    model: 'ADX/ILX/MDX/Integra/RDX/RL/RLX/TL/TLX/TSX/ZDX', year: 2016/2025, 
-    type: 'Luxury', price: 245 
+    model: 'ADX/ILX/MDX/Integra/RDX/RL/RLX/TL/TLX/TSX/ZDX', 
+    year: '2016', 
+    type: 'Luxury', 
+    price: 245 
 },
 
-  { make: 'Buick/2015 Downward', model: 'Enclave/Regal/Cascada/Encore/Envision/Envista/LaCrosse/Lucerne/Regal/Verano', year: 2015, type: 'Luxury', price: 195 },
-  { make: 'Buick/2016 Upward', model: 'Enclave/Regal/Cascada/Encore/Envision/Envista/LaCrosse/Lucerne/Regal/Verano', year: 2016, type: 'Luxury', price: 245 },
+  { make: 'Buick/2015 Downward', 
+    model: 'Enclave/Regal/Cascada/Encore/Envision/Envista/LaCrosse/Lucerne/Regal/Verano', 
+    year: '2015', 
+    type: 'Luxury', 
+    price: 195 
+  },
+  { make: 'Buick/2016 Upward', 
+    model: 'Enclave/Regal/Cascada/Encore/Envision/Envista/LaCrosse/Lucerne/Regal/Verano', 
+    year: '2016', 
+    type: 'Luxury', 
+    price: 245 
+  },
 
   { make: 'Cadillac/2015 Downward', model: 'ATS/CT4/CT5/CT6/CTS(CT5)/DTS(XTS)//ELR(Hybrid)/Escalade/Escalade IQ(Electric)/Lyriq(Electric)/Optiq(Electric)/SRX(XT5)/STS(XTS)/Vistiq/(Electric)/XT4/XT5/XT6/XTS(Successor to DTS/STS)', year: 2015, type: 'Luxury', price: 195 },
   { make: 'Cadillac/2016 Upward', model: 'ATS/CT4/CT5/CT6/CTS(CT5)/DTS(XTS)//ELR(Hybrid)/Escalade/Escalade IQ(Electric)/Lyriq(Electric)/Optiq(Electric)/SRX(XT5)/STS(XTS)/Vistiq/(Electric)/XT4/XT5/XT6/XTS(Successor to DTS/STS)', year: 2016, type: 'Luxury', price: 245 },

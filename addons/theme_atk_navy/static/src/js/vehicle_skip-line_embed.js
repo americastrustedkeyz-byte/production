@@ -114,15 +114,20 @@
     const keyType = qs('key_type')?.value;
 
     if (keyType === 'smart_key') {
-      return window.ATK_VEHICLE_DATA || [];
+        return window.ATK_VEHICLE_DATA || [];
     }
 
     if (keyType === 'transponder') {
-      return window.ATK_VEHICLE_TRANSPONDER_DATA || [];
+        if (!window.ATK_VEHICLE_TRANSPONDER_DATA) {
+            console.warn('[ATK] Transponder dataset not loaded yet');
+            return null; // 👈 important
+        }
+        return window.ATK_VEHICLE_TRANSPONDER_DATA;
     }
 
     return [];
-  }
+}
+
 
   hideHiddenContents();
 
