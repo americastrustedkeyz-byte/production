@@ -268,7 +268,6 @@ function closeReportModal() {
 
 /*
 (function bindAtkLoginProceed() {
-
   //=========close vehicle modal==============
    const modal = document.querySelector('[data-atk-vehicle-modal]');
   const authLinks = document.querySelectorAll(
@@ -278,9 +277,9 @@ function closeReportModal() {
   authLinks.forEach(link => {
     link.addEventListener('click', function () {
       
-      if (!modal) return;
+      if(!modal) return;
 
-      // Fully remove custom modal
+      //Fully remove custom modal
       modal.style.display = 'none';
       modal.remove();
 
