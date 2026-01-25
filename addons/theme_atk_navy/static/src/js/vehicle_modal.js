@@ -57,6 +57,7 @@ window.ATK_STATE = window.ATK_STATE || {};
   /* ======================================================
      CLOSE VEHICLE MODAL
      ====================================================== */
+    //function closeModal (){}
 
   document.addEventListener('click', function (e) {
     const closeBtn = e.target.closest('[data-atk-vehicle-close]');
@@ -68,6 +69,8 @@ window.ATK_STATE = window.ATK_STATE || {};
       console.log('[ATK] Vehicle Identification modal CLOSED');
     }
   });
+
+  //element.addEventListener("click", myFunction);
 
   /* ======================================================
      OPEN MODAL FROM URL (NO FLICKER, SINGLE RUN)
@@ -270,7 +273,10 @@ function closeReportModal() {
 //=========close vehicle modal on login clicked============
 (function bindAtkLoginProceed() {
   document.addEventListener('click', function (e) {
-    const authLink = e.target.closest('a[href^="/web/login"]');
+    //const authLink = e.target.closest('a[href^="/web/login"]');
+    //if (!authLink) return;
+
+      const authLink = e.target.closest('[data-atk-login-redirect]');
     if (!authLink) return;
 
     const modal = getVehicleModal();

@@ -75,10 +75,13 @@
 
                 </div>
 
-                        <!--div class="atk-metric">
+                        <div class="atk-metric my-3 text-white">
+                            <span>We currently do not service European Vehicles</span>
+                        </div>
+                        <div class="atk-metric">
                             <strong>1,000+</strong>
                             <span>Drivers</span>
-                        </div-->
+                        </div>
                     </div>
 
                     <!--RIGHT-->
