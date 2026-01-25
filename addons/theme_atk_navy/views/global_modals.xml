@@ -174,24 +174,24 @@
                             </label>
 
                             <div class="others_wrapper" id="others_wrapper">
-                            </div>
-
-                            <t t-if="request.env.user.has_group('base.group_user')">
-                                <button type="button" class="atk-primary-btn" id="atk_continue_btn">
-                                    Continue To Booking
-                                </button>
-                            </t>
-
-                            <!--LOGIN / CREATE ACCOUNT (PUBLIC ONLY) -->
-                            <t t-else="">
-                                <div class="atk-login-link">
-                                    <a t-att-href="'/web/login?' + request.httprequest.query_string.decode()"
-                                    title="Login or create an account" data-atk-login-redirect="1">
-                                        Login / Create an Account
-                                    </a>
                                 </div>
-                            </t>    
-                        </div>
+
+                                    <t t-if="request.env.user.has_group('base.group_user') or request.env.user.has_group('base.group_portal')">
+                                        <button type="button" class="atk-primary-btn" id="atk_continue_btn">
+                                            Continue To Booking
+                                        </button>
+                                    </t>
+
+                                    <!--LOGIN / CREATE ACCOUNT (PUBLIC ONLY) -->
+                                    <t t-else="">
+                                        <div class="atk-login-link">
+                                            <a t-att-href="'/web/login?' + request.httprequest.query_string.decode()"
+                                            title="Login or create an account" data-atk-login-redirect="1">
+                                                Login / Create an Account
+                                            </a>
+                                        </div>
+                                    </t>    
+                                </div>
                     </form>
                     </div>
                     </div>
