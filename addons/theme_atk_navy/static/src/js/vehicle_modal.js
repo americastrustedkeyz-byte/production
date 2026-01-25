@@ -256,6 +256,14 @@ function closeReportModal() {
   const proceedBtn = document.getElementById('atk_report_proceed');
   if (!proceedBtn) return;
    console.log('You can book now');
+
+  const urlTrack = new URLSearchParams(window.location.search).get('track');
+
+  if (urlTrack) {
+    localStorage.setItem('track', urlTrack);
+    console.log('[ATK] Track:', urlTrack);
+  }
+
    /*
   proceedBtn.addEventListener('click', function () {
     const params = new URLSearchParams(window.location.search);

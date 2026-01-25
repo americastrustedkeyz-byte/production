@@ -184,7 +184,7 @@
                     <!-- LOGIN / CREATE ACCOUNT (PUBLIC ONLY) -->
                     <t t-else="">
                         <div class="atk-login-link">
-                             <a t-att-href="'/web/login?redirect=' + request.httprequest.url"
+                             <a t-att-href="'/web/login?' + request.httprequest.query_string.decode()"
                             title="Login or create an account">
                                 Login / Create an Account
                             </a>
@@ -210,7 +210,7 @@
                         Cancel
                     </button>
 
-                    <a href="/appointment/1" type="button" id="atk_report_proceed" class="atk-primary-btn text-center">
+                    <a href="'/appointment/1?' + request.httprequest.query_string.decode()" type="button" id="atk_report_proceed" class="atk-primary-btn text-center">
                         Proceed
                     </a>
                 </div>
