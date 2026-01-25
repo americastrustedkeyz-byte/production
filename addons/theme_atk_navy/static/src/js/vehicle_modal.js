@@ -266,17 +266,18 @@ function closeReportModal() {
 
 })();
 
-
+/*
 (function bindAtkLoginProceed() {
 
   //=========close vehicle modal==============
-  const modal = document.querySelector('[data-atk-vehicle-modal]');
+   const modal = document.querySelector('[data-atk-vehicle-modal]');
   const authLinks = document.querySelectorAll(
     'a[href^="/web/login"]'
   );
 
   authLinks.forEach(link => {
     link.addEventListener('click', function () {
+      
       if (!modal) return;
 
       // Fully remove custom modal
@@ -288,7 +289,6 @@ function closeReportModal() {
       document.body.style.overflow = '';
 
       //===close vehicle modal=====
-      const modal = document.querySelector('[data-atk-vehicle-modal]');
         if (modal) {
           modal.hidden = true;
         }
@@ -298,6 +298,21 @@ function closeReportModal() {
   });
 
 })();
+*/
+
+//=========close vehicle modal==============
+
+document.addEventListener('click', function (e) {
+  const authLink = e.target.closest('a[href^="/web/login"]');
+  if (!authLink) return;
+
+  const modal = getVehicleModal();
+  if (modal) {
+    modal.hidden = true;
+    console.log('[ATK] Vehicle Identification modal CLOSED before login redirect');
+  }
+});
+
 
 
 
