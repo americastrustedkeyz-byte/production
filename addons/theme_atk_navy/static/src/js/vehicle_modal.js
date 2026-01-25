@@ -264,6 +264,12 @@ function closeReportModal() {
     console.log('[ATK] Track:', urlTrack);
   }
 
+  //close vehicle modal
+   const modal = document.querySelector('[data-atk-vehicle-modal]');
+    if (modal) {
+      modal.hidden = true;
+    }
+
    /*
   proceedBtn.addEventListener('click', function () {
     const params = new URLSearchParams(window.location.search);
