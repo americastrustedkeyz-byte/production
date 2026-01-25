@@ -296,7 +296,6 @@ function closeReportModal() {
       console.log('[ATK] Custom vehicle modal closed before login redirect');
     });
   });
-
 })();
 */
 
