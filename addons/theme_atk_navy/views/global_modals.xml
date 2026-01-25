@@ -71,7 +71,7 @@
        <!-- ===============================
         VEHICLE IDENTIFICATION MODAL
         =============================== -->
-        <t t-if="not request.httprequest.path.startswith('/web/login')">
+        <!--t t-if="not request.httprequest.path.startswith('/web/login')"-->
             <section class="atk-vehicle-modal-flow">
                     <div id="atk-vehicle-modal-main" class="atk-modal" hidden="hidden" data-atk-vehicle-modal="1">
                     <div class="atk-modal-backdrop atk-vehicle-backdrop"></div>
@@ -196,7 +196,7 @@
                     </div>
                     </div>
             </section>
-       </t>
+       <!--/t-->
 
         <!--Vehicle Report/Invoice-->
         <section>
