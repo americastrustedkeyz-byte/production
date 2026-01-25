@@ -181,7 +181,7 @@
                         </button>
                     </t>
 
-                    <!-- LOGIN / CREATE ACCOUNT (PUBLIC ONLY) -->
+                    <!--LOGIN / CREATE ACCOUNT (PUBLIC ONLY) -->
                     <t t-else="">
                         <div class="atk-login-link">
                              <a t-att-href="'/web/login?' + request.httprequest.query_string.decode()"
