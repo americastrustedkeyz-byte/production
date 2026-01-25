@@ -99,6 +99,10 @@
     document
       .getElementById("atk-checkout-btn")
       .addEventListener("click", function () {
+        //get localstorage status
+        //const track = localStorage.getItem('track');
+
+        //redirect to checkout
         window.location.href = checkoutUrl;
       });
 

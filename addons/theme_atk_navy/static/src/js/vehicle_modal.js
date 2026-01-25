@@ -256,17 +256,30 @@ function closeReportModal() {
   const proceedBtn = document.getElementById('atk_report_proceed');
   if (!proceedBtn) return;
    console.log('You can book now');
-   /*
-  proceedBtn.addEventListener('click', function () {
-    const params = new URLSearchParams(window.location.search);
-    const track = params.get('track') || 'standard';
 
-    window.location.href =
-      `/atk/report/checkout?track=${encodeURIComponent(track)}`;
-  });
-  */
+  const urlTrack = new URLSearchParams(window.location.search).get('track');
+
+  if (urlTrack) {
+    localStorage.setItem('track', urlTrack);
+    console.log('[ATK] Track:', urlTrack);
+  }
+
 })();
 
+
+//=========close vehicle modal on login clicked============
+(function bindAtkLoginProceed() {
+  document.addEventListener('click', function (e) {
+    const authLink = e.target.closest('a[href^="/web/login"]');
+    if (!authLink) return;
+
+    const modal = getVehicleModal();
+    if (modal) {
+      modal.hidden = true;
+      console.log('[ATK] Vehicle Identification modal CLOSED before login redirect');
+    }
+  });
+})();
 
 
 //=============================
