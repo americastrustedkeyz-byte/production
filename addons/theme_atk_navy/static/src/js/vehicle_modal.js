@@ -264,21 +264,39 @@ function closeReportModal() {
     console.log('[ATK] Track:', urlTrack);
   }
 
-  //close vehicle modal
-   const modal = document.querySelector('[data-atk-vehicle-modal]');
-    if (modal) {
-      modal.hidden = true;
-    }
+})();
 
-   /*
-  proceedBtn.addEventListener('click', function () {
-    const params = new URLSearchParams(window.location.search);
-    const track = params.get('track') || 'standard';
 
-    window.location.href =
-      `/atk/report/checkout?track=${encodeURIComponent(track)}`;
+(function bindAtkLoginProceed() {
+
+  //=========close vehicle modal==============
+  const modal = document.querySelector('[data-atk-vehicle-modal]');
+  const authLinks = document.querySelectorAll(
+    'a[href^="/web/login"]'
+  );
+
+  authLinks.forEach(link => {
+    link.addEventListener('click', function () {
+      if (!modal) return;
+
+      // Fully remove custom modal
+      modal.style.display = 'none';
+      modal.remove();
+
+      // Restore scroll (custom modal safety)
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+
+      //===close vehicle modal=====
+      const modal = document.querySelector('[data-atk-vehicle-modal]');
+        if (modal) {
+          modal.hidden = true;
+        }
+
+      console.log('[ATK] Custom vehicle modal closed before login redirect');
+    });
   });
-  */
+
 })();
 
 
