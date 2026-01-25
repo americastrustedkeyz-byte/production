@@ -267,7 +267,7 @@ function closeReportModal() {
 })();
 
 
-//=========close vehicle modal on login clicked==============
+//=========close vehicle modal on login clicked============
 (function bindAtkLoginProceed() {
   document.addEventListener('click', function (e) {
     const authLink = e.target.closest('a[href^="/web/login"]');
