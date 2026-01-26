@@ -74,27 +74,24 @@
   });
 
   //booking page button activation
-  (function openBookingPage() {
-    document.addEventListener('click', function (e) {
+ document.addEventListener('click', function (e) {
 
-      const pageLink = e.target.closest('[data-atk-booking-page]');
-      if (!pageLink) return;
+    const link = e.target.closest('[data-atk-booking-page]');
+    if (!link) return;
 
-      //STOP default <a href> navigation
-      e.preventDefault();
-      e.stopPropagation();
+    // BLOCK DEFAULT <a href>
+    e.preventDefault();
+    e.stopPropagation();
 
-      console.log('[ATK] Services navigation intercepted');
+    console.log('[ATK] Services link intercepted by JS');
 
-      // Run your logic FIRST
-      if (typeof applyTrackTimeLogic === 'function') {
-        applyTrackTimeLogic();
-      }
+    // run your logic
+    applyTrackTimeLogic();
 
-        // THEN navigate (controlled)
-        window.location.href = pageLink.getAttribute('href') || '/atk-booking';
+    // navigate manually
+    window.location.href = '/atk-booking';
 
-      }, true); // 🔥 capture phase to beat browser default
-  })();
+  }, true); // capture phase = stronger than theme JS
+
 
 })();
