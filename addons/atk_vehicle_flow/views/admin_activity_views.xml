@@ -1,0 +1,48 @@
+<odoo>
+
+  <record id="view_atk_activity_tree" model="ir.ui.view">
+    <field name="name">atk.user.activity.tree</field>
+    <field name="model">atk.user.activity</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="user_id"/>
+        <field name="session_id"/>
+        <field name="page"/>
+        <field name="create_date"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_atk_activity_form" model="ir.ui.view">
+    <field name="name">atk.user.activity.form</field>
+    <field name="model">atk.user.activity</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="user_id"/>
+            <field name="session_id"/>
+            <field name="page"/>
+            <field name="payload"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_atk_activity" model="ir.actions.act_window">
+    <field name="name">User Activity</field>
+    <field name="res_model">atk.user.activity</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_atk_activity_root"
+            name="User Activity"
+            parent="base.menu_administration"/>
+
+  <menuitem id="menu_atk_activity"
+            name="Activity Logs"
+            parent="menu_atk_activity_root"
+            action="action_atk_activity"/>
+
+</odoo>

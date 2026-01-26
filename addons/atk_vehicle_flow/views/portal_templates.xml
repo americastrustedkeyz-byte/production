@@ -1,0 +1,16 @@
+<odoo>
+  <template id="atk_portal_home_activity"
+            inherit_id="portal.portal_my_home">
+
+    <xpath expr="//div[@id='portal_content']" position="inside">
+      <t t-if="atk_activity_count">
+        <div class="atk-portal-card mt-3">
+          <h4>Your Activity</h4>
+          <p>Total reports: <t t-esc="atk_activity_count"/></p>
+          <a href="/my/activity">View Details</a>
+        </div>
+      </t>
+    </xpath>
+
+  </template>
+</odoo>
