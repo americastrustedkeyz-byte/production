@@ -11,10 +11,12 @@
     ],
     "data": [
         "views/booking_page.xml",
-        "views/portal_templates.xml",
-        "views/portal_activity_list.xml",
         "views/admin_activity_views.xml",
         #"views/booking_thank_you.xml",
+    ],
+     'qweb': [
+        'views/portal_templates.xml',
+        'views/portal_activity_list.xml',
     ],
     'assets': {
         'web.assets_frontend': [

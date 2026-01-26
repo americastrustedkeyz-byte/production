@@ -2,28 +2,25 @@
 <odoo>
 
     <template id="portal_my_activity" name="My Activity">
+
         <t t-call="portal.portal_layout">
+
             <div class="container mt-4">
                 <h2>My Activity</h2>
 
-                <t t-if="records">
+                <t t-if="records and len(records)">
                     <t t-foreach="records" t-as="r">
-                        <div class="card mb-3 p-3">
-                            <p><strong>Make:</strong>
-                                <t t-esc="(r.payload or {}).get('make')"/>
-                            </p>
-                            <p><strong>Model:</strong>
-                                <t t-esc="(r.payload or {}).get('model')"/>
-                            </p>
-                            <p><strong>Year:</strong>
-                                <t t-esc="(r.payload or {}).get('year')"/>
-                            </p>
-                            <p><strong>Price:</strong>
-                                <t t-esc="(r.payload or {}).get('price')"/>
-                            </p>
-                            <small class="text-muted">
-                                <t t-esc="r.create_date"/>
-                            </small>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <p><strong>Make:</strong> <t t-esc="r.payload.get('make')"/></p>
+                                <p><strong>Model:</strong> <t t-esc="r.payload.get('model')"/></p>
+                                <p><strong>Year:</strong> <t t-esc="r.payload.get('year')"/></p>
+                                <p><strong>Price:</strong> <t t-esc="r.payload.get('price')"/></p>
+
+                                <small class="text-muted">
+                                    <t t-esc="r.create_date"/>
+                                </small>
+                            </div>
                         </div>
                     </t>
                 </t>
@@ -31,8 +28,9 @@
                 <t t-else="">
                     <p>No activity recorded yet.</p>
                 </t>
+
             </div>
+
         </t>
     </template>
-
 </odoo>

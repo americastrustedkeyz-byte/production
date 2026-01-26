@@ -1,22 +1,25 @@
-<template id="atk_portal_home_activity"
-          inherit_id="portal.portal_my_home"
-          name="ATK Portal Activity Card">
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
 
-    <xpath expr="//div[contains(@class,'o_portal_my_home')]" position="inside">
+    <template id="atk_portal_home_activity"
+              inherit_id="portal.portal_my_home"
+              name="ATK Portal Activity Card">
 
-        <t t-if="atk_activity_count">
-            <div class="card mt-3">
-                <div class="card-body">
-                    <h5>Your Activity</h5>
-                    <p>Total reports: <t t-esc="atk_activity_count"/></p>
+        <xpath expr="//div[contains(@class,'o_portal_my_home')]" position="inside">
 
-                    <a href="/my/activity" class="btn btn-link p-0">
-                        View Details
-                    </a>
+            <t t-if="atk_activity_count">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5>Your Activity</h5>
+                        <p>Total reports: <t t-esc="atk_activity_count"/></p>
+
+                        <a href="/my/activity" class="btn btn-link p-0">
+                            View Details
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </t>
+            </t>
 
-    </xpath>
-
-</template>
+        </xpath>
+    </template>
+</odoo>
