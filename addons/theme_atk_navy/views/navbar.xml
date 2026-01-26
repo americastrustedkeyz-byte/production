@@ -29,7 +29,7 @@
                         <a href="/">Home</a>
                         <a href="/atk-booking">Services</a>
                         <a href="/atk-about-us">About</a>
-                        <a href="/contactus">Contact</a>
+                        <a href="/contactus" data-atk-booking-page="1">Contact</a>
 
                         <a href="/web/login"
                            class="atk-hero-btn atk-hero-btn-filled atk-nav-btn">

@@ -5,7 +5,9 @@
   if (!modal) return;
 
   const standardBtn = modal.querySelector('[data-track="standard"]');
+
   const priorityBtn = modal.querySelector('[data-track="priority"]');
+
   if (!standardBtn || !priorityBtn) return;
 
   function getUSTime() {
@@ -70,6 +72,26 @@
     modal.hidden = false;
     applyTrackTimeLogic();
   });
+
+  //booking page button activation
+  (function openBookingPage() {
+      /* document.addEventListener('click', function (e) {
+            const btn = e.target.closest('#atk_continue_btn');
+            if (!btn) return;
+        });*/
+
+        //const authLinks = document.querySelectorAll('a[href^="/web/login"]');
+
+        const btnLink = document.querySelector('[data-atk-booking-page]');
+
+         btnLink.addEventListener('click', function () {
+
+          //button timing logic
+           applyTrackTimeLogic();
+          console.log('[ATK] Select Booking page Opened');
+        });
+
+  })();
 
 
 })();
