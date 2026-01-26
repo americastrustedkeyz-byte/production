@@ -1,18 +1,20 @@
 <odoo>
 
-  <record id="view_atk_activity_tree" model="ir.ui.view">
-    <field name="name">atk.user.activity.tree</field>
+  <!-- LIST VIEW (ODOO 18) -->
+  <record id="view_atk_activity_list" model="ir.ui.view">
+    <field name="name">atk.user.activity.list</field>
     <field name="model">atk.user.activity</field>
     <field name="arch" type="xml">
-      <tree>
+      <list>
         <field name="user_id"/>
         <field name="session_id"/>
         <field name="page"/>
         <field name="create_date"/>
-      </tree>
+      </list>
     </field>
   </record>
 
+  <!-- FORM VIEW -->
   <record id="view_atk_activity_form" model="ir.ui.view">
     <field name="name">atk.user.activity.form</field>
     <field name="model">atk.user.activity</field>
@@ -24,18 +26,21 @@
             <field name="session_id"/>
             <field name="page"/>
             <field name="payload"/>
+            <field name="create_date"/>
           </group>
         </sheet>
       </form>
     </field>
   </record>
 
+  <!-- ACTION -->
   <record id="action_atk_activity" model="ir.actions.act_window">
     <field name="name">User Activity</field>
     <field name="res_model">atk.user.activity</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">list,form</field>
   </record>
 
+  <!-- MENU -->
   <menuitem id="menu_atk_activity_root"
             name="User Activity"
             parent="base.menu_administration"/>
