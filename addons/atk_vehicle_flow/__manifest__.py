@@ -11,6 +11,9 @@
     ],
     "data": [
         "views/booking_page.xml",
+        "views/portal_templates.xml",
+        "views/portal_activity_list.xml",
+        "views/admin_activity_views.xml",
         #"views/booking_thank_you.xml",
     ],
     'assets': {
@@ -20,6 +23,7 @@
             'atk_vehicle_flow/static/src/js/booked_slot.js',
             'atk_vehicle_flow/static/src/js/atk_hash_router.js',
             'atk_vehicle_flow/static/src/js/atk_after_booking_redirect.js',
+            'atk_vehicle_flow/static/src/js/atk_vehicle_activity_log.js',
         ],
     },
     'installable': True,

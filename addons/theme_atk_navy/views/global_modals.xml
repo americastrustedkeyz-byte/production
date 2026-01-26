@@ -42,7 +42,7 @@
                             </button>
                         </div>
 
-                    <!-- Skip The Line -->
+                    <!-- Skip The Line-->
                     <div class="atk-track-card highlight">
                         <h3>Skip-The-Line</h3>
                         <span class="atk-track-badge premium">Priority Access</span>
@@ -53,7 +53,7 @@
                             <li>Priority handling with a dedicated booking track</li>
                             <li>Designed for urgent or time sensitive needs</li>
                             <li>Services is provided during normal business hours</li>
-                            <li>$125 donation applied</li>
+                            <li>$120 additional fee applied</li>
                             <li>May still require up to a 30-minute wait on arrival due to on site services flow</li>
                         </ul>
 
@@ -71,7 +71,7 @@
        <!-- ===============================
         VEHICLE IDENTIFICATION MODAL
         =============================== -->
-        <t t-if="not request.httprequest.path.startswith('/web/login')">
+        <t t-if="not request.httprequest.path.startswith('/web/')">
             <section class="atk-vehicle-modal-flow">
                     <div id="atk-vehicle-modal-main" class="atk-modal" hidden="hidden" data-atk-vehicle-modal="1">
                     <div class="atk-modal-backdrop atk-vehicle-backdrop"></div>
@@ -212,9 +212,11 @@
                         Cancel
                     </button>
 
-                    <a href="'/appointment/1?' + request.httprequest.query_string.decode()" type="button" id="atk_report_proceed" class="atk-primary-btn text-center">
-                        Proceed
-                    </a>
+                        <a t-att-href="'/appointment/1?' + request.httprequest.query_string.decode()" type="button"
+                        id="atk_report_proceed"
+                        class="atk-primary-btn text-center">
+                            Proceed
+                        </a>
                 </div>
             </div>
             </div>

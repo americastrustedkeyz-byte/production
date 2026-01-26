@@ -83,6 +83,7 @@ window.ATK_STATE = window.ATK_STATE || {};
   console.log('[ATK] URL reset detected → waiting for vehicle modal');
 
   const track = params.get('track') || 'standard';
+  //priority
 
   let attempts = 0;
   const maxAttempts = 40;
@@ -188,7 +189,7 @@ function computeReport(data) {
 
   if (!isOthers) {
     if (isPriority) {
-      finalPrice = `$${Number(data.price || 0) + 125}`;
+      finalPrice = `$${Number(data.price || 0) + 120}`;
     } else {
       finalPrice = `$${Number(data.price || 0)}`;
     }
