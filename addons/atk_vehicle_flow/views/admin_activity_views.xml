@@ -40,7 +40,7 @@
     <field name="view_mode">list,form</field>
   </record>
 
-  <!-- MENU -->
+  <!-- MENU-->
   <menuitem id="menu_atk_activity_root"
             name="User Activity"
             parent="base.menu_administration"/>

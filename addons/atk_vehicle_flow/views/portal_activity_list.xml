@@ -1,16 +1,26 @@
-<template id="atk_portal_home_activity"
-          inherit_id="portal.portal_my_home"
-          name="ATK Portal Activity Card">
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<template id="portal_my_activity" name="My Activity">
+        <t t-call="portal.portal_layout">
+            <div class="container mt32 mb32">
+                <h2>Your Activity</h2>
 
-    <xpath expr="//div[contains(@class,'o_portal_my_home')]" position="inside">
+                <t t-if="records">
+                    <ul>
+                        <t t-foreach="records" t-as="rec">
+                            <li>
+                                <strong><t t-esc="rec.create_date"/>
+                                </strong>
+                                — <t t-esc="rec.page"/>
+                            </li>
+                        </t>
+                    </ul>
+                </t>
 
-        <t t-if="atk_activity_count">
-            <div class="atk-portal-card mt-3">
-                <h4>Your Activity</h4>
-                <p>Total reports: <t t-esc="atk_activity_count"/></p>
-                <a href="/my/activity">View Details</a>
+                <t t-else="">
+                    <p>No activity recorded yet.</p>
+                </t>
             </div>
         </t>
-
-    </xpath>
-</template>
+    </template>
+</odoo>
