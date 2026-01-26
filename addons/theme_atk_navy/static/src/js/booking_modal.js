@@ -106,7 +106,7 @@
 
   /*
   document.addEventListener('click', function (e) {
-      const pageLink = e.target.closest('[[data-atk-booking-page]');
+      const pageLink = e.target.closest('[data-atk-booking-page]');
     if (!pageLink) return;
 
     //apply button timming logic

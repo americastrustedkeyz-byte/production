@@ -3,9 +3,6 @@ from odoo.http import request
 from odoo.addons.portal.controllers.portal import CustomerPortal
 
 
-# =========================================
-# ACTIVITY SAVE (PUBLIC + AUTHENTICATED)
-# =========================================
 class ATKActivityController(http.Controller):
 
     @http.route('/atk/activity/save', type='json', auth='public', website=True)
@@ -23,9 +20,6 @@ class ATKActivityController(http.Controller):
         return {'status': 'ok'}
 
 
-# =========================================
-# PORTAL EXTENSION
-# =========================================
 class ATKPortal(CustomerPortal):
 
     def _prepare_home_portal_values(self, counters):
@@ -43,7 +37,6 @@ class ATKPortal(CustomerPortal):
             ('user_id', '=', request.uid)
         ])
 
-        return request.render(
-            'atk_user_activity.portal_my_activity',
-            {'records': records}
-        )
+        return request.render('atk_user_activity.portal_my_activity', {
+            'records': records
+        })
