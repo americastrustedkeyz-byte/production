@@ -71,12 +71,13 @@
        <!-- ===============================
         VEHICLE IDENTIFICATION MODAL
         =============================== -->
-            <t t-if="not (
-                request.httprequest.path.startswith('/web/')
-                or request.httprequest.path.startswith('/my')
-                or request.httprequest.path.startswith('/appointment/1')
-                or request.httprequest.path.startswith('/payment_cart')
-            )">
+        
+            <t t-if="
+                not request.httprequest.path.startswith('/web')
+                and not request.httprequest.path.startswith('/my')
+                and request.httprequest.path in ('/', '/atk-booking', '/appointment/1', '/payment_cart')
+            ">
+
             <section class="atk-vehicle-modal-flow">
                     <div id="atk-vehicle-modal-main" class="atk-modal" hidden="hidden" data-atk-vehicle-modal="1">
                     <div class="atk-modal-backdrop atk-vehicle-backdrop"></div>
