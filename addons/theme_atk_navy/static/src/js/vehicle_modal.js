@@ -3,6 +3,29 @@ console.log('[ATK] Vehicle modal JS FILE LOADED');
 (function () {
   'use strict';
 
+  const ALLOWED_MODAL_PATHS = ['/', '/atk-booking'];
+
+function isVehicleModalAllowedPage() {
+  const path = window.location.pathname.replace(/\/+$/, '');
+  return ALLOWED_MODAL_PATHS.includes(path) || path === '';
+}
+
+const blockedPaths = [
+    '/my',
+    '/web',
+    '/appointment/1',
+    '/payment_cart'
+  ];
+
+  const path = window.location.pathname;
+
+  if (blockedPaths.some(p => path.startsWith(p))) {
+    console.log('[ATK] Vehicle JS skipped on this page:', path);
+    return;
+  }
+
+
+
 console.log('[ATK] Vehicle modal JS FILE LOADED');
 
 window.ATK_STATE = window.ATK_STATE || {};
@@ -76,14 +99,17 @@ window.ATK_STATE = window.ATK_STATE || {};
      OPEN MODAL FROM URL (NO FLICKER, SINGLE RUN)
      ====================================================== */
 (function openVehicleModalFromUrlSafe() {
-  const params = new URLSearchParams(window.location.search);
+  if (!isVehicleModalAllowedPage()) {
+    console.log('[ATK] Vehicle modal blocked on this page:', window.location.pathname);
+    return;
+  }
 
+  const params = new URLSearchParams(window.location.search);
   if (params.get('reset') !== 'open_vehicle_modal') return;
 
   console.log('[ATK] URL reset detected → waiting for vehicle modal');
 
   const track = params.get('track') || 'standard';
-  //priority
 
   let attempts = 0;
   const maxAttempts = 40;
@@ -100,18 +126,9 @@ window.ATK_STATE = window.ATK_STATE || {};
       console.log('[ATK] Vehicle modal OPENED via URL');
       console.log('[ATK] Track source:', track);
 
-      // inject track
-      let input = document.getElementById('booking_track');
-      if (!input) {
-        input = document.createElement('input');
-        input.type = 'hidden';
-        input.id = 'booking_track';
-        input.name = 'booking_track';
-        form.appendChild(input);
-      }
-      input.value = track;
+      applyBookingTrackToForm(track);
 
-      // clean URL (remove reset ONLY)
+      // CLEAN URL
       const cleanUrl = new URL(window.location.href);
       cleanUrl.searchParams.delete('reset');
       window.history.replaceState({}, document.title, cleanUrl.pathname + cleanUrl.search);
@@ -125,7 +142,6 @@ window.ATK_STATE = window.ATK_STATE || {};
     }
   }, 100);
 })();
-
 
 
   /* ======================================================
@@ -289,7 +305,7 @@ function closeReportModal() {
 })();
 
 
-//=============================
+//=============continue booking logic================
 
 (function bindAtkContinueToBooking() {
   const continueBtn = document.getElementById('atk_continue_btn');
