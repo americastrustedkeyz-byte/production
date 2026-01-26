@@ -1,16 +1,52 @@
-<template id="atk_portal_home_activity"
-          inherit_id="portal.portal_my_home"
-          name="ATK Portal Activity Card">
+<odoo>
 
-    <xpath expr="//div[contains(@class,'o_portal_my_home')]" position="inside">
+    <!-- =========================================
+         PORTAL ACTIVITY PAGE
+    ========================================== -->
+    <template id="portal_my_activity" name="My Activity">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-4">
+                <h2>My Activity</h2>
 
-        <t t-if="atk_activity_count">
-            <div class="atk-portal-card mt-3">
-                <h4>Your Activity</h4>
-                <p>Total reports: <t t-esc="atk_activity_count"/></p>
-                <a href="/my/activity">View Details</a>
+                <t t-if="records">
+                    <t t-foreach="records" t-as="r">
+                        <div class="card mb-3 p-3">
+                            <p><strong>Make:</strong> <t t-esc="r.payload.get('make')"/></p>
+                            <p><strong>Model:</strong> <t t-esc="r.payload.get('model')"/></p>
+                            <p><strong>Year:</strong> <t t-esc="r.payload.get('year')"/></p>
+                            <p><strong>Price:</strong> <t t-esc="r.payload.get('price')"/></p>
+                            <small class="text-muted">
+                                <t t-esc="r.create_date"/>
+                            </small>
+                        </div>
+                    </t>
+                </t>
+
+                <t t-else="">
+                    <p>No activity recorded yet.</p>
+                </t>
             </div>
         </t>
+    </template>
 
-    </xpath>
-</template>
+
+    <!-- =========================================
+         PORTAL HOME DASHBOARD CARD
+    ========================================== -->
+    <template id="atk_portal_home_activity"
+              inherit_id="portal.portal_my_home"
+              name="ATK Portal Activity Card">
+
+        <xpath expr="//div[contains(@class,'o_portal_my_home')]" position="inside">
+            <t t-if="atk_activity_count">
+                <div class="atk-portal-card mt-3">
+                    <h4>Your Activity</h4>
+                    <p>Total reports: <t t-esc="atk_activity_count"/></p>
+                    <a href="/my/activity">View Details</a>
+                </div>
+            </t>
+        </xpath>
+
+    </template>
+
+</odoo>
