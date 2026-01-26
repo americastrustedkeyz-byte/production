@@ -75,6 +75,16 @@
 
   //booking page button activation
   (function openBookingPage() {
+    document.addEventListener('click', function (e) {
+
+      const pageLink = e.target.closest('[[data-atk-booking-page]');
+    if (!pageLink) return;
+
+    //apply button timming logic
+     console.log('[ATK] Select Booking page Opened');
+      applyTrackTimeLogic();
+    
+
       /* document.addEventListener('click', function (e) {
             const btn = e.target.closest('#atk_continue_btn');
             if (!btn) return;
@@ -82,6 +92,7 @@
 
         //const authLinks = document.querySelectorAll('a[href^="/web/login"]');
 
+        /*
         const btnLink = document.querySelector('[data-atk-booking-page]');
 
          btnLink.addEventListener('click', function () {
@@ -89,9 +100,19 @@
           //button timing logic
            applyTrackTimeLogic();
           console.log('[ATK] Select Booking page Opened');
-        });
-
+        });*/
+      });
   })();
 
+  /*
+  document.addEventListener('click', function (e) {
+      const pageLink = e.target.closest('[[data-atk-booking-page]');
+    if (!pageLink) return;
+
+    //apply button timming logic
+     console.log('[ATK] Select Booking page Opened');
+      applyTrackTimeLogic();
+  });
+*/
 
 })();
