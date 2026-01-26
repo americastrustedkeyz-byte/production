@@ -28,9 +28,7 @@
                 <t t-else="">
                     <p>No activity recorded yet.</p>
                 </t>
-
             </div>
-
         </t>
     </template>
 </odoo>
