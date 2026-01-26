@@ -78,41 +78,23 @@
     document.addEventListener('click', function (e) {
 
       const pageLink = e.target.closest('[data-atk-booking-page]');
-    if (!pageLink) return;
+      if (!pageLink) return;
 
-    //apply button timming logic
-     console.log('[ATK] Select Booking page Opened');
-      applyTrackTimeLogic();
-    
+      //STOP default <a href> navigation
+      e.preventDefault();
+      e.stopPropagation();
 
-      /* document.addEventListener('click', function (e) {
-            const btn = e.target.closest('#atk_continue_btn');
-            if (!btn) return;
-        });*/
+      console.log('[ATK] Services navigation intercepted');
 
-        //const authLinks = document.querySelectorAll('a[href^="/web/login"]');
+      // Run your logic FIRST
+      if (typeof applyTrackTimeLogic === 'function') {
+        applyTrackTimeLogic();
+      }
 
-        /*
-        const btnLink = document.querySelector('[data-atk-booking-page]');
+        // THEN navigate (controlled)
+        window.location.href = pageLink.getAttribute('href') || '/atk-booking';
 
-         btnLink.addEventListener('click', function () {
-
-          //button timing logic
-           applyTrackTimeLogic();
-          console.log('[ATK] Select Booking page Opened');
-        });*/
-      });
+      }, true); // 🔥 capture phase to beat browser default
   })();
-
-  /*
-  document.addEventListener('click', function (e) {
-      const pageLink = e.target.closest('[data-atk-booking-page]');
-    if (!pageLink) return;
-
-    //apply button timming logic
-     console.log('[ATK] Select Booking page Opened');
-      applyTrackTimeLogic();
-  });
-*/
 
 })();
