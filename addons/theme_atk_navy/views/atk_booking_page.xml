@@ -34,12 +34,12 @@
                                             <h4>Standard Booking</h4>
                                              <span class="atk-track-badge">Weekend Access</span>
                                             <ul class="atk-feature-list">
-                                                <span>✅ Bookable only on Sunday from 12:00pm-6:00pm</span>
-                                                <span>✅ Services is provided on weekends (Friday, Saturday and Sunday)</span>
-                                                <span>✅ Select from available weekend time slot</span>
-                                                <span>✅ Ideal for flexible schedules</span>
-                                                <span>✅ Served in standard service order</span>
-                                                <span>✅ $5 non-refundable donation at checkout</span>                            
+                                                <li>✅ Bookable only on Sunday from 12:00pm-6:00pm</li>
+                                                <li>✅ Services is provided on weekends (Friday, Saturday and Sunday)</li>
+                                                <li>✅ Select from available weekend time slot</li>
+                                                <li>✅ Ideal for flexible schedules</li>
+                                                <li>✅ Served in standard service order</li>
+                                                <li>✅ $5 non-refundable donation at checkout</li>                            
                                             </ul>
                                         </div>
 
