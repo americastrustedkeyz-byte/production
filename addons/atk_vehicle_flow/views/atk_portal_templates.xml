@@ -26,6 +26,8 @@
                         <th>Make/Model</th>
                         <th>Date</th>
                         <th class="text-end">Status</th>
+                        <th class="text-end">Price</th>
+                        <th class="text-end">Approval</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +35,8 @@
                         <td><a t-attf-href="/my/atk_report/#{report.id}"><t t-esc="report.name"/></a></td>
                         <td><t t-esc="report.make"/> <t t-esc="report.model"/></td>
                         <td><span t-field="report.create_date" t-options='{"widget": "date"}'/></td>
+                        <td><t t-esc="report.status"/></td>
+                        <td><t t-esc="report.price"/></td>
                         <td class="text-end">
                             <span t-attf-class="badge rounded-pill #{'bg-success' if report.state == 'approved' else 'bg-warning'}">
                                 <t t-esc="report.state"/>
@@ -41,6 +45,11 @@
                     </tr>
                 </tbody>
             </table>
+
+            <!-- PORTAL PAGER -->
+            <t t-if="pager">
+                <t t-call="portal.portal_pager"/>
+            </t>
         </t>
     </template>
 
