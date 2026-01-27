@@ -57,9 +57,16 @@
 
      //set modal and call time logic
     const modal = document.querySelector('[data-atk-track-modal]');
-    if (modal) modal.hidden = false;
+    //if (modal) modal.hidden = false;
 
-    applyTrackTimeLogic(modal);
+    //applyTrackTimeLogic(modal);
+
+      const urlTrack = new URLSearchParams(window.location.search).get('page');
+
+      if (!urlTrack) {
+           modal.hidden = false;
+          applyTrackTimeLogic(modal);
+      }
   });
 
   /* ===================== SERVICES PAGE (B) ===================== */
@@ -78,6 +85,16 @@ document.addEventListener(
     sessionStorage.setItem('atk_apply_track_logic', '1');
 
     window.location.href = '/atk-booking?page=services';
+
+    const urlTrack = new URLSearchParams(window.location.search).get('page');
+
+      if (urlTrack) {
+           modal.hidden = false;
+          applyTrackTimeLogic(modal);
+
+           console.log('[ATK] Track timing applied on Services page');
+      }
+    
   },
   true //capture phase
 );
@@ -87,14 +104,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   sessionStorage.removeItem('atk_apply_track_logic');
 
-  const modal = document.querySelector('[data-atk-booking-page]');
+  //const modal = document.querySelector('[data-atk-booking-page]');
 
   //if (!modal) return;
-  if (modal){
-    applyTrackTimeLogic(modal);
-  }
-  
-  console.log('[ATK] Track timing applied on Services page');
+  //if (modal){
+   // applyTrackTimeLogic(modal);
+  //}
+
+  const urlTrack = new URLSearchParams(window.location.search).get('page');
+
+      if (!urlTrack) {
+           modal.hidden = false;
+          applyTrackTimeLogic(modal);
+
+           console.log('[ATK] Track timing applied on Services page');
+      }
+
+ 
 });
 
   
