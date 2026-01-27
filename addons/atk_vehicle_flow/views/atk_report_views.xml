@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="view_atk_report_tree" model="ir.ui.view">
+        <field name="name">atk.report.tree</field>
+        <field name="model">atk.report</field>
+        <field name="arch" type="xml">
+            <list string="Reports" decoration-info="state == 'draft'" decoration-success="state == 'approved'">
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="make"/>
+                <field name="model"/>
+                <field name="price"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_atk_report_form" model="ir.ui.view">
+        <field name="name">atk.report.form</field>
+        <field name="model">atk.report</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Report">
+                <header>
+                    <!-- Admin Only Buttons -->
+                    <button name="action_approve" string="Approve" type="object" 
+                            class="btn-primary" invisible="state == 'approved'"
+                            groups="base.group_system"/>
+                    <button name="action_delete" string="Delete Report" type="object" 
+                            class="btn-danger" confirm="Are you sure you want to delete this?"
+                            groups="base.group_system"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Customer Info">
+                            <field name="user_id"/>
+                            <field name="vehicle_type"/>
+                            <field name="vehicle_info"/>
+                        </group>
+                        <group string="Vehicle Specs">
+                            <field name="make"/>
+                            <field name="model"/>
+                            <field name="year"/>
+                            <field name="key_type"/>
+                        </group>
+                        <group string="Financials">
+                            <field name="price"/>
+                            <field name="donation"/>
+                            <field name="battery"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action & Menu -->
+    <record id="action_atk_report" model="ir.actions.act_window">
+        <field name="name">Vehicle Reports</field>
+        <field name="res_model">atk.report</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_atk_report_root" name="ATK Reports" sequence="10"/>
+    <menuitem id="menu_atk_report_sub" name="All Reports" parent="menu_atk_report_root" action="action_atk_report"/>
+</odoo>

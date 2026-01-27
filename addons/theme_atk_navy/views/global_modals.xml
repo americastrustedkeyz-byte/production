@@ -211,24 +211,24 @@
         <!--Vehicle Report/Invoice-->
         <section>
            <div id="atk_report_overlay" class="atk-modal-overlay hidden">
-            <div id="atk_report_modal" class="atk-report-modal">
+                <div id="atk_report_modal" class="atk-report-modal">
 
-                <h3>Vehicle Report Summary</h3>
+                    <h3>Vehicle Report Summary</h3>
 
-                <div id="atk_report_body"></div>
+                    <div id="atk_report_body"></div>
 
-                <div class="atk-report-actions">
-                    <button type="button" id="atk_report_cancel" class="atk-secondary-btn">
-                        Cancel
-                    </button>
+                    <div class="atk-report-actions">
+                        <button type="button" id="atk_report_cancel" class="atk-secondary-btn">
+                            Cancel
+                        </button>
 
-                        <a t-att-href="'/appointment/1?' + request.httprequest.query_string.decode()" type="button"
-                        id="atk_report_proceed"
-                        class="atk-primary-btn text-center">
-                            Proceed
-                        </a>
+                        <button type="submit" 
+                                id="atk_report_proceed" 
+                                    "atk-primary-btn text-center">
+                                Proceed
+                        </button>
+                    </div>
                 </div>
-            </div>
             </div>
         </section>
 

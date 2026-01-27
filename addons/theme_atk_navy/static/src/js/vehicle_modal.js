@@ -241,24 +241,50 @@ function computeReport(data) {
    RENDER REPORT SUMMARY (SAFE)
 ================================================ */
 function renderReport(report) {
-  const body = qs('atk_report_body');
-  if (!body) return;
+  const body = document.getElementById('atk_report_body');
+  const hiddenContainer = document.getElementById('atk_report_hidden_inputs');
+  if (!body || !hiddenContainer) return;
 
+  // 1. Render Visible Summary for the User
   body.innerHTML = `
     <ul class="atk-report-list">
-      <li><strong>Status:</strong> ${report.status}</li>
       <li><strong>Key Type:</strong> ${report.key_type}</li>
       <li><strong>Make:</strong> ${report.make}</li>
       <li><strong>Model:</strong> ${report.model}</li>
       <li><strong>Year:</strong> ${report.year}</li>
       <li><strong>Vehicle Type:</strong> ${report.vehicle_type}</li>
-      <li><strong>Price:</strong> ${report.price}</li>
-      <li><strong>Battery Health:</strong> ${report.battery}</li>
-      <li><strong>Vehicle Info:</strong> ${report.vehicle_info}</li>
-      <li><strong>Donation:</strong> ${report.donation}</li>
+      <li><strong>Price:</strong> $${report.price}</li>
+      <li><strong>Battery:</strong> ${report.battery}</li>
+      <li><strong>Info:</strong> ${report.vehicle_info}</li>
+      <li><strong>Donation:</strong> $${report.donation}</li>
     </ul>
   `;
+
+  //get status
+
+    const trackStatus = new URLSearchParams(window.location.search).get('track');
+    let status = '';    
+    if (trackStatus === 'priority') {
+        status = 'Skip-The-Line';
+      }else{
+        status = 'Standard';
+      }
+
+  // 2. Render Hidden Inputs for Odoo Controller (name attributes must match Python fields)
+  hiddenContainer.innerHTML = `
+    <input type="hidden" name="status" value="${status}">
+    <input type="hidden" name="key_type" value="${report.key_type}">
+    <input type="hidden" name="make" value="${report.make}">
+    <input type="hidden" name="model" value="${report.model}">
+    <input type="hidden" name="year" value="${report.year}">
+    <input type="hidden" name="vehicle_type" value="${report.vehicle_type}">
+    <input type="hidden" name="price" value="${report.price}">
+    <input type="hidden" name="battery" value="${report.battery}">
+    <input type="hidden" name="vehicle_info" value="${report.vehicle_info}">
+    <input type="hidden" name="donation" value="${report.donation}">
+  `;
 }
+
 
 /* ===============================================
    REPORT MODAL CONTROL (OVERLAY-SAFE)
