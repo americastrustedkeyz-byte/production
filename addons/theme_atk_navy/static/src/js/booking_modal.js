@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
    const modal = document.querySelector('[data-atk-track-modal]');
 
-      if (!urlTrack) {
+      if (urlTrack) {
            modal.hidden = false;
           applyTrackTimeLogic(modal);
 
