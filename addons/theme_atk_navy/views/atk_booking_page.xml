@@ -24,9 +24,9 @@
 
                                 <div class="row g-4">
 
-                                    <!-- LEFT COLUMN: BOOKING TYPES-->
+                                    <!--LEFT COLUMN: BOOKING TYPES-->
                                     <!--div class="col-lg-6" data-atk-booking-page='1' hidden="hidden"-->
-                                    <div class="col-lg-6" data-atk-booking-page='1' hidden="hidden">
+                                    <div class="col-lg-6" data-atk-booking-page='1'>
                                         <h3 class="atk-column-title">Booking Type</h3>
 
                                         <!-- Expanded Booking (Dark) -->
