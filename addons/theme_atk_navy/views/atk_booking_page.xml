@@ -34,17 +34,13 @@
                                             <h4>Standard Booking</h4>
                                              <span class="atk-track-badge">Weekend Access</span>
                                             <ul class="atk-feature-list">
-                                                <li>✅ Bookable only on Sunday from 12:00pm-6:00pm</li>
-                                                <li>✅ Services is provided on weekends (Friday, Saturday and Sunday)</li>
-                                                <li>✅ Select from available weekend time slot</li>
-                                                <li>✅ Ideal for flexible schedules</li>
-                                                <li>✅ Served in standard service order</li>
-                                                <li>✅ $5 non-refundable donation at checkout</li>                            </ul>
-                                            
-                                            <button class="atk-track-btn btn-standard-service btn-track-standard" 
-                                                data-track="standard" data-open-vehicle-modal="1"> 
-                                                    Get Started →
-                                            </button>
+                                                <span>✅ Bookable only on Sunday from 12:00pm-6:00pm</span>
+                                                <span>✅ Services is provided on weekends (Friday, Saturday and Sunday)</span>
+                                                <span>✅ Select from available weekend time slot</span>
+                                                <span>✅ Ideal for flexible schedules</span>
+                                                <span>✅ Served in standard service order</span>
+                                                <span>✅ $5 non-refundable donation at checkout</span>                            
+                                            </ul>
                                         </div>
 
                                         <!-- Expanded Skip The Line -->
@@ -53,7 +49,7 @@
                                              <span class="atk-track-badge premium">Priority Access</span>
 
                                             <ul class="atk-feature-list">
-                                                 <li>✅ Bookable on weekend (Friday, Saturday and Sunday)</li>
+                                                <li>✅ Bookable on weekend (Friday, Saturday and Sunday)</li>
                                                 <li>✅ Booking guaranteed 30 minutes time blocks</li>
                                                 <li>✅ Priority handling with a dedicated booking track</li>
                                                 <li>✅ Designed for urgent or time sensitive needs</li>
@@ -61,12 +57,6 @@
                                                 <li>✅ $125 donation applied</li>
                                                 <li>✅ May still require up to a 30-minute wait on arrival due to on site services flow</li>
                                             </ul>
-
-                                            <button class="atk-track-btn btn-skip-the-line btn-track-priority"
-                                            data-track="priority" data-open-vehicle-modal="1">
-                                            Get Started →
-                                            </button>
-
                                          </div>
                                     </div>
 
