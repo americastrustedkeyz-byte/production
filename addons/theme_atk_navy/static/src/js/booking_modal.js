@@ -65,7 +65,7 @@
 
       const urlTrack = new URLSearchParams(window.location.search).get('page');
 
-      if (!urlTrack) {
+    if (urlTrack !== 'services') {
            modal.hidden = false;
           applyTrackTimeLogic(modal);
       }
@@ -92,7 +92,7 @@ document.addEventListener(
 
      const modal = document.querySelector('[data-atk-track-modal]');
 
-      if (urlTrack) {
+      if (urlTrack === 'services') {
           
            modal.hidden = false;
           applyTrackTimeLogic(modal);
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
    const modal = document.querySelector('[data-atk-track-modal]');
 
-      if (urlTrack) {
+      if (urlTrack === 'services') {
            modal.hidden = false;
           applyTrackTimeLogic(modal);
 
