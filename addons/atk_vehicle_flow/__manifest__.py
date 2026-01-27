@@ -23,11 +23,13 @@
         'web.assets_frontend': [
             #'atk_vehicle_flow/static/src/js/website_resource_booking.js',
             'atk_vehicle_flow/static/src/scss/booked_slot.scss',
+            'atk_vehicle_flow/static/src/scss/portal_fix.css',
             'atk_vehicle_flow/static/src/js/booked_slot.js',
             'atk_vehicle_flow/static/src/js/atk_hash_router.js',
             'atk_vehicle_flow/static/src/js/atk_after_booking_redirect.js',
             'atk_vehicle_flow/static/src/js/atk_vehicle_activity_log.js',
             'atk_vehicle_flow/static/src/js/portal_safe_guard.js',
+            'atk_vehicle_flow/static/src/js/portal_promise_guard.js',
         ],
     },
     'installable': True,
