@@ -36,13 +36,13 @@
     return { standardActive, priorityActive };
   }
 
-  function applyTrackTimeLogic(context = 'modal') {
+  function applyTrackTimeLogic(modal) {
     const result = computeTrackAvailability();
 
     console.log('[ATK TIME LOGIC]', result, 'context=', context);
 
-    if (context === 'modal') {
-      const modal = document.querySelector('[data-atk-track-modal]');
+    //if (context === 'modal') {
+      //const modal = document.querySelector('[data-atk-track-modal]');
       if (!modal) return;
 
       const standardBtn = modal.querySelector('[data-track="standard"]');
@@ -50,7 +50,7 @@
 
       if (standardBtn) standardBtn.disabled = !result.standardActive;
       if (priorityBtn) priorityBtn.disabled = !result.priorityActive;
-    }
+    //}
 
     // Page-based logic can go here later if needed
   }
@@ -61,15 +61,17 @@
     if (!trigger) return;
 
     e.preventDefault();
+
+     //set modal and call time logic
     const modal = document.querySelector('[data-atk-track-modal]');
     if (modal) modal.hidden = false;
 
-    applyTrackTimeLogic('modal');
+    applyTrackTimeLogic(modal);
   });
 
   /* ===================== SERVICES PAGE (B) ===================== */
   document.addEventListener('click', function (e) {
-    const link = e.target.closest('[data-atk-booking-page]');
+    const link = e.target.closest('[data-atk-booking-page-open]');
     if (!link) return;
 
     e.preventDefault();
@@ -77,7 +79,9 @@
 
     console.log('[ATK] Services navigation handled by JS');
 
-    applyTrackTimeLogic('page');
+    //set modal and call time logic 
+     const modal = document.querySelector('[data-atk-track-modal]');
+    applyTrackTimeLogic(modal);
 
     window.location.href = '/atk-booking?page=services';
   }, true);

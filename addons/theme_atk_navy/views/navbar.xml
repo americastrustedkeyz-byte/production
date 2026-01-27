@@ -27,7 +27,7 @@
                     <!--LINKS-->
                     <div class="atk-nav-links">
                         <a href="/">Home</a>
-                        <a href="/atk-booking" data-atk-booking-page="1">Services</a>
+                        <a href="/atk-booking" data-atk-booking-page-open="1">Services</a>
                         <a href="/atk-about-us">About</a>
                         <a href="/contactus">Contact</a>
 

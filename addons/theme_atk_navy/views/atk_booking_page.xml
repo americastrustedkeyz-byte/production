@@ -20,7 +20,7 @@
                         </section>
                         
                         <section class="atk-booking-billing">
-                            <div class="container">
+                            <div class="container" data-atk-booking-page="1">
 
                                 <div class="row g-4">
 
