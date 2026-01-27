@@ -209,25 +209,32 @@
        </t>
 
         <!--Vehicle Report/Invoice-->
-        <section>
-           <div id="atk_report_overlay" class="atk-modal-overlay hidden">
+       <section>
+            <div id="atk_report_overlay" class="atk-modal-overlay hidden">
                 <div id="atk_report_modal" class="atk-report-modal">
-
                     <h3>Vehicle Report Summary</h3>
 
-                    <div id="atk_report_body"></div>
+                    <!-- Wrap content in a FORM -->
+                    <form id="atk_report_form" action="/atk/report/submit" method="POST">
+                        <!-- Odoo Security Token -->
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        
+                        <!-- Visible list for user -->
+                        <div id="atk_report_body"></div>
+                        
+                        <!-- Hidden inputs for the Server (appended via JS) -->
+                        <div id="atk_report_hidden_inputs"></div>
 
-                    <div class="atk-report-actions">
-                        <button type="button" id="atk_report_cancel" class="atk-secondary-btn">
-                            Cancel
-                        </button>
-
-                        <button type="submit" 
-                                id="atk_report_proceed" 
-                                    "atk-primary-btn text-center">
+                        <div class="atk-report-actions">
+                            <button type="button" id="atk_report_cancel" class="atk-secondary-btn">
+                                Cancel
+                            </button>
+                            <!-- Type MUST be submit -->
+                            <button type="submit" id="atk_report_proceed" class="atk-primary-btn text-center">
                                 Proceed
-                        </button>
-                    </div>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
