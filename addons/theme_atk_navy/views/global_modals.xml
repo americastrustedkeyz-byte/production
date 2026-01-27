@@ -209,7 +209,7 @@
        </t>
 
         <!--Vehicle Report/Invoice-->
-       <section>
+        <section>
             <div id="atk_report_overlay" class="atk-modal-overlay hidden">
                 <div id="atk_report_modal" class="atk-report-modal">
                     <h3>Vehicle Report Summary</h3>
