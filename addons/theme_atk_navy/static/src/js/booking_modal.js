@@ -61,6 +61,8 @@
 
     //applyTrackTimeLogic(modal);
 
+    
+
       const urlTrack = new URLSearchParams(window.location.search).get('page');
 
       if (!urlTrack) {
@@ -89,6 +91,8 @@ document.addEventListener(
     const urlTrack = new URLSearchParams(window.location.search).get('page');
 
       if (urlTrack) {
+           const modal = document.querySelector('[data-atk-track-modal]');
+
            modal.hidden = false;
           applyTrackTimeLogic(modal);
 
