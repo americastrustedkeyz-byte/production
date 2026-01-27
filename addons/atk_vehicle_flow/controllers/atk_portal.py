@@ -6,22 +6,7 @@ from odoo.addons.portal.controllers.portal import CustomerPortal
 class AtkReportPortal(CustomerPortal):
 
     # -----------------------------------------------------
-    # PORTAL HOME — FORCE REPORT COUNTER TO LOAD
-    # -----------------------------------------------------
-    def home(self, **kw):
-        """
-        This method is REQUIRED so Odoo knows that
-        'reports_count' must be computed and rendered.
-        """
-        response = super().home(**kw)
-
-        # Force Odoo to request our custom counter
-        self._prepare_home_portal_values(['reports_count'])
-
-        return response
-
-    # -----------------------------------------------------
-    # SAFE: Extend portal counters (NO crash risk)
+    # SAFE: Inject reports_count into portal dashboard
     # -----------------------------------------------------
     def _prepare_home_portal_values(self, counters):
         values = super()._prepare_home_portal_values(counters)
@@ -53,7 +38,7 @@ class AtkReportPortal(CustomerPortal):
             'user_id': request.env.user.id,
         })
 
-        # Preserve original redirect behavior
+        # Redirect to appointment (safe)
         query_string = request.httprequest.query_string.decode()
         redirect_url = "/appointment/1"
         if query_string:
@@ -93,7 +78,6 @@ class AtkReportPortal(CustomerPortal):
 
         report = request.env['atk.report'].sudo().browse(report_id)
 
-        # Security: user can only access own reports
         if not report.exists() or report.user_id.id != request.env.user.id:
             return request.redirect('/my')
 
