@@ -12,10 +12,10 @@
                     <t t-foreach="records" t-as="r">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <p><strong>Make:</strong> <t t-esc="r.payload.get('make')"/></p>
-                                <p><strong>Model:</strong> <t t-esc="r.payload.get('model')"/></p>
-                                <p><strong>Year:</strong> <t t-esc="r.payload.get('year')"/></p>
-                                <p><strong>Price:</strong> <t t-esc="r.payload.get('price')"/></p>
+                                <p><strong>Make:</strong> <t t-esc="r.payload and r.payload.get('make') or ''"/></p>
+                                <p><strong>Model:</strong> <t t-esc="r.payload and r.payload.get('model') or ''"/></p>
+                                <p><strong>Year:</strong> <t t-esc="r.payload and r.payload.get('year') or ''"/></p>
+                                <p><strong>Price:</strong> <t t-esc="r.payload and r.payload.get('price') or ''"/></p>
 
                                 <small class="text-muted">
                                     <t t-esc="r.create_date"/>

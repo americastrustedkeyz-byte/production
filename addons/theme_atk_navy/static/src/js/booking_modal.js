@@ -1,14 +1,5 @@
-//console.log('[ATK] Booking modal JS FILE LOADED');
-
 (function () {
-  const modal = document.querySelector('[data-atk-track-modal]');
-  if (!modal) return;
-
-  const standardBtn = modal.querySelector('[data-track="standard"]');
-
-  const priorityBtn = modal.querySelector('[data-track="priority"]');
-
-  if (!standardBtn || !priorityBtn) return;
+  'use strict';
 
   function getUSTime() {
     const now = new Date();
@@ -17,25 +8,19 @@
     );
   }
 
-  function applyTrackTimeLogic() {
+  function computeTrackAvailability() {
     const usNow = getUSTime();
-
-    const day = usNow.getDay();     // 0=Sun … 6=Sat
+    const day = usNow.getDay();
     const hour = usNow.getHours();
     const minute = usNow.getMinutes();
 
     let standardActive = false;
     let priorityActive = false;
 
-    /* STANDARD BOOKING */
-    if (
-      (day === 0 && hour >= 18) || // Sunday 18:00+
-      (day >= 1 && day <= 4)       // Mon–Thu
-    ) {
+    if ((day === 0 && hour >= 18) || (day >= 1 && day <= 4)) {
       standardActive = true;
     }
 
-    /* SKIP-THE-LINE */
     if (
       (day === 5 && hour === 0 && minute >= 1) ||
       (day === 5 && hour > 0) ||
@@ -45,53 +30,56 @@
       priorityActive = true;
     }
 
-    /* MUTUAL EXCLUSIVITY */
     if (standardActive) priorityActive = false;
     if (priorityActive) standardActive = false;
 
-    standardBtn.disabled = !standardActive;
-    priorityBtn.disabled = !priorityActive;
-
-    console.log('[ATK DEBUG]', {
-      standardDisabled: standardBtn.disabled,
-      priorityDisabled: priorityBtn.disabled,
-      time: new Date().toISOString()
-    });
-
+    return { standardActive, priorityActive };
   }
 
-  /*======================================================
-     SINGLE, AUTHORITATIVE CLICK HANDLER (FIX)
-     ======================================================*/
+  function applyTrackTimeLogic(context = 'modal') {
+    const result = computeTrackAvailability();
 
- document.addEventListener('click', function (e) {
+    console.log('[ATK TIME LOGIC]', result, 'context=', context);
+
+    if (context === 'modal') {
+      const modal = document.querySelector('[data-atk-track-modal]');
+      if (!modal) return;
+
+      const standardBtn = modal.querySelector('[data-track="standard"]');
+      const priorityBtn = modal.querySelector('[data-track="priority"]');
+
+      if (standardBtn) standardBtn.disabled = !result.standardActive;
+      if (priorityBtn) priorityBtn.disabled = !result.priorityActive;
+    }
+
+    // Page-based logic can go here later if needed
+  }
+
+  /* ===================== MODAL (A) ===================== */
+  document.addEventListener('click', function (e) {
     const trigger = e.target.closest('[data-open-booking-track]');
     if (!trigger) return;
 
     e.preventDefault();
-    modal.hidden = false;
-    applyTrackTimeLogic();
+    const modal = document.querySelector('[data-atk-track-modal]');
+    if (modal) modal.hidden = false;
+
+    applyTrackTimeLogic('modal');
   });
 
-  //booking page button activation
- document.addEventListener('click', function (e) {
-
+  /* ===================== SERVICES PAGE (B) ===================== */
+  document.addEventListener('click', function (e) {
     const link = e.target.closest('[data-atk-booking-page]');
     if (!link) return;
 
-    // BLOCK DEFAULT <a href>
     e.preventDefault();
-    e.stopPropagation();
+    e.stopImmediatePropagation();
 
-    console.log('[ATK] Services link intercepted by JS');
+    console.log('[ATK] Services navigation handled by JS');
 
-    // run your logic
-    applyTrackTimeLogic();
+    applyTrackTimeLogic('page');
 
-    // navigate manually
-    window.location.href = '/atk-booking';
-
-  }, true); // capture phase = stronger than theme JS
-
+    window.location.href = '/atk-booking?page=services';
+  }, true);
 
 })();

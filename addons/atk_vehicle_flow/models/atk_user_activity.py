@@ -1,3 +1,4 @@
+# models/atk_user_activity.py
 from odoo import models, fields
 
 class ATKUserActivity(models.Model):
