@@ -22,7 +22,7 @@ class AtkReportPortal(CustomerPortal):
             'user_id': request.env.user.id,
         })
 
-        # Replicate your original redirect logic including URL parameters
+        # Replicate original redirect logic including URL parameters
         query_string = request.httprequest.query_string.decode()
         redirect_url = "/appointment/1"
         if query_string:
@@ -34,21 +34,31 @@ class AtkReportPortal(CustomerPortal):
     @http.route(['/my/atk_reports', '/my/atk_reports/page/<int:page>'], type='http', auth="user", website=True)
     def portal_my_atk_reports(self, page=1, **kw):
         values = self._prepare_portal_layout_values()
-        # Search for reports belonging to the logged-in user
-        reports = request.env['atk.report'].search([('user_id', '=', request.env.user.id)])
+        AtkReport = request.env['atk.report']
+        
+        # Domain to restrict to the logged-in user
+        domain = [('user_id', '=', request.env.user.id)]
+        
+        # REQUIRED: Count for the portal sidebar/layout
+        reports_count = AtkReport.sudo().search_count(domain)
+       
+        # Fetch the records
+        reports = AtkReport.sudo().search(domain)
         
         values.update({
             'reports': reports,
+            'reports_count': reports_count, # Added to prevent 500 error
             'page_name': 'atk_report',
         })
-        return request.render("your_module_name.portal_my_atk_reports_list", values)
+        return request.render("atk_vehicle_flow.portal_my_atk_reports_list", values)
 
     # 3. DISPLAY INDIVIDUAL REPORT DETAIL
     @http.route(['/my/atk_report/<int:report_id>'], type='http', auth="user", website=True)
     def portal_atk_report_detail(self, report_id, **kw):
-        report = request.env['atk.report'].browse(report_id)
         # Security check: Ensure report exists and belongs to the user
-        if not report.exists() or report.user_id != request.env.user:
+        report = request.env['atk.report'].sudo().browse(report_id)
+        
+        if not report.exists() or report.user_id.id != request.env.user.id:
             return request.redirect('/my')
             
-        return request.render("your_module_name.portal_atk_report_form", {'report': report})
+        return request.render("atk_vehicle_flow.portal_atk_report_form", {'report': report})
