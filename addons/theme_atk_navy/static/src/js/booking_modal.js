@@ -1,6 +1,24 @@
 (function () {
   'use strict';
 
+  /* ======================================================
+     HARD STOP — NEVER RUN ON PORTAL / BACKEND
+     ====================================================== */
+  const path = window.location.pathname;
+  if (
+    path.startsWith('/my') ||
+    path.startsWith('/web') ||
+    path.startsWith('/login')
+  ) {
+    console.log('[ATK] Booking JS skipped on portal/backend page:', path);
+    return;
+  }
+
+  console.log('[ATK] Booking JS loaded on:', path);
+
+  /* ======================================================
+     TIME UTILITIES
+     ====================================================== */
   function getUSTime() {
     const now = new Date();
     return new Date(
@@ -10,17 +28,22 @@
 
   function computeTrackAvailability() {
     const usNow = getUSTime();
-    const day = usNow.getDay();
+    const day = usNow.getDay(); // 0=Sun … 6=Sat
     const hour = usNow.getHours();
     const minute = usNow.getMinutes();
 
     let standardActive = false;
     let priorityActive = false;
 
-    if ((day === 0 && hour >= 18) || (day >= 1 && day <= 4)) {
+    // STANDARD BOOKING
+    if (
+      (day === 0 && hour >= 18) || // Sunday after 6pm
+      (day >= 1 && day <= 4)       // Monday–Thursday
+    ) {
       standardActive = true;
     }
 
+    // SKIP-THE-LINE
     if (
       (day === 5 && hour === 0 && minute >= 1) ||
       (day === 5 && hour > 0) ||
@@ -30,105 +53,86 @@
       priorityActive = true;
     }
 
+    // Mutual exclusivity
     if (standardActive) priorityActive = false;
     if (priorityActive) standardActive = false;
 
     return { standardActive, priorityActive };
   }
 
-  function applyTrackTimeLogic(modal) {
-    const result = computeTrackAvailability();
+  /* ======================================================
+     CORE APPLY FUNCTION — NO MODAL ASSUMPTION
+     ====================================================== */
+  function applyTrackTimeLogic(context) {
+    const { standardActive, priorityActive } = computeTrackAvailability();
 
-      if (!modal) return;
+    const root = context || document;
 
-      const standardBtn = modal.querySelector('[data-track="standard"]');
-      const priorityBtn = modal.querySelector('[data-track="priority"]');
+    const standardBtn = root.querySelector('[data-track="standard"]');
+    const priorityBtn = root.querySelector('[data-track="priority"]');
 
-      if (standardBtn) standardBtn.disabled = !result.standardActive;
-      if (priorityBtn) priorityBtn.disabled = !result.priorityActive;
+    if (!standardBtn && !priorityBtn) {
+      console.warn('[ATK] Track buttons not found in this context');
+      return;
+    }
+
+    if (standardBtn) {
+      standardBtn.toggleAttribute('disabled', !standardActive);
+      standardBtn.classList.toggle('is-disabled', !standardActive);
+    }
+
+    if (priorityBtn) {
+      priorityBtn.toggleAttribute('disabled', !priorityActive);
+      priorityBtn.classList.toggle('is-disabled', !priorityActive);
+    }
+
+    console.log('[ATK] Track logic applied', {
+      standardActive,
+      priorityActive,
+      time: new Date().toISOString(),
+    });
   }
 
-  /* ===================== MODAL (A) ===================== */
+  /* ======================================================
+     MODAL FLOW (A)
+     ====================================================== */
   document.addEventListener('click', function (e) {
     const trigger = e.target.closest('[data-open-booking-track]');
     if (!trigger) return;
 
     e.preventDefault();
 
-     //set modal and call time logic
     const modal = document.querySelector('[data-atk-track-modal]');
-    //if (modal) modal.hidden = false;
+    if (!modal) {
+      console.warn('[ATK] Booking modal not found');
+      return;
+    }
 
-    //applyTrackTimeLogic(modal);
-
-    
-
-      const urlTrack = new URLSearchParams(window.location.search).get('page');
-
-    if (urlTrack !== 'services') {
-           modal.hidden = false;
-          applyTrackTimeLogic(modal);
-      }
+    modal.hidden = false;
+    applyTrackTimeLogic(modal);
   });
 
-  /* ===================== SERVICES PAGE (B) ===================== */
-document.addEventListener(
-  'click',
-  function (e) {
-    const link = e.target.closest('[data-atk-booking-page-open]');
-    if (!link) return;
+  /* ======================================================
+     SERVICES PAGE FLOW (B)
+     ====================================================== */
+  document.addEventListener(
+    'click',
+    function (e) {
+      const link = e.target.closest('[data-atk-booking-page-open]');
+      if (!link) return;
 
-    e.preventDefault();
-    e.stopPropagation();
+      e.preventDefault();
+      e.stopImmediatePropagation();
 
-    console.log('[ATK] Services link intercepted');
+      console.log('[ATK] Services navigation handled by JS');
 
-    // store intent BEFORE navigation
-    sessionStorage.setItem('atk_apply_track_logic', '1');
+      // apply logic to page buttons (no modal needed)
+      applyTrackTimeLogic(document);
 
-    window.location.href = '/atk-booking?page=services';
+      // navigate manually
+      window.location.href = '/atk-booking?page=services';
+    },
+    true // capture phase to beat theme JS
+  );
 
-    const urlTrack = new URLSearchParams(window.location.search).get('page');
-
-     const modal = document.querySelector('[data-atk-track-modal]');
-
-      if (urlTrack === 'services') {
-          
-           modal.hidden = false;
-          applyTrackTimeLogic(modal);
-
-           console.log('[ATK] Track timing applied on Services page');
-      }
-    
-  },
-  true //capture phase
-);
-
-document.addEventListener('DOMContentLoaded', function () {
-  if (!sessionStorage.getItem('atk_apply_track_logic')) return;
-
-  sessionStorage.removeItem('atk_apply_track_logic');
-
-  //const modal = document.querySelector('[data-atk-booking-page]');
-
-  //if (!modal) return;
-  //if (modal){
-   // applyTrackTimeLogic(modal);
-  //}
-
-  const urlTrack = new URLSearchParams(window.location.search).get('page');
-
-   const modal = document.querySelector('[data-atk-track-modal]');
-
-      if (urlTrack === 'services') {
-           modal.hidden = false;
-          applyTrackTimeLogic(modal);
-
-           console.log('[ATK] Track timing applied on Services page');
-      }
-
- 
-});
-
-  
 })();
