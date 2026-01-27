@@ -1,17 +1,7 @@
 odoo.define('theme_atk_navy.countdown', [], function () {
     'use strict';
-
-    const path = window.location.pathname;
-
-    if (
-    path.startsWith('/my') ||
-    path.startsWith('/web') ||
-    path.startsWith('/login')
-    ) {
-    return;
-    }
-
-    //console.log('ATK COUNTDOWN SCRIPT EXECUTED');
+   
+ //console.log('ATK COUNTDOWN SCRIPT EXECUTED');
 
     const LAUNCH_DATE = new Date('2026-01-19T00:01:00-05:00').getTime();
 

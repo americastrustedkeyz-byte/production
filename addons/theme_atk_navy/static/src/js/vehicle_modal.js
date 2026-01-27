@@ -3,17 +3,6 @@ console.log('[ATK] Vehicle modal JS FILE LOADED');
 (function () {
   'use strict';
 
-  const pathCheck = window.location.pathname;
-
-if (
-  pathCheck.startsWith('/my') ||
-  pathCheck.startsWith('/web') ||
-  pathCheck.startsWith('/login')
-) {
-  return;
-}
-
-
   const ALLOWED_MODAL_PATHS = ['/', '/atk-booking'];
 
 function isVehicleModalAllowedPage() {

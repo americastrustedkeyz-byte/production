@@ -2,17 +2,6 @@
    ATK VEHICLE DATA — COMPLETE (C1)
    ========================================================== */
 
-   const path = window.location.pathname;
-
-if (
-  path.startsWith('/my') ||
-  path.startsWith('/web') ||
-  path.startsWith('/login')
-) {
-  return;
-}
-
-
 window.ATK_VEHICLE_DATA = [
 
   { 

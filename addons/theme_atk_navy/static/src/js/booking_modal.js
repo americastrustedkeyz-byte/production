@@ -2,17 +2,6 @@
 
 (function () {
 
-  const path = window.location.pathname;
-
-    if (
-      path.startsWith('/my') ||
-      path.startsWith('/web') ||
-      path.startsWith('/login')
-    ) {
-      return;
-    }
-
-
   const modal = document.querySelector('[data-atk-track-modal]');
   if (!modal) return;
 

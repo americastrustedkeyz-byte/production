@@ -1,17 +1,6 @@
 (function () {
   'use strict';
 
-  const path = window.location.pathname;
-
-if (
-  path.startsWith('/my') ||
-  path.startsWith('/web') ||
-  path.startsWith('/login')
-) {
-  return;
-}
-
-
   /* ======================================================
      UTIL: GET SELECT BOOKING MODAL
      ====================================================== */

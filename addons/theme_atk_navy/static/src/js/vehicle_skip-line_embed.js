@@ -1,16 +1,6 @@
 (function () {
   'use strict';
 
-  const pathCheck = window.location.pathname;
-
-if (
-  pathCheck.startsWith('/my') ||
-  pathCheck.startsWith('/web') ||
-  pathCheck.startsWith('/login')
-) {
-  return;
-}
-
   console.log('[ATK] Phase 2 Vehicle Logic INITIALIZED');
 
   /*=====================================================
