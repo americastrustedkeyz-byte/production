@@ -1,15 +1,27 @@
 from odoo import http
 from odoo.http import request
 from odoo.addons.portal.controllers.portal import CustomerPortal
-import logging
-
-_logger = logging.getLogger(__name__)
 
 
 class AtkReportPortal(CustomerPortal):
 
     # -----------------------------------------------------
-    # SAFE: Extend portal home counters (NO crash risk)
+    # PORTAL HOME — FORCE REPORT COUNTER TO LOAD
+    # -----------------------------------------------------
+    def home(self, **kw):
+        """
+        This method is REQUIRED so Odoo knows that
+        'reports_count' must be computed and rendered.
+        """
+        response = super().home(**kw)
+
+        # Force Odoo to request our custom counter
+        self._prepare_home_portal_values(['reports_count'])
+
+        return response
+
+    # -----------------------------------------------------
+    # SAFE: Extend portal counters (NO crash risk)
     # -----------------------------------------------------
     def _prepare_home_portal_values(self, counters):
         values = super()._prepare_home_portal_values(counters)
@@ -27,24 +39,21 @@ class AtkReportPortal(CustomerPortal):
     @http.route('/atk/report/submit', type='http', auth="user", methods=['POST'], website=True)
     def atk_report_submit(self, **post):
 
-        try:
-            request.env['atk.report'].sudo().create({
-                'status': post.get('status'),
-                'key_type': post.get('key_type'),
-                'make': post.get('make'),
-                'model': post.get('model'),
-                'year': post.get('year'),
-                'vehicle_type': post.get('vehicle_type'),
-                'price': float(post.get('price') or 0),
-                'battery': post.get('battery'),
-                'vehicle_info': post.get('vehicle_info'),
-                'donation': float(post.get('donation') or 0),
-                'user_id': request.env.user.id,
-            })
-        except Exception:
-            _logger.exception("ATK REPORT: Failed to create report")
-            return request.redirect('/my')
+        request.env['atk.report'].sudo().create({
+            'status': post.get('status'),
+            'key_type': post.get('key_type'),
+            'make': post.get('make'),
+            'model': post.get('model'),
+            'year': post.get('year'),
+            'vehicle_type': post.get('vehicle_type'),
+            'price': float(post.get('price') or 0),
+            'battery': post.get('battery'),
+            'vehicle_info': post.get('vehicle_info'),
+            'donation': float(post.get('donation') or 0),
+            'user_id': request.env.user.id,
+        })
 
+        # Preserve original redirect behavior
         query_string = request.httprequest.query_string.decode()
         redirect_url = "/appointment/1"
         if query_string:
@@ -53,7 +62,7 @@ class AtkReportPortal(CustomerPortal):
         return request.redirect(redirect_url)
 
     # -----------------------------------------------------
-    # 2. REPORT LIST (/my/atk_reports)
+    # 2. REPORT LIST — /my/atk_reports
     # -----------------------------------------------------
     @http.route(['/my/atk_reports', '/my/atk_reports/page/<int:page>'],
                 type='http', auth="user", website=True)
@@ -76,7 +85,7 @@ class AtkReportPortal(CustomerPortal):
         )
 
     # -----------------------------------------------------
-    # 3. REPORT DETAIL (/my/atk_report/<id>)
+    # 3. REPORT DETAIL — /my/atk_report/<id>
     # -----------------------------------------------------
     @http.route('/my/atk_report/<int:report_id>',
                 type='http', auth="user", website=True)
@@ -84,6 +93,7 @@ class AtkReportPortal(CustomerPortal):
 
         report = request.env['atk.report'].sudo().browse(report_id)
 
+        # Security: user can only access own reports
         if not report.exists() or report.user_id.id != request.env.user.id:
             return request.redirect('/my')
 
