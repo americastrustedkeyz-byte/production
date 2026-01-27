@@ -90,9 +90,10 @@ document.addEventListener(
 
     const urlTrack = new URLSearchParams(window.location.search).get('page');
 
-      if (urlTrack) {
-           const modal = document.querySelector('[data-atk-track-modal]');
+     const modal = document.querySelector('[data-atk-track-modal]');
 
+      if (urlTrack) {
+          
            modal.hidden = false;
           applyTrackTimeLogic(modal);
 
@@ -116,6 +117,8 @@ document.addEventListener('DOMContentLoaded', function () {
   //}
 
   const urlTrack = new URLSearchParams(window.location.search).get('page');
+
+   const modal = document.querySelector('[data-atk-track-modal]');
 
       if (!urlTrack) {
            modal.hidden = false;
