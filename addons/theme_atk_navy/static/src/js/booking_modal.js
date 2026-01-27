@@ -39,7 +39,7 @@
   function applyTrackTimeLogic(modal) {
     const result = computeTrackAvailability();
 
-    console.log('[ATK TIME LOGIC]', result, 'context=', context);
+    //console.log('[ATK TIME LOGIC]', result, 'context=', context);
 
     //if (context === 'modal') {
       //const modal = document.querySelector('[data-atk-track-modal]');
