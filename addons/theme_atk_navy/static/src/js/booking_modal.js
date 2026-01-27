@@ -39,10 +39,6 @@
   function applyTrackTimeLogic(modal) {
     const result = computeTrackAvailability();
 
-    //console.log('[ATK TIME LOGIC]', result, 'context=', context);
-
-    //if (context === 'modal') {
-      //const modal = document.querySelector('[data-atk-track-modal]');
       if (!modal) return;
 
       const standardBtn = modal.querySelector('[data-track="standard"]');
@@ -50,9 +46,6 @@
 
       if (standardBtn) standardBtn.disabled = !result.standardActive;
       if (priorityBtn) priorityBtn.disabled = !result.priorityActive;
-    //}
-
-    // Page-based logic can go here later if needed
   }
 
   /* ===================== MODAL (A) ===================== */
@@ -70,20 +63,37 @@
   });
 
   /* ===================== SERVICES PAGE (B) ===================== */
-  document.addEventListener('click', function (e) {
+document.addEventListener(
+  'click',
+  function (e) {
     const link = e.target.closest('[data-atk-booking-page-open]');
     if (!link) return;
 
     e.preventDefault();
-    e.stopImmediatePropagation();
+    e.stopPropagation();
 
-    console.log('[ATK] Services navigation handled by JS');
+    console.log('[ATK] Services link intercepted');
 
-    //set modal and call time logic 
-     const modal = document.querySelector('[data-atk-track-modal]');
-    applyTrackTimeLogic(modal);
+    // store intent BEFORE navigation
+    sessionStorage.setItem('atk_apply_track_logic', '1');
 
     window.location.href = '/atk-booking?page=services';
-  }, true);
+  },
+  true //capture phase
+);
 
+document.addEventListener('DOMContentLoaded', function () {
+  if (!sessionStorage.getItem('atk_apply_track_logic')) return;
+
+  sessionStorage.removeItem('atk_apply_track_logic');
+
+  const modal = document.querySelector('[data-atk-track-modal]');
+  if (!modal) return;
+
+  applyTrackTimeLogic(modal);
+
+  console.log('[ATK] Track timing applied on Services page');
+});
+
+  
 })();
