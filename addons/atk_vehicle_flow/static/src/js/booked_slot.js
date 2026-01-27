@@ -1,5 +1,15 @@
 (function () {
 
+  const pathCheck = window.location.pathname;
+
+if (
+  pathCheck.startsWith('/my') ||
+  pathCheck.startsWith('/web') ||
+  pathCheck.startsWith('/login')
+) {
+  return;
+}
+
     const PAGE_PATH_REQUIRED = '/appointment/1';
     const STORAGE_KEY = 'atk_booked_slots';
 

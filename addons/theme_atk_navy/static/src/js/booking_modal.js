@@ -1,11 +1,14 @@
 //console.log('[ATK] Booking modal JS FILE LOADED');
 
 (function () {
+
   const modal = document.querySelector('[data-atk-track-modal]');
   if (!modal) return;
 
   const standardBtn = modal.querySelector('[data-track="standard"]');
+
   const priorityBtn = modal.querySelector('[data-track="priority"]');
+
   if (!standardBtn || !priorityBtn) return;
 
   function getUSTime() {
@@ -59,7 +62,7 @@
   }
 
   /*======================================================
-     SINGLE, AUTHORITATIVE CLICK HANDLER (FIX)
+     SINGLE, AUTHORITATIVE CLICK HANDLER (FIX) - A
      ======================================================*/
 
  document.addEventListener('click', function (e) {
@@ -71,5 +74,23 @@
     applyTrackTimeLogic();
   });
 
+  //booking page button link activation (B)
+ document.addEventListener('click', function (e) {
 
+    const link = e.target.closest('[data-atk-booking-page-open]');
+    if (!link) return;
+
+    // BLOCK DEFAULT <a href>
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log('[ATK] Services link intercepted by JS');
+
+    // run your logic
+    applyTrackTimeLogic();
+
+    // navigate manually
+    window.location.href = '/atk-booking?page=services';
+
+  }, true); // capture phase = stronger than theme JS
 })();

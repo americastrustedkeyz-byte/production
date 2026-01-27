@@ -1,0 +1,11 @@
+/* Styling for the report list and form */
+.o_portal_my_home .o_portal_docs_entry {
+    transition: transform 0.2s ease-in-out;
+}
+.o_portal_my_home .o_portal_docs_entry:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.atk-report-card {
+    border-left: 4px solid #714B67;
+}

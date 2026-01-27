@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+
     const toggle = document.querySelector('.atk-nav-toggle');
     const links = document.querySelector('.atk-nav-links');
 

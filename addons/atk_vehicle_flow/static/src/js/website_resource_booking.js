@@ -1,4 +1,16 @@
 (function () {
+
+const pathCheck = window.location.pathname;
+
+if (
+  pathCheck.startsWith('/my') ||
+  pathCheck.startsWith('/web') ||
+  pathCheck.startsWith('/login')
+) {
+  return;
+}
+
+
   function fetchSlots(container) {
     const bookingTypeId = container.dataset.bookingTypeId;
 

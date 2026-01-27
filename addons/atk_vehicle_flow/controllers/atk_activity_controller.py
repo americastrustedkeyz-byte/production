@@ -2,12 +2,11 @@ from odoo import http
 from odoo.http import request
 from odoo.addons.portal.controllers.portal import CustomerPortal
 
-# -------- SAVE ACTIVITY (PUBLIC / USER) ----------
+
 class ATKActivityController(http.Controller):
 
     @http.route('/atk/activity/save', type='json', auth='public', website=True)
     def save_activity(self, **data):
-
         user = request.env.user
         is_public = user._is_public()
 
@@ -21,7 +20,6 @@ class ATKActivityController(http.Controller):
         return {'status': 'ok'}
 
 
-# -------- PORTAL DASHBOARD EXTENSION ----------
 class ATKPortal(CustomerPortal):
 
     def _prepare_home_portal_values(self, counters):

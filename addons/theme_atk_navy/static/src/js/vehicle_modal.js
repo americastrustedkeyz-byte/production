@@ -3,6 +3,29 @@ console.log('[ATK] Vehicle modal JS FILE LOADED');
 (function () {
   'use strict';
 
+  const ALLOWED_MODAL_PATHS = ['/', '/atk-booking'];
+
+function isVehicleModalAllowedPage() {
+  const path = window.location.pathname.replace(/\/+$/, '');
+  return ALLOWED_MODAL_PATHS.includes(path) || path === '';
+}
+
+const blockedPaths = [
+    '/my',
+    '/web',
+    '/appointment/1',
+    '/payment_cart'
+  ];
+
+  const path = window.location.pathname;
+
+  if (blockedPaths.some(p => path.startsWith(p))) {
+    console.log('[ATK] Vehicle JS skipped on this page:', path);
+    return;
+  }
+
+
+
 console.log('[ATK] Vehicle modal JS FILE LOADED');
 
 window.ATK_STATE = window.ATK_STATE || {};
@@ -76,14 +99,17 @@ window.ATK_STATE = window.ATK_STATE || {};
      OPEN MODAL FROM URL (NO FLICKER, SINGLE RUN)
      ====================================================== */
 (function openVehicleModalFromUrlSafe() {
-  const params = new URLSearchParams(window.location.search);
+  if (!isVehicleModalAllowedPage()) {
+    console.log('[ATK] Vehicle modal blocked on this page:', window.location.pathname);
+    return;
+  }
 
+  const params = new URLSearchParams(window.location.search);
   if (params.get('reset') !== 'open_vehicle_modal') return;
 
   console.log('[ATK] URL reset detected → waiting for vehicle modal');
 
   const track = params.get('track') || 'standard';
-  //priority
 
   let attempts = 0;
   const maxAttempts = 40;
@@ -100,18 +126,9 @@ window.ATK_STATE = window.ATK_STATE || {};
       console.log('[ATK] Vehicle modal OPENED via URL');
       console.log('[ATK] Track source:', track);
 
-      // inject track
-      let input = document.getElementById('booking_track');
-      if (!input) {
-        input = document.createElement('input');
-        input.type = 'hidden';
-        input.id = 'booking_track';
-        input.name = 'booking_track';
-        form.appendChild(input);
-      }
-      input.value = track;
+      applyBookingTrackToForm(track);
 
-      // clean URL (remove reset ONLY)
+      // CLEAN URL
       const cleanUrl = new URL(window.location.href);
       cleanUrl.searchParams.delete('reset');
       window.history.replaceState({}, document.title, cleanUrl.pathname + cleanUrl.search);
@@ -125,7 +142,6 @@ window.ATK_STATE = window.ATK_STATE || {};
     }
   }, 100);
 })();
-
 
 
   /* ======================================================
@@ -214,24 +230,50 @@ function computeReport(data) {
    RENDER REPORT SUMMARY (SAFE)
 ================================================ */
 function renderReport(report) {
-  const body = qs('atk_report_body');
-  if (!body) return;
+  const body = document.getElementById('atk_report_body');
+  const hiddenContainer = document.getElementById('atk_report_hidden_inputs');
+  if (!body || !hiddenContainer) return;
 
+  // 1. Render Visible Summary for the User
   body.innerHTML = `
     <ul class="atk-report-list">
-      <li><strong>Status:</strong> ${report.status}</li>
       <li><strong>Key Type:</strong> ${report.key_type}</li>
       <li><strong>Make:</strong> ${report.make}</li>
       <li><strong>Model:</strong> ${report.model}</li>
       <li><strong>Year:</strong> ${report.year}</li>
       <li><strong>Vehicle Type:</strong> ${report.vehicle_type}</li>
-      <li><strong>Price:</strong> ${report.price}</li>
-      <li><strong>Battery Health:</strong> ${report.battery}</li>
-      <li><strong>Vehicle Info:</strong> ${report.vehicle_info}</li>
-      <li><strong>Donation:</strong> ${report.donation}</li>
+      <li><strong>Price:</strong> $${report.price}</li>
+      <li><strong>Battery:</strong> ${report.battery}</li>
+      <li><strong>Info:</strong> ${report.vehicle_info}</li>
+      <li><strong>Donation:</strong> $${report.donation}</li>
     </ul>
   `;
+
+  //get status
+
+    const trackStatus = new URLSearchParams(window.location.search).get('track');
+    let status = '';    
+    if (trackStatus === 'priority') {
+        status = 'Skip-The-Line';
+      }else{
+        status = 'Standard';
+      }
+
+  // 2. Render Hidden Inputs for Odoo Controller (name attributes must match Python fields)
+  hiddenContainer.innerHTML = `
+    <input type="hidden" name="status" value="${status}">
+    <input type="hidden" name="key_type" value="${report.key_type}">
+    <input type="hidden" name="make" value="${report.make}">
+    <input type="hidden" name="model" value="${report.model}">
+    <input type="hidden" name="year" value="${report.year}">
+    <input type="hidden" name="vehicle_type" value="${report.vehicle_type}">
+    <input type="hidden" name="price" value="${report.price}">
+    <input type="hidden" name="battery" value="${report.battery}">
+    <input type="hidden" name="vehicle_info" value="${report.vehicle_info}">
+    <input type="hidden" name="donation" value="${report.donation}">
+  `;
 }
+
 
 /* ===============================================
    REPORT MODAL CONTROL (OVERLAY-SAFE)
@@ -289,7 +331,7 @@ function closeReportModal() {
 })();
 
 
-//=============================
+//=============continue booking logic================
 
 (function bindAtkContinueToBooking() {
   const continueBtn = document.getElementById('atk_continue_btn');

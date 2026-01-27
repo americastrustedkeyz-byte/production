@@ -24,8 +24,9 @@
 
                                 <div class="row g-4">
 
-                                    <!-- LEFT COLUMN: BOOKING TYPES -->
-                                    <div class="col-lg-6">
+                                    <!--LEFT COLUMN: BOOKING TYPES-->
+                                    <!--div class="col-lg-6" data-atk-booking-page='1' hidden="hidden"-->
+                                    <div class="col-lg-6" data-atk-booking-page='1'>
                                         <h3 class="atk-column-title">Booking Type</h3>
 
                                         <!-- Expanded Booking (Dark) -->
@@ -34,15 +35,12 @@
                                              <span class="atk-track-badge">Weekend Access</span>
                                             <ul class="atk-feature-list">
                                                 <li>✅ Bookable only on Sunday from 12:00pm-6:00pm</li>
-                                <li>✅ Services is provided on weekends (Friday, Saturday and Sunday)</li>
-                                <li>✅ Select from available weekend time slot</li>
-                                <li>✅ Ideal for flexible schedules</li>
-                                <li>✅ Served in standard service order</li>
-                                <li>✅ $5 non-refundable donation at checkout</li>                            </ul>
-                                                <button class="btn-track-standard" 
-                        data-track="standard" data-open-vehicle-modal="1"> 
-                            Get Started →
-                        </button>
+                                                <li>✅ Services is provided on weekends (Friday, Saturday and Sunday)</li>
+                                                <li>✅ Select from available weekend time slot</li>
+                                                <li>✅ Ideal for flexible schedules</li>
+                                                <li>✅ Served in standard service order</li>
+                                                <li>✅ $5 non-refundable donation at checkout</li>                            
+                                            </ul>
                                         </div>
 
                                         <!-- Expanded Skip The Line -->
@@ -52,20 +50,14 @@
 
                                             <ul class="atk-feature-list">
                                                  <li>✅ Bookable on weekend (Friday, Saturday and Sunday)</li>
-                            <li>✅ Booking guaranteed 30 minutes time blocks</li>
-                            <li>✅ Priority handling with a dedicated booking track</li>
-                            <li>✅ Designed for urgent or time sensitive needs</li>
-                            <li>✅ Services is provided during normal business hours</li>
-                            <li>✅ $125 donation applied</li>
-                            <li>✅ May still require up to a 30-minute wait on arrival due to on site services flow</li>
+                                                <li>✅ Booking guaranteed 30 minutes time blocks</li>
+                                                <li>✅ Priority handling with a dedicated booking track</li>
+                                                <li>✅ Designed for urgent or time sensitive needs</li>
+                                                <li>✅ Services is provided during normal business hours</li>
+                                                <li>✅ $120 additional fee applied</li>
+                                                <li>✅ May still require up to a 30-minute wait on arrival due to on site services flow</li>
                                             </ul>
-<button class="btn-track-priority"
-                        data-track="priority" data-open-vehicle-modal="1">
-                        Get Started →
-                        </button>
-
-                                        </div>
-
+                                         </div>
                                     </div>
 
                                     <!-- RIGHT COLUMN: BILLING -->

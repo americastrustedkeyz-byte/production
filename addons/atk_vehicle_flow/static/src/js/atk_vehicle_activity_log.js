@@ -1,87 +1,61 @@
-console.log('[ATK] Vehicle modal JS FILE LOADED');
+console.log('[ATK] JS loaded');
 
 (function () {
   'use strict';
 
-console.log('[ATK] Vehicle modal JS FILE LOADED');
+  const pathCheck = window.location.pathname;
 
-window.ATK_STATE = window.ATK_STATE || {};
+if (
+  pathCheck.startsWith('/my') ||
+  pathCheck.startsWith('/web') ||
+  pathCheck.startsWith('/login')
+) {
+  return;
+}
 
-//======display vehicle transaction on user portal=======
-(function () {
+  // =========================
+  // PAGE GUARD (VERY IMPORTANT)
+  // =========================
+  function isBookingPage() {
+    return document.querySelector('#atk_continue_btn');
+  }
+
+  if (!isBookingPage()) {
+    console.log('[ATK] Not booking page → JS skipped safely');
+    return;
+  }
+
+  console.log('[ATK] Booking page detected → JS active');
+
   document.addEventListener('click', function (e) {
     const btn = e.target.closest('#atk_continue_btn');
     if (!btn) return;
 
-    const urlTrack = new URLSearchParams(window.location.search).get('track');
-   let status = '';
-   
-  if (urlTrack) {
-    
-    if (urlTrack === 'priority'){
-        status = 'Skip-The-Line';
-        //localStorage.setItem('track', urlTrack);
-        console.log('[ATK] Track:', urlTrack);
-    }else{
-        status = 'Standard';
+    const makeEl  = document.getElementById('vehicle_make');
+    const modelEl = document.getElementById('vehicle_model');
+    const yearEl  = document.getElementById('vehicle_year');
+    const priceEl = document.getElementById('price');
+
+    if (!makeEl || !modelEl || !yearEl || !priceEl) {
+      console.warn('[ATK] Required vehicle inputs not found');
+      return;
     }
-  }
 
     const payload = {
       page: window.location.pathname,
-      key_type: document.getElementById('key_type')?.value,
-      make: document.getElementById('vehicle_make')?.value,
-      model: document.getElementById('vehicle_model')?.value,
-      year: document.getElementById('vehicle_year')?.value,
-      price: document.getElementById('price')?.value,
-      bookingStatus: status,
+      make: makeEl.value,
+      model: modelEl.value,
+      year: yearEl.value,
+      price: priceEl.value,
     };
 
     fetch('/atk/activity/save', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
     });
 
     console.log('[ATK] Activity saved', payload);
   });
-})();
-
-/*
- status: isPriority ? 'Skip-The-Line' : 'Standard',
-    key_type: data.key_type,
-    make: data.make,
-    model: data.model,
-    year: data.year,
-    vehicle_type: data.vehicle_type,
-    price: finalPrice,
-    battery: data.battery,
-    vehicle_info: data.vehicle_info,
-    donation: '$5 (Non-refundable)'
-
-    let makeEl      = qs('vehicle_make');
-  let modelEl     = qs('vehicle_model');
-  let modelWrapEl = qs('vehicle_model_wrapper');
-  let yearEl      = qs('vehicle_year');
-  let yearWrapEl  = qs('vehicle_year_wrapper');
-
-const urlTrack = new URLSearchParams(window.location.search).get('track');
-
-  if (urlTrack) {
-    localStorage.setItem('track', urlTrack);
-    console.log('[ATK] Track:', urlTrack);
-  }
-
-  const params = new URLSearchParams(window.location.search);
-
-  if (params.get('reset') !== 'open_vehicle_modal') return;
-
-  console.log('[ATK] URL reset detected → waiting for vehicle modal');
-
-  const track = params.get('track') || 'standard';
-  //priority
-
-*/
-
 
 })();

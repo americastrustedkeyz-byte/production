@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. Add 'My Vehicle Reports' link to the Portal Home Dashboard -->
+    <template id="portal_my_home_atk" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">My Vehicle Reports</t>
+                <t t-set="url" t-value="'/my/atk_reports'"/>
+                <t t-set="placeholder_count" t-value="'reports_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- 2. The List View (Shows all reports in a table) -->
+    <template id="portal_my_atk_reports_list" name="My Atk Reports">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar"/>
+            <t t-if="not reports">
+                <p class="alert alert-warning">You have no reports yet.</p>
+            </t>
+            <table t-if="reports" class="table table-sm bg-white shadow-sm mt-3">
+                <thead class="bg-light">
+                    <tr>
+                        <th>Reference</th>
+                        <th>Make/Model</th>
+                        <th>Date</th>
+                        <th class="text-end">Status</th>
+                        <th class="text-end">Price</th>
+                        <th class="text-end">Approval</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="reports" t-as="report">
+                        <td><a t-attf-href="/my/atk_report/#{report.id}"><t t-esc="report.name"/></a></td>
+                        <td><t t-esc="report.make"/> <t t-esc="report.model"/></td>
+                        <td><span t-field="report.create_date" t-options='{"widget": "date"}'/></td>
+                        <td><t t-esc="report.status"/></td>
+                        <td><t t-esc="report.price"/></td>
+                        <td class="text-end">
+                            <span t-attf-class="badge rounded-pill #{'bg-success' if report.state == 'approved' else 'bg-warning'}">
+                                <t t-esc="report.state"/>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </t>
+    </template>
+
+    <!-- 3. The Detail View (Opened when a user clicks a specific report) -->
+    <template id="portal_atk_report_form" name="Atk Report Detail">
+        <t t-call="portal.portal_layout">
+            <div class="container bg-white pb-5 shadow-sm rounded mt-4">
+                <!-- Header -->
+                <div class="row border-bottom py-4 mb-4 align-items-center">
+                    <div class="col-8">
+                        <h2 class="mb-0 text-primary"><t t-esc="report.name"/></h2>
+                        <span class="text-muted">Transaction Date: <t t-esc="report.create_date" t-options='{"widget": "date"}'/></span>
+                    </div>
+                    <div class="col-4 text-end">
+                        <span t-attf-class="badge rounded-pill p-2 px-3 #{'bg-success' if report.state == 'approved' else 'bg-warning'}">
+                            <t t-esc="report.state.upper()"/>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Report Body -->
+                <div class="row">
+                    <div class="col-md-6 border-end">
+                        <h5 class="text-secondary border-bottom pb-2">Vehicle Details</h5>
+                        <div class="row mb-2">
+                            <div class="col-5 fw-bold">Make/Model:</div>
+                            <div class="col-7"><t t-esc="report.make"/> / <t t-esc="report.model"/></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-5 fw-bold">Year:</div>
+                            <div class="col-7"><t t-esc="report.year"/></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-5 fw-bold">Vehicle Type:</div>
+                            <div class="col-7"><t t-esc="report.vehicle_type"/></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ps-4">
+                        <h5 class="text-secondary border-bottom pb-2">Technical &amp; Pricing</h5>
+                        <div class="row mb-2 text-success fw-bold">
+                            <div class="col-5">Final Price:</div>
+                            <div class="col-7">$<t t-esc="'%.2f' % report.price"/></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-5 fw-bold">Battery Info:</div>
+                            <div class="col-7"><t t-esc="report.battery"/></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-5 fw-bold">Donation:</div>
+                            <div class="col-7">$<t t-esc="'%.2f' % report.donation"/></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
