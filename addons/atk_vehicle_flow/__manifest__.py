@@ -17,6 +17,7 @@
      'qweb': [
         'views/portal_templates.xml',
         'views/portal_activity_list.xml',
+        'views/portal_spinner_override.xml',
     ],
     'assets': {
         'web.assets_frontend': [

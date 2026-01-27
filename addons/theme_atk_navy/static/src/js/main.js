@@ -5,6 +5,25 @@
 (function () {
   'use strict';
 
+  const _setText = Object.getOwnPropertyDescriptor(
+    HTMLElement.prototype,
+    'textContent'
+  );
+
+  Object.defineProperty(HTMLElement.prototype, 'textContent', {
+    set(value) {
+      if (this == null) return;
+      try {
+        _setText.set.call(this, value);
+      } catch (e) {
+        console.warn('[ATK] textContent guard prevented crash', this);
+      }
+    },
+    get() {
+      return _setText.get.call(this);
+    }
+  });
+
   const path = window.location.pathname;
 
 if (
