@@ -4,6 +4,15 @@
      JS-ONLY, Owl-safe, no auto-redirect
      ========================================== */
 
+     const pathCheck = window.location.pathname;
+
+    if (
+      pathCheck.startsWith('/my') ||
+      pathCheck.startsWith('/web') ||
+      pathCheck.startsWith('/login')
+    ) {
+      return;
+    }
      
   function isAppointmentConfirmation() {
     const params = new URLSearchParams(window.location.search);

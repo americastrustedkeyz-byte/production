@@ -5,6 +5,17 @@
 (function () {
   'use strict';
 
+  const path = window.location.pathname;
+
+if (
+  path.startsWith('/my') ||
+  path.startsWith('/web') ||
+  path.startsWith('/login')
+) {
+  return;
+}
+
+
   window.ATK_STATE = {
     urlResetActive:
       new URLSearchParams(window.location.search).get('reset') === 'open_vehicle_modal',

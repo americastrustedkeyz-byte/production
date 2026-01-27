@@ -3,6 +3,16 @@ console.log('[ATK] JS loaded');
 (function () {
   'use strict';
 
+  const pathCheck = window.location.pathname;
+
+if (
+  pathCheck.startsWith('/my') ||
+  pathCheck.startsWith('/web') ||
+  pathCheck.startsWith('/login')
+) {
+  return;
+}
+
   // =========================
   // PAGE GUARD (VERY IMPORTANT)
   // =========================

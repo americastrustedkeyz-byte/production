@@ -3,7 +3,15 @@
 // =====================================================
 (function () {
 
+const pathCheck = window.location.pathname;
 
+if (
+  pathCheck.startsWith('/my') ||
+  pathCheck.startsWith('/web') ||
+  pathCheck.startsWith('/login')
+) {
+  return;
+}
   
   if (!window.location.hash) return;
 
