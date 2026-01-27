@@ -87,11 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   sessionStorage.removeItem('atk_apply_track_logic');
 
-  const modal = document.querySelector('[data-atk-track-modal]');
-  if (!modal) return;
+  const modal = document.querySelector('[data-atk-booking-page]');
 
-  applyTrackTimeLogic(modal);
-
+  //if (!modal) return;
+  if (modal){
+    applyTrackTimeLogic(modal);
+  }
+  
   console.log('[ATK] Track timing applied on Services page');
 });
 

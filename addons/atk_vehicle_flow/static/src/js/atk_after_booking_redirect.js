@@ -4,6 +4,7 @@
      JS-ONLY, Owl-safe, no auto-redirect
      ========================================== */
 
+     
   function isAppointmentConfirmation() {
     const params = new URLSearchParams(window.location.search);
     return (

@@ -2,6 +2,9 @@
 // ATK HASH ROUTER (ODOO-SAFE, ZERO RACE CONDITIONS)
 // =====================================================
 (function () {
+
+
+  
   if (!window.location.hash) return;
 
   const hash = window.location.hash.replace('#', '');

@@ -2,17 +2,6 @@ console.log('[ATK] JS loaded');
 
 (function () {
   'use strict';
-  
- const path = window.location.pathname;
-  // 🚫 HARD STOP on portal & auth pages
-  if (
-    path.startsWith('/my') ||
-    path.startsWith('/web/login') ||
-    path.startsWith('/web/signup')
-  ) {
-    console.log('[ATK] Booking JS fully disabled on:', path);
-    return;
-  }
 
   // =========================
   // PAGE GUARD (VERY IMPORTANT)
