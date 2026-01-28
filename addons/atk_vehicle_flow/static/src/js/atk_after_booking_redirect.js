@@ -69,7 +69,7 @@
     const track = params.get("track") || "standard";
 
 const checkoutUrl =
-  `/shop/cart/update?product_id=${1}&add_qty=1`;
+  '/atk/report/checkout';
 
       //   const checkoutUrl =
       // track === "priority"
