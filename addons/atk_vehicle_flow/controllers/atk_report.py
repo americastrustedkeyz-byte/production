@@ -7,35 +7,40 @@ class AtkReportController(http.Controller):
     @http.route(
         '/atk/report/checkout',
         type='http',
-        auth='user',          # 🔑 IMPORTANT
+        auth='user',
         website=True
     )
     def atk_report_checkout(self, **kwargs):
 
-        # Force website sale order for logged-in user
+        # Ensure website order
         order = request.website.sale_get_order(force_create=True)
-
-        # Safety: ensure order exists
         if not order:
             return redirect('/shop')
 
-        # Clear cart (optional, but you wanted ONLY this product)
+        # Clear cart (optional)
         order.order_line.unlink()
 
-        # Fetch product SAFELY (sudo avoids portal restrictions)
-        product = request.env.ref(
+        # 🔑 FETCH PRODUCT TEMPLATE (NOT product.product)
+        product_tmpl = request.env.ref(
             'theme_atk_navy.atk_processing_fee',
             raise_if_not_found=False
         )
 
-        if not product or not product.exists():
+        if not product_tmpl:
             return redirect('/shop')
 
-        # Add product to cart (sudo ensures success)
+        # Convert to template if record is product.product
+        if product_tmpl._name == 'product.product':
+            product_tmpl = product_tmpl.product_tmpl_id
+
+        # Safety checks (portal-safe)
+        if not product_tmpl.sale_ok:
+            return redirect('/shop')
+
+        # Add to cart using TEMPLATE
         order.sudo()._cart_update(
-            product_id=product.id,
+            product_id=product_tmpl.product_variant_id.id,
             add_qty=1
         )
 
-        # Redirect to cart
         return redirect('/shop/cart')
