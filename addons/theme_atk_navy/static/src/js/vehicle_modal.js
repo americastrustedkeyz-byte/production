@@ -10,22 +10,6 @@ function isVehicleModalAllowedPage() {
   return ALLOWED_MODAL_PATHS.includes(path) || path === '';
 }
 
-const blockedPaths = [
-    '/my',
-    '/web',
-    '/appointment/1',
-    '/payment_cart'
-  ];
-
-  const path = window.location.pathname;
-
-  if (blockedPaths.some(p => path.startsWith(p))) {
-    console.log('[ATK] Vehicle JS skipped on this page:', path);
-    return;
-  }
-
-
-
 console.log('[ATK] Vehicle modal JS FILE LOADED');
 
 window.ATK_STATE = window.ATK_STATE || {};
@@ -92,8 +76,6 @@ window.ATK_STATE = window.ATK_STATE || {};
       console.log('[ATK] Vehicle Identification modal CLOSED');
     }
   });
-
-  //element.addEventListener("click", myFunction);
 
   /* ======================================================
      OPEN MODAL FROM URL (NO FLICKER, SINGLE RUN)

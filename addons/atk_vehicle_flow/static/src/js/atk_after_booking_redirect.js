@@ -4,16 +4,6 @@
      JS-ONLY, Owl-safe, no auto-redirect
      ========================================== */
 
-     const pathCheck = window.location.pathname;
-
-    if (
-      pathCheck.startsWith('/my') ||
-      pathCheck.startsWith('/web') ||
-      pathCheck.startsWith('/login')
-    ) {
-      return;
-    }
-     
   function isAppointmentConfirmation() {
     const params = new URLSearchParams(window.location.search);
     return (
@@ -75,12 +65,17 @@
        Detect booking track (safe default)
        ========================================== */
     const params = new URLSearchParams(window.location.search);
+
     const track = params.get("track") || "standard";
 
-    const checkoutUrl =
-      track === "priority"
-        ? "/atk/report/checkout?track=priority"
-        : "/atk/report/checkout?track=standard";
+const checkoutUrl =
+  `/shop/cart/update?product_id=${1}&add_qty=1`;
+
+      //   const checkoutUrl =
+      // track === "priority"
+      //   ? "/atk/report/checkout?track=priority"
+      //   : "/atk/report/checkout?track=standard";
+
 
     /* ==========================================
        Inject UI
@@ -109,9 +104,6 @@
     document
       .getElementById("atk-checkout-btn")
       .addEventListener("click", function () {
-        //get localstorage status
-        //const track = localStorage.getItem('track');
-
         //redirect to checkout
         window.location.href = checkoutUrl;
       });
