@@ -1,34 +1,46 @@
 from odoo import http
 from odoo.http import request
 from werkzeug.utils import redirect
-from urllib.parse import urlencode
 
 class AtkReportController(http.Controller):
 
-    @http.route('/atk/report/checkout', type='http', auth='public', website=True)
+    @http.route(
+        '/atk/report/checkout',
+        type='http',
+        auth='user',
+        website=True
+    )
     def atk_report_checkout(self, **kwargs):
 
-        #If public → redirect to login WITH return URL
-        if request.env.user._is_public():
-            query = urlencode({
-                'redirect': '/shop/cart',
-                'track': kwargs.get('track', ''),
-            })
-            return redirect('/web/login?' + query)
-
-        #Logged-in user
+        # Ensure website order
         order = request.website.sale_get_order(force_create=True)
+        if not order:
+            return redirect('/shop')
 
-        #Clean cart
+        # Clear cart (optional)
         order.order_line.unlink()
 
-        #Add ONLY the $5 product
-        product = request.env.ref('theme_atk_navy.atk_processing_fee')
+        # 🔑 FETCH PRODUCT TEMPLATE (NOT product.product)
+        product_tmpl = request.env.ref(
+            'theme_atk_navy.atk_processing_fee',
+            raise_if_not_found=False
+        )
 
-        order._cart_update(
-            product_id=product.id,
+        if not product_tmpl:
+            return redirect('/shop')
+
+        # Convert to template if record is product.product
+        if product_tmpl._name == 'product.product':
+            product_tmpl = product_tmpl.product_tmpl_id
+
+        # Safety checks (portal-safe)
+        if not product_tmpl.sale_ok:
+            return redirect('/shop')
+
+        # Add to cart using TEMPLATE
+        order.sudo()._cart_update(
+            product_id=product_tmpl.product_variant_id.id,
             add_qty=1
         )
 
-        #Redirect directly to cart
         return redirect('/shop/cart')
