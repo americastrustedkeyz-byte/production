@@ -110,9 +110,9 @@ class AtkReportPortal(CustomerPortal):
             values
         )
 
-    # -----------------------------------------------------
+    #-----------------------------------------------------
     # REPORT DETAIL
-    # -----------------------------------------------------
+    #-----------------------------------------------------
     @http.route('/my/atk_report/<int:report_id>', type='http', auth='user', website=True)
     def portal_atk_report_detail(self, report_id, **kw):
 
