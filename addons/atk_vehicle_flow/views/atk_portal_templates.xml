@@ -45,6 +45,10 @@
                     </tr>
                 </tbody>
             </table>
+
+            <t t-if="pager">
+                <t t-call="portal.pager"/>
+            </t>
         </t>
     </template>
 
