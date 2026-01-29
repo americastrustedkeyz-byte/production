@@ -18,6 +18,7 @@
         'data/atk_products.xml',
         'data/atk_skipdline_products.xml',
         'views/global_modals.xml',
+        'views/remove_branding.xml', 
     ],
     'assets': {
         'web.assets_frontend': [

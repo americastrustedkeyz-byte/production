@@ -482,27 +482,11 @@
     margin-bottom: 20px;
 }
 
-/* FEATURES */
-/*.atk-feature-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 24px;
+/* FOOTER BRAND */
+.o_footer_copyright {
+    display: none !important;
 }
 
-.atk-feature-list li {
-    margin-bottom: 10px;
-    padding-left: 18px;
-    position: relative;
-}
-
-
-.atk-feature-list li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #0d6efd;
-}
-*/
 
 /* PRICES */
 .atk-price {
